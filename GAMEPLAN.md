@@ -80,7 +80,26 @@ Im going to go with option#2 for this. Option 2 might make a good pick for my ne
 steps:
 
 1. build cdn and host data
+
+- [] create project
+- [] add sanity
+- [] create project schemas
+- [] fill sanity with data
+- [] connect to sanity from client
+- [] build query string
+- [] check that data is received
+
 2. ui project setup
+
+- [] colors
+- [] typography
+- [] buttons
+- [] inputs
+- [] links
+- [] layout
+  - [] header
+  - [] footer
+
 3. build base components
 4. build first page
 5. build product page
