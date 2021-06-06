@@ -13,9 +13,15 @@ export default {
 			title: 'Slug',
 			type: 'slug',
 			options: {
-				source: 'title',
+				source: 'item',
 				maxLength: 96,
 			},
 		},
 	],
+
+	preview: {
+		select: {
+			title: 'item',
+		},
+	},
 }

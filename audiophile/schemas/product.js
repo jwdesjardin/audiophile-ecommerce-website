@@ -9,19 +9,20 @@ export default {
 			type: 'number',
 		},
 		{
-			name: 'slug',
-			title: 'Slug',
-			type: 'slug',
-			options: {
-				source: 'title',
-				maxLength: 96,
-			},
-		},
-		{
 			name: 'name',
 			title: 'Name',
 			type: 'string',
 		},
+		{
+			name: 'slug',
+			title: 'Slug',
+			type: 'slug',
+			options: {
+				source: 'name',
+				maxLength: 96,
+			},
+		},
+
 		{
 			name: 'image',
 			title: 'Image',
@@ -71,8 +72,8 @@ export default {
 					fields: [
 						{
 							name: 'item',
-							type: 'reference',
-							to: { type: 'accessory' },
+							title: 'Item',
+							type: 'string',
 						},
 						{
 							type: 'number',
@@ -111,7 +112,7 @@ export default {
 
 	preview: {
 		select: {
-			title: 'title',
+			title: 'name',
 			media: 'image',
 		},
 	},

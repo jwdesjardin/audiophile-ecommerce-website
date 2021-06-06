@@ -81,9 +81,9 @@ steps:
 
 1. build cdn and host data
 
-- [] create project
-- [] add sanity
-- [] create project schemas
+- [x] create project
+- [x] add sanity
+- [x] create project schemas
 - [] fill sanity with data
 - [] connect to sanity from client
 - [] build query string
