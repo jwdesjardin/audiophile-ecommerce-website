@@ -24,8 +24,16 @@ export default {
 		},
 
 		{
-			name: 'image',
-			title: 'Image',
+			name: 'mainImage',
+			title: 'Main Image',
+			type: 'image',
+			options: {
+				hotspot: true,
+			},
+		},
+		{
+			name: 'sharedImage',
+			title: 'Shared Image',
 			type: 'image',
 			options: {
 				hotspot: true,
@@ -34,13 +42,8 @@ export default {
 		{
 			name: 'categories',
 			title: 'Categories',
-			type: 'array',
-			of: [
-				{
-					type: 'reference',
-					to: { type: 'category' },
-				},
-			],
+			type: 'reference',
+			to: { type: 'category' },
 		},
 		{
 			name: 'new',
@@ -113,7 +116,7 @@ export default {
 	preview: {
 		select: {
 			title: 'name',
-			media: 'image',
+			media: 'sharedImage',
 		},
 	},
 }
