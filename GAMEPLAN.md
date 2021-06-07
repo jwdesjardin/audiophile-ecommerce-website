@@ -116,3 +116,23 @@ steps:
 - query strings needed are
   - [] get products within category
   - [] get product details
+
+# Forms
+
+This project requires us to style radio buttons with custom styles.
+
+This is similar to the styling of checkboxes in the last project.
+
+Method # 1:
+set appearance-none to the default input element
+implement the display of a radio or checkbox with your own css
+
+Method # 2:
+Use a library like the tailwindcss forms plugin
+install then add `plugins: [require('@tailwindcss/forms')]`
+
+1. this resets all form elements
+1. add styles directly to inputs
+1. write custom overrides to all inputs
+
+Since we are using very simple radio for this i will build this component with both methods to have both in my toolkit for future projects.
