@@ -8,7 +8,10 @@ module.exports = {
 		},
 		fontSize: {
 			xs: '.815rem',
+			sm: '.875rem',
 			base: '.935rem',
+			lg: '1.125rem',
+			'2xl': '1.5rem',
 			'3xl': '1.75rem',
 			'4xl': '2rem',
 			'5xl': '2.5rem',
@@ -16,7 +19,7 @@ module.exports = {
 		},
 		screens: {
 			md: '768px',
-			xl: '1110px',
+			lg: '1110px',
 		},
 		colors: {
 			orange: {
@@ -35,7 +38,6 @@ module.exports = {
 				800: '#101010',
 				900: '#000000',
 			},
-			transparent: {},
 		},
 	},
 	variants: {
