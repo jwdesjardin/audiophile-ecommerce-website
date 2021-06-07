@@ -85,16 +85,16 @@ steps:
 - [x] add sanity
 - [x] create project schemas
 - [x] fill sanity with data
-- [] connect to sanity from client
-- [] build query string
-  WHAT QUERIES DO I NEED (open to figma files to find out)
-- [] check that data is received
+- [x] connect to sanity from client
+- [x] build query string
+      WHAT QUERIES DO I NEED (open to figma files to find out)
+- [x] check that data is received
 
 2. ui project setup
 
-- [] colors
-- [] typography
-- [] buttons
+- [x] colors
+- [x] typography
+- [x] buttons
 - [] inputs
 - [] links
 - [] layout
