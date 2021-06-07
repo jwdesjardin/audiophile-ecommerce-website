@@ -53,11 +53,14 @@ export default function Home() {
 					<input type='text' id='name' className='' placeholder='Insert your name' />
 				</div>
 				<div className='mb-10'></div>
-				<div className='radio-group'>
-					<div className='radio-input'>
-						<input type='radio' id='emoney' checked={radio1} onClick={() => setRadio1(!radio1)} />
-						<label htmlFor='emoney'>e-Money</label>
-					</div>
+
+				<input type='radio' className='appearance-none' checked={radio1} />
+				<div
+					className={radio1 ? 'radio-input ring-orange-600' : 'radio-input'}
+					onClick={() => setRadio1(!radio1)}
+				>
+					<div className={radio1 ? 'radio-button radio-checked' : 'radio-button'}></div>
+					<p className='radio-label'>e-Money</p>
 				</div>
 
 				<div className='mb-10'></div>

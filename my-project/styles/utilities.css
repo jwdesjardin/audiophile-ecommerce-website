@@ -35,10 +35,16 @@
     @apply px-6 py-3  rounded-lg text-sm font-bold placeholder-opacity-50 w-[309px] ring-1 grey-ring focus:orange-ring focus:outline-none;
   }
   .radio-input {
-    @apply px-6 py-3 rounded-lg w-[309px] ring-1 grey-ring focus:orange-ring hover:orange-ring focus:outline-none;
+    @apply flex items-center px-6 py-3 rounded-lg w-[309px] ring-1 grey-ring focus:orange-ring hover:orange-ring focus:outline-none;
   }
-  .radio-input label {
-    @apply text-sm font-bold ml-4;
+  .radio-checked {
+    @apply bg-orange-600 ring-inset ring-2 ring-white-200;
+  }
+  .radio-label {
+    @apply font-bold text-sm ml-4;
+  }
+  .radio-button {
+    @apply w-4 h-4 rounded-full border border-black-200;
   }
   .input-error label {
     @apply text-red-600;
