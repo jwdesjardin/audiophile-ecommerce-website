@@ -55,17 +55,18 @@ export default function Home() {
 				<div className='mb-10'></div>
 
 				{/* SOLUTION #1	 */}
-				{/* <div
+				<div
 					className={radio1 ? 'radio-input ring-orange-600' : 'radio-input'}
 					onClick={() => setRadio1(!radio1)}
+					role='checkbox'
+					aria-checked={radio1}
 				>
 					<div className={radio1 ? 'radio-button radio-checked' : 'radio-button'}></div>
 					<p className='radio-label'>e-Money</p>
-					<input type='radio' className='appearance-none' />
-				</div> */}
+				</div>
 
 				{/* SOLUTION #2 */}
-				<div
+				{/* <div
 					className={`ring-1 ${
 						radio1 ? 'ring-orange-600' : 'ring-black-200'
 					} rounded-lg py-3 px-6 w-[309px] hover:ring-orange-600`}
@@ -78,7 +79,7 @@ export default function Home() {
 						onClick={() => setRadio1(!radio1)}
 					/>
 					<label className='ml-4 text-sm font-bold'>e-Money</label>
-				</div>
+				</div> */}
 
 				<div className='mb-10'></div>
 			</main>

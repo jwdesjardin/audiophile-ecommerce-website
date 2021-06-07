@@ -34,6 +34,12 @@
   .text-input input {
     @apply px-6 py-3 rounded-lg text-sm font-bold placeholder-opacity-50 w-[309px] ring-1 grey-ring focus:orange-ring focus:outline-none border-none bg-white-200;
   }
+  .input-error label {
+    @apply text-red-600;
+  }
+  .input-error input {
+    @apply ring-red-600 ring-2;
+  }
   .radio-input {
     @apply flex items-center px-6 py-3 rounded-lg w-[309px] ring-1 grey-ring focus:orange-ring hover:orange-ring focus:outline-none;
   }
@@ -45,12 +51,6 @@
   }
   .radio-button {
     @apply w-4 h-4 rounded-full border border-black-200;
-  }
-  .input-error label {
-    @apply text-red-600;
-  }
-  .input-error input {
-    @apply ring-red-600 ring-2;
   }
 }
 
