@@ -43,6 +43,7 @@
 		}
 		input {
 			@apply px-6 py-3 rounded-lg text-sm font-bold placeholder-opacity-50 w-[309px] ring-1 grey-ring focus:orange-ring focus:outline-none border-none bg-white-200;
+			caret-color: #d87d4a;
 		}
 	}
 	.input-error {
