@@ -22,20 +22,27 @@
   .button-three {
     @apply text-black-900 text-opacity-50 add-orange-arrow hover:text-orange-600;
   }
+  .text-input label {
+    @apply text-[12px] font-bold mb-2;
+  }
+  .text-input input {
+    @apply px-6 py-3  rounded-lg text-sm font-bold placeholder-opacity-50 w-[309px] ring-1 grey-ring focus:orange-ring focus:outline-none;
+  }
+  .orange-ring {
+    @apply ring-1 ring-orange-600;
+  }
+  .grey-ring {
+    @apply ring-black-200;
+  }
+  .input-error label {
+    @apply text-red-600;
+  }
+  .input-error input {
+    @apply ring-red-600 ring-2;
+  }
 }
 
 @layer utilities {
-  .add-orange-arrow::after {
-    content: '';
-    background-image: url("../public/icon-arrow-right.svg");
-    background-repeat: no-repeat;
-    background-position: center;
-    width: 20px;
-    height: 20px;
-    position: absolute;
-    -webkit-transform: translateY(2px) translateX(8px);
-            transform: translateY(2px) translateX(8px);
-  }
   .subtitle {
     @apply text-xs font-bold uppercase leading-[1.5625rem] tracking-[.0625rem];
   }
@@ -70,6 +77,17 @@
   }
   .h6 {
     @apply text-lg leading-[1.5rem] tracking-[.08125rem];
+  }
+  .add-orange-arrow::after {
+    content: '';
+    background-image: url("../public/icon-arrow-right.svg");
+    background-repeat: no-repeat;
+    background-position: center;
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    -webkit-transform: translateY(2px) translateX(8px);
+            transform: translateY(2px) translateX(8px);
   }
 }
 /*# sourceMappingURL=utilities.css.map */

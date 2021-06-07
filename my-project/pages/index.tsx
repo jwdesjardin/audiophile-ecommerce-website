@@ -43,6 +43,15 @@ export default function Home() {
 				<button className='button-two'>See Product</button>
 				<div className='mb-10'></div>
 				<button className='button-three'>Shop</button>
+
+				<p className='h1 mt-10'>Forms</p>
+				<div className='mb-10'></div>
+				<div className='flex flex-col text-input'>
+					<label htmlFor='name'>Name</label>
+					<input type='text' id='name' className='' placeholder='Insert your name' />
+				</div>
+
+				<div className='mb-10'></div>
 			</main>
 		</div>
 	)
