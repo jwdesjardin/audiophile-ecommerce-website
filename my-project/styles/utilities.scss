@@ -8,24 +8,43 @@
 	}
 }
 
-// @layer components {
-// 	.button-one {
-// 		@apply bg-orange-600;
-// 	}
-// 	.button-two {
-// 		@apply;
-// 	}
-// 	.button-three {
-// 		@apply;
-// 	}
-// }
+@layer components {
+	.button-one,
+	.button-two,
+	.button-three {
+		@apply w-[160px] h-[48px] subtitle;
+	}
+
+	.button-one {
+		@apply bg-orange-600 text-white-100 hover:bg-orange-300;
+	}
+	.button-two {
+		@apply border hover:bg-black-900 hover:text-white-100;
+	}
+	.button-three {
+		@apply text-black-900 text-opacity-50 add-orange-arrow hover:text-orange-600;
+	}
+}
 
 @layer utilities {
+	.add-orange-arrow {
+		&::after {
+			content: '';
+			background-image: url('../public/icon-arrow-right.svg');
+			background-repeat: no-repeat;
+			background-position: center;
+			width: 20px;
+			height: 20px;
+			position: absolute;
+			transform: translateY(2px) translateX(8px);
+		}
+	}
+
 	.subtitle {
-		@apply text-xs text-orange-600 font-bold uppercase leading-[1.5625rem] tracking-[.0625rem];
+		@apply text-xs font-bold uppercase leading-[1.5625rem] tracking-[.0625rem];
 	}
 	.overline-text {
-		@apply text-sm text-orange-600 uppercase leading-[1.1875rem] tracking-[.625rem];
+		@apply text-sm uppercase leading-[1.1875rem] tracking-[.625rem];
 	}
 
 	.body-text {
