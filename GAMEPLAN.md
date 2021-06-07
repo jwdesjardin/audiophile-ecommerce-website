@@ -84,9 +84,10 @@ steps:
 - [x] create project
 - [x] add sanity
 - [x] create project schemas
-- [] fill sanity with data
+- [x] fill sanity with data
 - [] connect to sanity from client
 - [] build query string
+  WHAT QUERIES DO I NEED (open to figma files to find out)
 - [] check that data is received
 
 2. ui project setup
@@ -107,3 +108,11 @@ steps:
 7. add auth0
 8. build shopping cart
 9. build checkout
+
+# Notes upon opening figma design files
+
+- For images i can use Next.js to optimize and use a single source for all images
+
+- query strings needed are
+  - [] get products within category
+  - [] get product details
