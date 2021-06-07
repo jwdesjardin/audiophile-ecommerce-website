@@ -42,7 +42,7 @@
 			@apply text-[12px] font-bold mb-2;
 		}
 		input {
-			@apply px-6 py-3 rounded-lg text-sm font-bold placeholder-opacity-50 w-[309px] ring-1 grey-ring focus:orange-ring focus:outline-none border-none bg-white-200;
+			@apply px-6 py-3 rounded-lg text-sm font-bold placeholder-opacity-50 w-[309px] ring-1 grey-ring focus:orange-ring focus:ring-2 outline-none border-none bg-white-200;
 			caret-color: #d87d4a;
 		}
 	}
@@ -59,15 +59,16 @@
 
 	.radio-input {
 		@apply flex items-center px-6 py-3 rounded-lg w-[309px] ring-1 grey-ring focus:orange-ring hover:orange-ring focus:outline-none;
+		.radio-label {
+			@apply font-bold text-sm ml-4;
+		}
 	}
-	.radio-checked {
-		@apply bg-orange-600 ring-inset ring-2 ring-white-200;
-	}
-	.radio-label {
-		@apply font-bold text-sm ml-4;
-	}
+
 	.radio-button {
-		@apply w-4 h-4 rounded-full border border-black-200;
+		@apply w-5 h-5 rounded-full border border-black-200;
+		&.radio-checked {
+			@apply bg-orange-600 ring-inset ring-4 ring-white-200;
+		}
 	}
 }
 

@@ -14,7 +14,9 @@ export default function Home() {
 	// }, [])
 
 	const [radio1, setRadio1] = React.useState(false)
+	const [qty, setQty] = React.useState(1)
 
+	console.log(radio1)
 	return (
 		<div className='flex flex-col items-center justify-center min-h-screen px-6'>
 			<Head>
@@ -55,7 +57,7 @@ export default function Home() {
 				<div className='mb-10'></div>
 
 				{/* SOLUTION #1	 */}
-				<div
+				{/* <div
 					className={radio1 ? 'radio-input ring-orange-600' : 'radio-input'}
 					onClick={() => setRadio1(!radio1)}
 					role='checkbox'
@@ -63,25 +65,45 @@ export default function Home() {
 				>
 					<div className={radio1 ? 'radio-button radio-checked' : 'radio-button'}></div>
 					<p className='radio-label'>e-Money</p>
-				</div>
+				</div> */}
 
 				{/* SOLUTION #2 */}
-				{/* <div
+				<div
 					className={`ring-1 ${
 						radio1 ? 'ring-orange-600' : 'ring-black-200'
-					} rounded-lg py-3 px-6 w-[309px] hover:ring-orange-600`}
+					} rounded-lg py-3 px-6 w-[309px] hover:ring-orange-600 focus:ring-orange-600 outline-none focus:ring-2 `}
 					onClick={() => setRadio1(!radio1)}
+					onFocus={() => {}}
+					tabIndex={0}
+					onChange={(e) => {
+						console.log(e.type)
+					}}
+					onKeyUp={(e) => {
+						console.log(e.code)
+						if (e.code === 'Space') {
+							setRadio1(!radio1)
+						}
+					}}
 				>
 					<input
 						type='radio'
-						className='border-black-200 text-orange-600 bg-white-200'
+						className='border-black-200 text-orange-600 bg-white-200 focus:ring-orange-600 focus:ring-opacity-0'
 						checked={radio1}
-						onClick={() => setRadio1(!radio1)}
+						onChange={(e) => console.log(e.type)}
+						tabIndex={-1}
 					/>
 					<label className='ml-4 text-sm font-bold'>e-Money</label>
-				</div> */}
+				</div>
 
 				<div className='mb-10'></div>
+
+				<input type='number' className='' />
+
+				<div role='slider' aria-valuenow={qty}>
+					<button onClick={() => setQty(qty - 1)}>-</button>
+					<span>{qty}</span>
+					<button onClick={() => setQty(qty + 1)}>+</button>
+				</div>
 			</main>
 		</div>
 	)
