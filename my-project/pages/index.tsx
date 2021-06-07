@@ -64,6 +64,22 @@ export default function Home() {
 					<input type='radio' className='appearance-none' />
 				</div> */}
 
+				{/* SOLUTION #2 */}
+				<div
+					className={`ring-1 ${
+						radio1 ? 'ring-orange-600' : 'ring-black-200'
+					} rounded-lg py-3 px-6 w-[309px] hover:ring-orange-600`}
+					onClick={() => setRadio1(!radio1)}
+				>
+					<input
+						type='radio'
+						className='border-black-200 text-orange-600 bg-white-200'
+						checked={radio1}
+						onClick={() => setRadio1(!radio1)}
+					/>
+					<label className='ml-4 text-sm font-bold'>e-Money</label>
+				</div>
+
 				<div className='mb-10'></div>
 			</main>
 		</div>
