@@ -34,7 +34,7 @@ export const getOneProject = `*[_type == "product" && slug.current == 'yx1-wirel
   }
 }`
 
-export const getProducts = `*[_type == "product" && categories._ref == "1fb32b4c-cb24-4b0d-a7b2-62c649a5cfae" ] {
+export const getProductsByCategory = `*[_type == "product" && categories._ref == "1fb32b4c-cb24-4b0d-a7b2-62c649a5cfae" ] {
   id,
   slug,
   name, 
