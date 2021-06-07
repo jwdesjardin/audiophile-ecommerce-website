@@ -54,13 +54,13 @@ export default function Home() {
 				</div>
 				<div className='mb-10'></div>
 
-				<input type='radio' className='appearance-none' checked={radio1} />
 				<div
 					className={radio1 ? 'radio-input ring-orange-600' : 'radio-input'}
 					onClick={() => setRadio1(!radio1)}
 				>
 					<div className={radio1 ? 'radio-button radio-checked' : 'radio-button'}></div>
 					<p className='radio-label'>e-Money</p>
+					<input type='radio' className='appearance-none' />
 				</div>
 
 				<div className='mb-10'></div>
