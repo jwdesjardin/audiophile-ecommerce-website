@@ -13,6 +13,8 @@ export default function Home() {
 	// 	myFetch()
 	// }, [])
 
+	const [radio1, setRadio1] = React.useState(false)
+
 	return (
 		<div className='flex flex-col items-center justify-center min-h-screen px-6'>
 			<Head>
@@ -49,6 +51,13 @@ export default function Home() {
 				<div className='flex flex-col text-input'>
 					<label htmlFor='name'>Name</label>
 					<input type='text' id='name' className='' placeholder='Insert your name' />
+				</div>
+				<div className='mb-10'></div>
+				<div className='radio-group'>
+					<div className='radio-input'>
+						<input type='radio' id='emoney' checked={radio1} onClick={() => setRadio1(!radio1)} />
+						<label htmlFor='emoney'>e-Money</label>
+					</div>
 				</div>
 
 				<div className='mb-10'></div>

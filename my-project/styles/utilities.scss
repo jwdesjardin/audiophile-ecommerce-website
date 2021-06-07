@@ -28,6 +28,13 @@
 	}
 
 	// FORM INPUTS
+	.orange-ring {
+		@apply ring-orange-600;
+	}
+	.grey-ring {
+		@apply ring-black-200;
+	}
+
 	.text-input {
 		label {
 			@apply text-[12px] font-bold mb-2;
@@ -37,11 +44,13 @@
 		}
 	}
 
-	.orange-ring {
-		@apply ring-1 ring-orange-600;
-	}
-	.grey-ring {
-		@apply ring-black-200;
+	.radio-input {
+		@apply px-6 py-3 rounded-lg w-[309px] ring-1 grey-ring focus:orange-ring hover:orange-ring focus:outline-none;
+		input {
+		}
+		label {
+			@apply text-sm font-bold ml-4;
+		}
 	}
 
 	.input-error {
