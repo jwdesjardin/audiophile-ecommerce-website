@@ -1,5 +1,6 @@
 import Link from 'next/link'
 import React from 'react'
+import { FacebookIcon, InstagramIcon, TwitterIcon } from '../Icons'
 
 const Footer = () => {
 	return (
@@ -56,6 +57,7 @@ const Copyright = ({ className = '' }: { className?: string }) => {
 }
 
 const NavLinks = ({ className = '' }: { className?: string }) => {
+	const linkHoverEffect = 'hover:text-orange-600 transition'
 	return (
 		<div
 			className={
@@ -64,37 +66,38 @@ const NavLinks = ({ className = '' }: { className?: string }) => {
 			}
 		>
 			<Link href='/' passHref>
-				<a>Home</a>
+				<a className={linkHoverEffect}>Home</a>
 			</Link>
 			<Link href='/' passHref>
-				<a>Headphones</a>
+				<a className={linkHoverEffect}>Headphones</a>
 			</Link>
 			<Link href='/' passHref>
-				<a>Speakers</a>
+				<a className={linkHoverEffect}>Speakers</a>
 			</Link>
 			<Link href='/' passHref>
-				<a>Earphones</a>
+				<a className={linkHoverEffect}>Earphones</a>
 			</Link>
 		</div>
 	)
 }
 
 const SocialLinks = ({ className = '' }: { className?: string }) => {
+	const linkHoverEffect = 'hover:text-orange-600 transition'
 	return (
 		<div className={'flex items-center space-x-4' + ` ${className}`}>
 			<Link href='' passHref>
-				<a>
-					<img src='/icon-facebook.svg' alt='icon logo' />
+				<a className={linkHoverEffect}>
+					<FacebookIcon></FacebookIcon>
 				</a>
 			</Link>
 			<Link href='' passHref>
-				<a>
-					<img src='/icon-twitter.svg' alt='twitter logo' />
+				<a className={linkHoverEffect}>
+					<TwitterIcon></TwitterIcon>
 				</a>
 			</Link>
 			<Link href='' passHref>
-				<a>
-					<img src='/icon-instagram.svg' alt='instagram logo' />
+				<a className={linkHoverEffect}>
+					<InstagramIcon></InstagramIcon>
 				</a>
 			</Link>
 		</div>
