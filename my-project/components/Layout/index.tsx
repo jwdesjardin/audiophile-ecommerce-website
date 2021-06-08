@@ -1,5 +1,6 @@
 import Head from 'next/head'
 import React, { ReactElement, ReactNode } from 'react'
+import BrandInfo from './BrandInfo'
 import Footer from './Footer'
 import Navbar from './Navbar'
 
@@ -19,7 +20,10 @@ const Layout = ({
 			</Head>
 
 			<Navbar header={NavHeader}></Navbar>
-			<main>{children}</main>
+			<main>
+				{children}
+				<BrandInfo></BrandInfo>
+			</main>
 			<Footer></Footer>
 		</div>
 	)
