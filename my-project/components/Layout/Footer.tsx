@@ -4,16 +4,17 @@ import React from 'react'
 const Footer = () => {
 	return (
 		<footer className='bg-black-900 text-white-100 '>
-			<div className='content-container flex flex-col items-center'>
-				<Logo className='py-12' />
+			<div className='content-container flex flex-col items-center md:items-start'>
+				<Logo className='py-12 md:py-8 md:mt-6 ' />
 
 				<NavLinks />
 
-				<Text className='py-12' />
+				<Text className='py-12 md:py-8' />
 
-				<Copyright className='mb-12' />
-
-				<SocialLinks className='mb-10' />
+				<div className='flex flex-col md:flex-row md:justify-between items-center w-full md:mt-12'>
+					<Copyright className='mb-12' />
+					<SocialLinks className='mb-10' />
+				</div>
 			</div>
 		</footer>
 	)
@@ -31,7 +32,8 @@ const Text = ({ className = '' }: { className?: string }) => {
 	return (
 		<p
 			className={
-				'text-opacity-40 text-white-100 text-center font-extralight tracking-wide' + ` ${className}`
+				'text-opacity-40 text-white-100 text-center md:text-left font-extralight tracking-wide' +
+				` ${className}`
 			}
 		>
 			Audiophile is an all in one stop to fulfill your audio needs. We're a small team of music
@@ -51,7 +53,12 @@ const Copyright = ({ className = '' }: { className?: string }) => {
 
 const NavLinks = ({ className = '' }: { className?: string }) => {
 	return (
-		<div className={'navlink flex flex-col items-center space-y-4' + ` ${className}`}>
+		<div
+			className={
+				'navlink flex flex-col md:flex-row items-center space-y-4 md:space-y-0 md:space-x-8' +
+				` ${className}`
+			}
+		>
 			<Link href='/' passHref>
 				<a>Home</a>
 			</Link>
@@ -67,6 +74,7 @@ const NavLinks = ({ className = '' }: { className?: string }) => {
 		</div>
 	)
 }
+
 const SocialLinks = ({ className = '' }: { className?: string }) => {
 	return (
 		<div className={'flex items-center space-x-4' + ` ${className}`}>
