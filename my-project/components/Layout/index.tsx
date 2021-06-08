@@ -8,10 +8,12 @@ const Layout = ({
 	children,
 	title = 'Audiophile',
 	NavHeader = '',
+	brandInfo,
 }: {
 	children?: ReactNode
 	title?: string
 	NavHeader?: string
+	brandInfo?: boolean
 }): ReactElement => {
 	return (
 		<div className='relative overflow-x-hidden'>
@@ -22,7 +24,7 @@ const Layout = ({
 			<Navbar header={NavHeader}></Navbar>
 			<main>
 				{children}
-				<BrandInfo></BrandInfo>
+				{brandInfo && <BrandInfo></BrandInfo>}
 			</main>
 			<Footer></Footer>
 		</div>
