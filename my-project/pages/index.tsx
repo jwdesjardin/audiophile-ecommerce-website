@@ -105,8 +105,9 @@ export default function Home() {
 				<div className='mb-10'></div>
 
 				<div
-					// role='slider'
-					// aria-valuenow={qty}
+					role='slider'
+					aria-valuenow={qty}
+					aria-valuemin={0}
 					className='number-input'
 					tabIndex={0}
 					// this keydown event stops page scrolling
