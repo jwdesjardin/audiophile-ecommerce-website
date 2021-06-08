@@ -4,16 +4,17 @@ import React from 'react'
 const Footer = () => {
 	return (
 		<footer className='bg-black-900 text-white-100 '>
-			<div className='content-container flex flex-col items-center md:items-start'>
-				<Logo className='py-12 md:py-8 md:mt-6 ' />
+			<div className='content-container flex flex-col items-center md:items-start  '>
+				<div className='flex flex-col lg:flex-row lg:justify-between items-center md:items-start lg:items-center w-full lg:pt-10'>
+					<Logo className='py-12 md:py-8 md:mt-6 lg:mt-0' />
+					<NavLinks />
+				</div>
 
-				<NavLinks />
+				<Text className='py-12 md:py-8 lg:py-0 max-w-2xl lg:max-w-[33.75rem]' />
 
-				<Text className='py-12 md:py-8' />
-
-				<div className='flex flex-col md:flex-row md:justify-between items-center w-full md:mt-12'>
+				<div className='flex flex-col md:flex-row md:justify-between items-center w-full md:mt-12 lg:mt-14'>
 					<Copyright className='mb-12' />
-					<SocialLinks className='mb-10' />
+					<SocialLinks className='mb-10 transform lg:-translate-y-20' />
 				</div>
 			</div>
 		</footer>
@@ -45,7 +46,7 @@ const Text = ({ className = '' }: { className?: string }) => {
 
 const Copyright = ({ className = '' }: { className?: string }) => {
 	return (
-		<span className={'text-opacity-40 text-white-100' + ` ${className}`}>
+		<span className={'text-opacity-40 text-white-100 tracking-wider' + ` ${className}`}>
 			Copyright 2021. All Rights Reserved
 		</span>
 	)
