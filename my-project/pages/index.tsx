@@ -104,13 +104,36 @@ export default function Home() {
 
 				<div className='mb-10'></div>
 
-				<input type='number' className='' />
-
-				<div role='slider' aria-valuenow={qty}>
-					<button onClick={() => setQty(qty - 1)}>-</button>
+				<div
+					// role='slider'
+					// aria-valuenow={qty}
+					className='number-input'
+					tabIndex={0}
+					// this keydown event stops page scrolling
+					onKeyDown={(e) => {
+						console.log(e.code)
+						if (e.code == 'ArrowUp' || e.code === 'ArrowDown') {
+							e.preventDefault()
+						}
+					}}
+					onKeyUp={(e) => {
+						if (e.code === 'ArrowUp' || e.code === 'ArrowRight') {
+							setQty((prevState) => prevState + 1)
+						} else if ((e.code === 'ArrowDown' || e.code === 'ArrowLeft') && qty > 0) {
+							setQty((prevState) => prevState - 1)
+						}
+					}}
+				>
+					<button onClick={() => setQty(qty - 1)} disabled={qty === 0} tabIndex={-1}>
+						-
+					</button>
 					<span>{qty}</span>
-					<button onClick={() => setQty(qty + 1)}>+</button>
+					<button onClick={() => setQty(qty + 1)} tabIndex={-1}>
+						+
+					</button>
 				</div>
+
+				<div className='mb-10'></div>
 			</main>
 		</div>
 	)

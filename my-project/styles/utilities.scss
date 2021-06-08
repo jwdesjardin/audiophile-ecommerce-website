@@ -70,6 +70,20 @@
 			@apply bg-orange-600 ring-inset ring-4 ring-white-200;
 		}
 	}
+
+	// NUMBER INPUTS
+	.number-input {
+		@apply w-[120px] bg-white-400 flex items-center px-4 py-2 space-x-8 
+    focus:outline-none focus:ring focus:ring-orange-600;
+		button {
+			@apply text-black-900 text-opacity-50
+      hover:text-opacity-100 hover:text-orange-600
+      focus:outline-none disabled:hover:text-opacity-50 disabled:hover:text-black-900;
+		}
+		span {
+			@apply text-xs font-bold;
+		}
+	}
 }
 
 @layer utilities {
