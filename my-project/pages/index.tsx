@@ -2,6 +2,10 @@ import Head from 'next/head'
 import sanityClient from '../lib/client'
 import { getProductsByCategory } from '../lib/query'
 import React from 'react'
+import NumberInput from '../components/NumberInput'
+import RadioInput from '../components/RadioInput'
+import TextInput from '../components/TextInput'
+import RadioGroup from '../components/RadioInput'
 
 export default function Home() {
 	// React.useEffect(() => {
@@ -13,10 +17,12 @@ export default function Home() {
 	// 	myFetch()
 	// }, [])
 
-	const [radio1, setRadio1] = React.useState(false)
 	const [qty, setQty] = React.useState(1)
+	const [text, setText] = React.useState('')
+	const [radio, setRadio] = React.useState<string | null>(null)
 
-	console.log(radio1)
+	console.log(qty, text, radio)
+
 	return (
 		<div className='flex flex-col items-center justify-center min-h-screen px-6'>
 			<Head>
@@ -50,89 +56,21 @@ export default function Home() {
 
 				<p className='h1 mt-10'>Forms</p>
 				<div className='mb-10'></div>
-				<div className='flex flex-col text-input'>
-					<label htmlFor='name'>Name</label>
-					<input type='text' id='name' className='' placeholder='Insert your name' />
-				</div>
-				<div className='mb-10'></div>
 
-				{/* SOLUTION #1	 */}
-				<div
-					className={radio1 ? 'radio-input ring-orange-600' : 'radio-input'}
-					onClick={() => setRadio1(!radio1)}
-					onKeyUp={(e) => {
-						console.log(e.code)
-						if (e.code === 'Space') {
-							setRadio1(!radio1)
-						}
-					}}
-					role='checkbox'
-					aria-checked={radio1}
-					tabIndex={0}
-				>
-					<div className={radio1 ? 'radio-button radio-checked' : 'radio-button'}></div>
-					<p className='radio-label'>e-Money</p>
-				</div>
-
-				{/* SOLUTION #2 */}
-				{/* <div
-					className={`ring-1 ${
-						radio1 ? 'ring-orange-600' : 'ring-black-200'
-					} rounded-lg py-3 px-6 w-[309px] hover:ring-orange-600 focus:ring-orange-600 outline-none focus:ring-2 `}
-					onClick={() => setRadio1(!radio1)}
-					onFocus={() => {}}
-					tabIndex={0}
-					onChange={(e) => {
-						console.log(e.type)
-					}}
-					onKeyUp={(e) => {
-						console.log(e.code)
-						if (e.code === 'Space') {
-							setRadio1(!radio1)
-						}
-					}}
-				>
-					<input
-						type='radio'
-						className='border-black-200 text-orange-600 bg-white-200 focus:ring-orange-600 focus:ring-opacity-0'
-						checked={radio1}
-						onChange={(e) => console.log(e.type)}
-						tabIndex={-1}
-					/>
-					<label className='ml-4 text-sm font-bold'>e-Money</label>
-				</div> */}
+				<TextInput controlledText={text} setText={setText}></TextInput>
 
 				<div className='mb-10'></div>
 
-				<div
-					role='slider'
-					aria-valuenow={qty}
-					aria-valuemin={0}
-					className='number-input'
-					tabIndex={0}
-					// this keydown event stops page scrolling
-					onKeyDown={(e) => {
-						console.log(e.code)
-						if (e.code == 'ArrowUp' || e.code === 'ArrowDown') {
-							e.preventDefault()
-						}
-					}}
-					onKeyUp={(e) => {
-						if (e.code === 'ArrowUp' || e.code === 'ArrowRight') {
-							setQty((prevState) => prevState + 1)
-						} else if ((e.code === 'ArrowDown' || e.code === 'ArrowLeft') && qty > 0) {
-							setQty((prevState) => prevState - 1)
-						}
-					}}
-				>
-					<button onClick={() => setQty(qty - 1)} disabled={qty === 0} tabIndex={-1}>
-						-
-					</button>
-					<span>{qty}</span>
-					<button onClick={() => setQty(qty + 1)} tabIndex={-1}>
-						+
-					</button>
-				</div>
+				<RadioGroup
+					title='Pick 1'
+					values={['one', 'two', 'three']}
+					controlledState={radio}
+					setRadio={setRadio}
+				></RadioGroup>
+
+				<div className='mb-10'></div>
+
+				<NumberInput controlledQty={qty} setQty={setQty}></NumberInput>
 
 				<div className='mb-10'></div>
 			</main>
