@@ -13,7 +13,6 @@ const TextInput = ({
 			<input
 				type='text'
 				id='name'
-				className=''
 				placeholder='Insert your name'
 				value={controlledText}
 				onChange={(e) => setText(e.target.value)}

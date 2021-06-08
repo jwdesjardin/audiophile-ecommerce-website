@@ -95,7 +95,7 @@ steps:
 - [x] colors
 - [x] typography
 - [x] buttons
-- [] inputs
+- [x] inputs
 - [] links
 - [] layout
   - [] header

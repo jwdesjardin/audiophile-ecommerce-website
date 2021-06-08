@@ -24,7 +24,7 @@
 		@apply border hover:bg-black-900 hover:text-white-100;
 	}
 	.button-three {
-		@apply text-black-900 text-opacity-50 add-orange-arrow hover:text-orange-600;
+		@apply text-black-900 text-opacity-50 add-orange-arrow hover:text-orange-600 transform -translate-x-2;
 	}
 
 	// FORM INPUTS
