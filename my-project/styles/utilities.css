@@ -3,7 +3,7 @@
 @tailwind utilities;
 @layer base {
   body {
-    @apply font-sans bg-white-200 text-black-900;
+    @apply font-sans bg-white-200 text-black-900 body-text;
   }
 }
 
@@ -82,6 +82,9 @@
 @layer utilities {
   .subtitle {
     @apply text-xs font-bold uppercase leading-[1.5625rem] tracking-[.0625rem];
+  }
+  .navlink {
+    @apply text-xs font-bold uppercase leading-[1.5625rem] tracking-[.125rem];
   }
   .overline-text {
     @apply text-sm uppercase leading-[1.1875rem] tracking-[.625rem];
