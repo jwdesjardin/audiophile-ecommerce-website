@@ -27,6 +27,22 @@
 		@apply text-black-900 text-opacity-50 add-orange-arrow hover:text-orange-600 transform -translate-x-2;
 	}
 
+	// ICON BUTTONS
+	.hamburger-button {
+		background-image: url('/icon-hamburger.svg');
+		background-repeat: no-repeat;
+		background-position: center;
+		@apply w-8 h-8;
+	}
+
+	.shopping-cart-button {
+		// background: url('../public/icon-cart.svg') no-repeat center;
+		background-image: url('/icon-cart.svg');
+		background-repeat: no-repeat;
+		background-position: center;
+		@apply w-8 h-8;
+	}
+
 	// FORM INPUTS
 	.orange-ring {
 		@apply ring-orange-600;
@@ -140,5 +156,11 @@
 			position: absolute;
 			transform: translateY(2px) translateX(8px);
 		}
+	}
+
+	// LAYOUT UTILITIES
+
+	.content-container {
+		@apply mx-6 md:mx-10 lg:max-w-screen-lg lg:mx-auto;
 	}
 }
