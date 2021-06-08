@@ -4,7 +4,10 @@ import React from 'react'
 const Footer = () => {
 	return (
 		<footer className='bg-black-900 text-white-100 '>
-			<div className='content-container flex flex-col items-center md:items-start  '>
+			<div className='content-container flex flex-col items-center md:items-start relative'>
+				{/* ORANGE BAR DESIGN */}
+				<div className='absolute w-[100px] h-1 bg-orange-600 md:left-0'></div>
+
 				<div className='flex flex-col lg:flex-row lg:justify-between items-center md:items-start lg:items-center w-full lg:pt-10'>
 					<Logo className='py-12 md:py-8 md:mt-6 lg:mt-0' />
 					<NavLinks />
