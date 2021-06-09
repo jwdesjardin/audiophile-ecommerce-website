@@ -2,16 +2,22 @@ import React from 'react'
 
 const ProductPreview = () => {
 	return (
-		<div className='content-container mt-16'>
-			<Image className='mb-8' />
-			<TextContent className=''></TextContent>
-		</div>
+		<>
+			<div className='content-container mt-16 md:mt-28 lg:mt-40 flex flex-col items-center lg:justify-between lg:flex-row'>
+				<Image className='mb-8 md:mb-12 ' />
+				<TextContent className=''></TextContent>
+			</div>
+			<div className='content-container mt-16 md:mt-28 lg:mt-40 flex flex-col items-center lg:justify-between lg:flex-row-reverse'>
+				<Image className='mb-8 md:mb-12' />
+				<TextContent className=''></TextContent>
+			</div>
+		</>
 	)
 }
 
 const Image = ({ className = '' }: { className?: string }) => {
 	return (
-		<div className={'rounded-lg overflow-hidden' + ` ${className}`}>
+		<div className={'rounded-lg overflow-hidden max-w-[540px]' + ` ${className}`}>
 			<picture>
 				<source
 					media='(min-width: 1110px)'
@@ -29,9 +35,14 @@ const Image = ({ className = '' }: { className?: string }) => {
 
 const TextContent = ({ className = '' }: { className?: string }) => {
 	return (
-		<div className={'flex flex-col items-center text-center' + ` ${className}`}>
-			<span className='overline-text text-orange-600 mb-6'>New product</span>
-			<h2 className='h4 mb-6'>XX99 Mark II Headphones</h2>
+		<div
+			className={
+				'flex flex-col items-center lg:items-start text-center lg:text-left max-w-xl lg:max-w-[445px]' +
+				` ${className}`
+			}
+		>
+			<span className='overline-text text-orange-600 mb-6 md:mb-4'>New product</span>
+			<h2 className='h4 md:h2 mb-6 md:mb-8 max-w-md'>XX99 Mark II Headphones</h2>
 			<p className='body-text mb-6'>
 				The new XX99 Mark II headphones is the pinnacle of pristine audio. It redefines your premium
 				headphone experience by reproducing the balanced depth and precision of studio-quality
