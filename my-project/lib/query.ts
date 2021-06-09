@@ -1,4 +1,5 @@
-export const getOneProject = `*[_type == "product" && slug.current == 'yx1-wireless-earphones'] {
+export const getOneProject = (slug: string) => {
+	return `*[_type == "product" && slug.current == "${slug}"] {
   id, 
   name, 
   slug, 
@@ -68,6 +69,7 @@ export const getOneProject = `*[_type == "product" && slug.current == 'yx1-wirel
     },
   }
 }`
+}
 
 export const getProductsByCategory = `*[_type == "product" && categories._ref == "1fb32b4c-cb24-4b0d-a7b2-62c649a5cfae" ] {
   id,
@@ -95,3 +97,7 @@ export const getProductsByCategory = `*[_type == "product" && categories._ref ==
 	},
 }
 `
+
+export const getAllProductSlugs = `*[_type == "product"  ] {
+  slug
+}`
