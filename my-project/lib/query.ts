@@ -71,33 +71,40 @@ export const getOneProject = (slug: string) => {
 }`
 }
 
-export const getProductsByCategory = `*[_type == "product" && categories._ref == "1fb32b4c-cb24-4b0d-a7b2-62c649a5cfae" ] {
-  id,
-  slug,
-  name, 
-  categories->{
-  	title
-	},
-	new, 
-	description,
-  previewImageMobile{
-  	asset->{
-  		url
-		}
-	},
-  previewImageTablet{
-  	asset->{
-  		url
-		}
-	},
-  previewImageDesktop{
-  	asset->{
-  		url
-		}
-	},
+export const getProductsByCategory = (slug: string) => {
+	return `*[_type == "product" && categories->slug.current == "${slug}" ] {
+    id,
+    slug,
+    name, 
+    categories->{
+      title
+    },
+    new, 
+    description,
+    previewImageMobile{
+      asset->{
+        url
+      }
+    },
+    previewImageTablet{
+      asset->{
+        url
+      }
+    },
+    previewImageDesktop{
+      asset->{
+        url
+      }
+    },
+  }
+  `
 }
-`
 
 export const getAllProductSlugs = `*[_type == "product"  ] {
   slug
+}`
+
+export const getAllCategorySlugs = `*[_type == "category"  ] {
+  slug, 
+  _id
 }`
