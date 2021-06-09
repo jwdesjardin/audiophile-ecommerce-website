@@ -85,17 +85,17 @@ const SocialLinks = ({ className = '' }: { className?: string }) => {
 	const linkHoverEffect = 'hover:text-orange-600 transition'
 	return (
 		<div className={'flex items-center space-x-4' + ` ${className}`}>
-			<Link href='' passHref>
+			<Link href='/' passHref>
 				<a className={linkHoverEffect}>
 					<FacebookIcon></FacebookIcon>
 				</a>
 			</Link>
-			<Link href='' passHref>
+			<Link href='/' passHref>
 				<a className={linkHoverEffect}>
 					<TwitterIcon></TwitterIcon>
 				</a>
 			</Link>
-			<Link href='' passHref>
+			<Link href='/' passHref>
 				<a className={linkHoverEffect}>
 					<InstagramIcon></InstagramIcon>
 				</a>
