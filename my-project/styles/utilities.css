@@ -90,7 +90,7 @@
     @apply text-sm uppercase leading-[1.1875rem] tracking-[.625rem];
   }
   .body-text {
-    @apply text-base leading-6 font-medium;
+    @apply text-base leading-6 font-extralight tracking-wide;
   }
   .h1,
   .h2,
