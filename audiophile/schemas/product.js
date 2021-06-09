@@ -24,21 +24,56 @@ export default {
 		},
 
 		{
-			name: 'mainImage',
-			title: 'Main Image',
+			name: 'mainImageMobile',
+			title: 'Main Image Mobile',
 			type: 'image',
-			options: {
-				hotspot: true,
-			},
 		},
 		{
-			name: 'sharedImage',
-			title: 'Shared Image',
+			name: 'mainImageTablet',
+			title: 'Main Image Tablet',
 			type: 'image',
-			options: {
-				hotspot: true,
-			},
 		},
+		{
+			name: 'mainImageDesktop',
+			title: 'Main Image Desktop',
+			type: 'image',
+		},
+		{
+			name: 'previewImageMobile',
+			title: 'Preview Image Mobile',
+			type: 'image',
+		},
+		{
+			name: 'previewImageTablet',
+			title: 'Preview Image Tablet',
+			type: 'image',
+		},
+		{
+			name: 'previewImageDesktop',
+			title: 'Preview Image Desktop',
+			type: 'image',
+		},
+		{
+			name: 'sharedImageMobile',
+			title: 'Shared Image Mobile',
+			type: 'image',
+		},
+		{
+			name: 'sharedImageTablet',
+			title: 'Shared Image Tablet',
+			type: 'image',
+		},
+		{
+			name: 'sharedImageDesktop',
+			title: 'Shared Image Desktop',
+			type: 'image',
+		},
+		{
+			name: 'cartImage',
+			title: 'Cart Image',
+			type: 'image',
+		},
+
 		{
 			name: 'categories',
 			title: 'Categories',
@@ -88,15 +123,32 @@ export default {
 			],
 		},
 		{
-			name: 'gallery',
-			title: 'Gallery',
+			name: 'galleryMobile',
+			title: 'Gallery Mobile',
 			type: 'array',
 			of: [
 				{
 					type: 'image',
-					options: {
-						hotspot: true,
-					},
+				},
+			],
+		},
+		{
+			name: 'galleryTablet',
+			title: 'Gallery Tablet',
+			type: 'array',
+			of: [
+				{
+					type: 'image',
+				},
+			],
+		},
+		{
+			name: 'galleryDesktop',
+			title: 'Gallery Desktop',
+			type: 'array',
+			of: [
+				{
+					type: 'image',
 				},
 			],
 		},
