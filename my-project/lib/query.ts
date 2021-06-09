@@ -2,7 +2,22 @@ export const getOneProject = `*[_type == "product" && slug.current == 'yx1-wirel
   id, 
   name, 
   slug, 
-  mainImage{
+  mainImageMobile{
+  	asset->{
+  		url
+		}
+	},
+  mainImageTablet{
+  	asset->{
+  		url
+		}
+	},
+  mainImageDesktop{
+  	asset->{
+  		url
+		}
+	},
+  cartImage{
   	asset->{
   		url
 		}
@@ -18,7 +33,17 @@ export const getOneProject = `*[_type == "product" && slug.current == 'yx1-wirel
       quantity,
       item
     },
-  gallery[]{
+  galleryMobile[]{
+    asset->{
+    url
+  }
+  },
+  galleryTablet[]{
+    asset->{
+    url
+  }
+  },
+  galleryDesktop[]{
     asset->{
     url
   }
@@ -26,11 +51,21 @@ export const getOneProject = `*[_type == "product" && slug.current == 'yx1-wirel
   recommended[]->{
     name, 
     slug, 
-    sharedImage{
+    sharedImageMobile{
       asset->{
         url
       }
-    }
+    },
+    sharedImageTablet{
+      asset->{
+        url
+      }
+    },
+    sharedImageDesktop{
+      asset->{
+        url
+      }
+    },
   }
 }`
 
@@ -43,10 +78,20 @@ export const getProductsByCategory = `*[_type == "product" && categories._ref ==
 	},
 	new, 
 	description,
-  mainImage{
-    asset->{
-      url
-    }
-  }
+  previewImageMobile{
+  	asset->{
+  		url
+		}
+	},
+  previewImageTablet{
+  	asset->{
+  		url
+		}
+	},
+  previewImageDesktop{
+  	asset->{
+  		url
+		}
+	},
 }
 `
