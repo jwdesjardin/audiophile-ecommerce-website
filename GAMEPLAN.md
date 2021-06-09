@@ -96,15 +96,17 @@ steps:
 - [x] typography
 - [x] buttons
 - [x] inputs
-- [] links
-- [] layout
-  - [] header
-  - [] footer
+- [x] links
+- [x] layout
+  - [x] header
+  - [x] footer
+  - [x] prefooter
 
-3. build base components
 4. build first page
 5. build product page
-6. build remaining pages
+6. build category pages
+   [] build productPreviewComponent
+   [] build categoryLinks
 7. add auth0
 8. build shopping cart
 9. build checkout
@@ -136,3 +138,27 @@ install then add `plugins: [require('@tailwindcss/forms')]`
 1. write custom overrides to all inputs
 
 Since we are using very simple radio for this i will build this component with both methods to have both in my toolkit for future projects.
+
+PROBLEMS WITH SVGs for buttons
+
+using object within button
+
+```tsx
+<button className='lg:hidden cursor-pointer'>
+	text
+	<object data='/icon-hamburger.svg'></object>
+</button>
+```
+
+result: text gets a pointer but the object does not
+button is focusable with tabbing
+
+using img tag
+
+```tsx
+<button className='lg:hidden '>
+	<img src='/icon-hamburger.svg'></img>
+</button>
+```
+
+result: cursor works as expected and tabbing works
