@@ -6,6 +6,7 @@ import { getAllProductSlugs, getOneProject } from '../../lib/query'
 
 import { ProductDetails } from '../../components/Product/ProductDetails'
 import Layout from '../../components/Layout'
+import { ProductFeatures } from '../../components/Product/ProductFeatures'
 
 // Returns paths - an array of abjects containing params
 export async function getStaticPaths() {
@@ -33,6 +34,7 @@ export default function Project({ product }: InferGetStaticPropsType<typeof getS
 	return (
 		<Layout brandInfo categoryLinks>
 			<ProductDetails product={product}></ProductDetails>
+			<ProductFeatures product={product}></ProductFeatures>
 		</Layout>
 	)
 }
