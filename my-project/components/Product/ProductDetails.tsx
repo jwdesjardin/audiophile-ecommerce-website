@@ -17,7 +17,7 @@ export const ProductDetails = ({ product }) => {
 				</div>
 				<div className='text-left'>
 					<span className='overline-text text-orange-600 mb-6 inline-block'>New product</span>
-					<h2 className='h4 mb-6'>XX99 Mark II Headphones</h2>
+					<h2 className='h4 md:h3 lg:h2 mb-6'>XX99 Mark II Headphones</h2>
 					<p className='mb-6'>
 						The new XX99 Mark II headphones is the pinnacle of pristine audio. It redefines your
 						premium headphone experience by reproducing the balanced depth and precision of

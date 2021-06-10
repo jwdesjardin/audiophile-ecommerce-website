@@ -2,7 +2,7 @@ import React from 'react'
 
 export const ProductFeatures = ({ product }) => {
 	return (
-		<div className='content-container mt-20 md:mt-[120px] lg:mt-[160px] lg:flex lg:flex-row lg:space-x-32 '>
+		<div className='content-container mt-20 md:mt-[96px] lg:mt-[140px] lg:flex lg:flex-row lg:space-x-32 '>
 			<div className='lg:max-w-[640px]'>
 				<h2 className='h5 md:h3 mb-6 md:mb-8'>Features</h2>
 				<p className='mb-6'>
