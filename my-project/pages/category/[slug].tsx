@@ -3,6 +3,7 @@ import { InferGetStaticPropsType } from 'next'
 import Layout from '../../components/Layout'
 import { getAllCategorySlugs, getProductsByCategory } from '../../lib/query'
 import sanityClient from '../../lib/client'
+import ProductPreview from '../../components/Category/ProductPreview'
 
 // Returns paths - an array of abjects containing params
 export async function getStaticPaths() {
@@ -31,5 +32,12 @@ export async function getStaticProps({ params }) {
 
 export default function Project({ products }: InferGetStaticPropsType<typeof getStaticProps>) {
 	console.log(products)
-	return <Layout></Layout>
+	return (
+		<Layout>
+			{products &&
+				products.map((product, idx) => (
+					<ProductPreview key={idx} product={product} flexReverse={idx % 2 === 0} />
+				))}
+		</Layout>
+	)
 }

@@ -1,7 +1,7 @@
 import Link from 'next/link'
 import React from 'react'
 
-const ProductPreview = ({ flexReverse = true }: { flexReverse?: boolean }) => {
+const ProductPreview = ({ flexReverse = true, product }: { flexReverse?: boolean; product }) => {
 	return (
 		<div
 			className={
@@ -9,14 +9,17 @@ const ProductPreview = ({ flexReverse = true }: { flexReverse?: boolean }) => {
 				`${flexReverse ? ' lg:flex-row-reverse' : ' lg:flex-row'}`
 			}
 		>
-			<Image className='mb-8 md:mb-12' mobileImage='' tabletImage='' desktopImage='' />
+			<Image
+				className='mb-8 md:mb-12'
+				mobileImage={product.previewImageMobile.asset.url}
+				tabletImage={product.previewImageTablet.asset.url}
+				desktopImage={product.previewImageDesktop.asset.url}
+			/>
 			<TextContent
-				className=''
-				isNew={true}
-				title='XX59 Headphones'
-				description='The new XX99 Mark II headphones is the pinnacle of pristine audio. It redefines your premium 
-  headphone experience by reproducing the balanced depth and precision of studio-quality sound.'
-				slug='xx59-headphones'
+				isNew={product.new}
+				title={product.name}
+				description={product.description}
+				slug={product.slug.current}
 			></TextContent>
 		</div>
 	)
