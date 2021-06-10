@@ -107,10 +107,13 @@ steps:
 
 - [x] use getStaticPaths to create product page
 - [x] use getStaticProps to pass props for each product
-- [] ProductDetails
-- [] ProductFeatures
-- [] ProductGallery
-- [] ProductRecommended
+- [x] ProductDetails
+- [x] ProductFeatures
+- [x] ProductGallery
+- [x] ProductRecommended
+- [x] use getStaticProps/Paths to render product pages
+- [x] add dynamic data for each product page
+- [] use typescript to manage types of fetched data
 
 6. build category pages
    - [x] build productPreviewComponent
