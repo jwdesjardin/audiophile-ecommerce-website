@@ -17,7 +17,7 @@ export const ProductDetails = ({
 	isNew?: boolean
 	title: string
 	description: string
-	price: string
+	price: number
 	slug: string
 }) => {
 	return (

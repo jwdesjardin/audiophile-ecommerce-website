@@ -2,19 +2,19 @@ import React from 'react'
 import { InferGetStaticPropsType } from 'next'
 
 import sanityClient from '../../lib/client'
-import { getAllProductSlugs, getOneProject } from '../../lib/query'
+import { getAllProductSlugs, getOneProject, Product, ProductSlugs } from '../../lib/query'
 
 import { ProductDetails } from '../../components/Product/ProductDetails'
 import Layout from '../../components/Layout'
 import { ProductFeatures } from '../../components/Product/ProductFeatures'
 import { ProductGallery } from '../../components/Product/ProductGallery'
 import { ProductRecommended } from '../../components/Product/ProductRecommended'
-import Link from 'next/link'
+
 import { useRouter } from 'next/router'
 
 // Returns paths - an array of abjects containing params
 export async function getStaticPaths() {
-	const Products = await sanityClient.fetch(getAllProductSlugs)
+	const Products: ProductSlugs = await sanityClient.fetch(getAllProductSlugs)
 
 	const paths = Products.map((product) => ({
 		params: { slug: product.slug.current },
@@ -23,12 +23,18 @@ export async function getStaticPaths() {
 }
 
 // Uses params to further collect page data
-export async function getStaticProps({ params }) {
-	const Product = await sanityClient.fetch(getOneProject(params.slug))
+export async function getStaticProps({
+	params,
+}: {
+	params: {
+		slug: string
+	}
+}) {
+	const ProductData: Product[] = await sanityClient.fetch(getOneProject(params.slug))
 
 	return {
 		props: {
-			product: Product[0],
+			product: ProductData[0],
 		},
 	}
 }
