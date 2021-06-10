@@ -1,7 +1,13 @@
 import Link from 'next/link'
 import React from 'react'
 
-const ProductPreview = ({ flexReverse = true, product }: { flexReverse?: boolean; product }) => {
+export const ProductPreview = ({
+	flexReverse = true,
+	product,
+}: {
+	flexReverse?: boolean
+	product
+}) => {
 	return (
 		<div
 			className={
@@ -78,5 +84,3 @@ const TextContent = ({
 		</div>
 	)
 }
-
-export default ProductPreview
