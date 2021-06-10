@@ -7,8 +7,8 @@ export const ProductDetails = ({ product }) => {
 
 	return (
 		<div className='content-container'>
-			<div className='flex flex-col'>
-				<div className='max-w-[540px] mb-8 rounded-xl overflow-hidden'>
+			<div className='flex flex-col md:flex-row md:space-x-20 lg:space-x-32 md:items-center'>
+				<div className='max-w-[540px] md:w-[281px] lg:w-auto mb-8 rounded-xl overflow-hidden flex-shrink-0'>
 					<picture>
 						<source media='(min-width: 1110px)' srcSet={product[0].mainImageDesktop.asset.url} />
 						<source media='(min-width: 768px)' srcSet={product[0].mainImageTablet.asset.url} />
