@@ -9,6 +9,7 @@ import Layout from '../../components/Layout'
 import { ProductFeatures } from '../../components/Product/ProductFeatures'
 import { ProductGallery } from '../../components/Product/ProductGallery'
 import { ProductRecommended } from '../../components/Product/ProductRecommended'
+import Link from 'next/link'
 
 // Returns paths - an array of abjects containing params
 export async function getStaticPaths() {
@@ -35,6 +36,11 @@ export default function Project({ product }: InferGetStaticPropsType<typeof getS
 	console.log(product)
 	return (
 		<Layout brandInfo categoryLinks>
+			<div className='text-black-400 content-container mt-4 md:mt-8 lg:mt-20 mb-6 lg:mb-14'>
+				<Link href='/' passHref>
+					<a>GoBack</a>
+				</Link>
+			</div>
 			<ProductDetails product={product}></ProductDetails>
 			<ProductFeatures product={product}></ProductFeatures>
 			<ProductGallery />
