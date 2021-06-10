@@ -1,37 +1,39 @@
 import Link from 'next/link'
 import React from 'react'
 
-export const ProductRecommended = () => {
+export const ProductRecommended = ({ recommended }) => {
 	return (
 		<section className='mt-[120px] content-container'>
 			<h2 className='h5 md:h3 mb-10 text-center'>You may also like</h2>
 			<div className='space-y-14 md:space-y-0 md:space-x-4 lg:space-x-8 md:flex md:flex-row'>
-				<Card />
-				<Card />
-				<Card />
+				{recommended.map((product) => (
+					<Card
+						images={[
+							product.sharedImageMobile.asset.url,
+							product.sharedImageTablet.asset.url,
+							product.sharedImageDesktop.asset.url,
+						]}
+						slug={product.slug.current}
+						title={product.name}
+					/>
+				))}
 			</div>
 		</section>
 	)
 }
 
-const Card = () => {
+const Card = ({ images, slug, title }: { images: string[]; slug: string; title: string }) => {
 	return (
 		<div className='flex flex-col items-center '>
 			<div className='rounded-xl overflow-hidden mb-8'>
 				<picture>
-					<source
-						media='(min-width: 1110px)'
-						srcSet='/assets/shared/desktop/image-xx59-headphones.jpg'
-					/>
-					<source
-						media='(min-width: 768px)'
-						srcSet='/assets/shared/tablet/image-xx59-headphones.jpg'
-					/>
-					<img src='/assets/shared/mobile/image-xx59-headphones.jpg' alt='xx59 headphones' />
+					<source media='(min-width: 1110px)' srcSet={images[2]} />
+					<source media='(min-width: 768px)' srcSet={images[1]} />
+					<img src={images[0]} alt='xx59 headphones' />
 				</picture>
 			</div>
-			<h3 className='h5 mb-8'>XX59</h3>
-			<Link href='/product/xx59-headphones' passHref>
+			<h3 className='h5 mb-8'>{title}</h3>
+			<Link href={`/product/${slug}`} passHref>
 				<a>
 					<button className='button-one'>See Product</button>
 				</a>

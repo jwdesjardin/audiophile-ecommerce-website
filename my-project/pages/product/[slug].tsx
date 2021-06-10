@@ -27,13 +27,26 @@ export async function getStaticProps({ params }) {
 
 	return {
 		props: {
-			product: Product,
+			product: Product[0],
 		},
 	}
 }
 
 export default function Project({ product }: InferGetStaticPropsType<typeof getStaticProps>) {
+	const [qty, setQty] = React.useState(1)
 	console.log(product)
+
+	const mapGalleryUrls = (images: { asset: { url: string } }[]) => {
+		console.log(images)
+		return images.map((img) => {
+			return img.asset.url
+		})
+	}
+	console.log(product.galleryMobile)
+	const mobileUrls = mapGalleryUrls(product.galleryMobile)
+	const tabletUrls = mapGalleryUrls(product.galleryTablet)
+	const desktopUrls = mapGalleryUrls(product.galleryDesktop)
+
 	return (
 		<Layout brandInfo categoryLinks>
 			<div className='text-black-400 content-container mt-4 md:mt-8 lg:mt-20 mb-6 lg:mb-14'>
@@ -41,10 +54,23 @@ export default function Project({ product }: InferGetStaticPropsType<typeof getS
 					<a>GoBack</a>
 				</Link>
 			</div>
-			<ProductDetails product={product}></ProductDetails>
-			<ProductFeatures product={product}></ProductFeatures>
-			<ProductGallery />
-			<ProductRecommended />
+			<ProductDetails
+				qty={qty}
+				setQty={setQty}
+				mainImage={[
+					product.mainImageMobile.asset.url,
+					product.mainImageTablet.asset.url,
+					product.mainImageDesktop.asset.url,
+				]}
+				isNew
+				title={product.title}
+				description={product.description}
+				slug={product.slug.current}
+				price={product.price}
+			></ProductDetails>
+			<ProductFeatures feature={product.feature} include={product.include}></ProductFeatures>
+			<ProductGallery mobile={mobileUrls} tablet={tabletUrls} desktop={desktopUrls} />
+			<ProductRecommended recommended={product.recommended} />
 		</Layout>
 	)
 }

@@ -1,26 +1,22 @@
 import React from 'react'
 
-export const ProductGallery = () => {
+export const ProductGallery = ({
+	mobile,
+	tablet,
+	desktop,
+}: {
+	mobile: string[]
+	tablet: string[]
+	desktop: string[]
+}) => {
 	return (
 		<div className='content-container mt-20 md:flex md:space-x-[20px]'>
 			<div>
-				<GalleryImage
-					mobileImg='/assets/product-xx99-mark-two-headphones/mobile/image-gallery-1.jpg'
-					tabletImg='/assets/product-xx99-mark-two-headphones/tablet/image-gallery-1.jpg'
-					desktopImg='/assets/product-xx99-mark-two-headphones/desktop/image-gallery-1.jpg'
-				/>
-				<GalleryImage
-					mobileImg='/assets/product-xx99-mark-two-headphones/mobile/image-gallery-2.jpg'
-					tabletImg='/assets/product-xx99-mark-two-headphones/tablet/image-gallery-2.jpg'
-					desktopImg='/assets/product-xx99-mark-two-headphones/desktop/image-gallery-2.jpg'
-				/>
+				<GalleryImage mobileImg={mobile[0]} tabletImg={tablet[0]} desktopImg={desktop[0]} />
+				<GalleryImage mobileImg={mobile[1]} tabletImg={tablet[1]} desktopImg={desktop[1]} />
 			</div>
 			<div>
-				<GalleryImage
-					mobileImg='/assets/product-xx99-mark-two-headphones/mobile/image-gallery-3.jpg'
-					tabletImg='/assets/product-xx99-mark-two-headphones/tablet/image-gallery-3.jpg'
-					desktopImg='/assets/product-xx99-mark-two-headphones/desktop/image-gallery-3.jpg'
-				/>
+				<GalleryImage mobileImg={mobile[2]} tabletImg={tablet[2]} desktopImg={desktop[2]} />
 			</div>
 		</div>
 	)
