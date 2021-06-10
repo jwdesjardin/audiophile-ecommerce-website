@@ -104,13 +104,22 @@ steps:
 
 4. build first page
 5. build product page
+
+- [x] use getStaticPaths to create product page
+- [x] use getStaticProps to pass props for each product
+- [] ProductDetails
+- [] ProductFeatures
+- [] ProductGallery
+- [] ProductRecommended
+
 6. build category pages
    - [x] build productPreviewComponent
      - [x] change database to host mobile, tablet and desktop for each image
 
-- [] use getStaticPaths to create category pages
-- [] use getStaticProps to pass props for each category
-- [] build categoryLinks component
+- [x] use getStaticPaths to create category pages
+- [x] use getStaticProps to pass props for each category
+
+- [x] build categoryLinks component
 
 7. add auth0
 8. build shopping cart
