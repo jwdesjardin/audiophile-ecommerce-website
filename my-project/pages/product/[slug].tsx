@@ -34,15 +34,13 @@ export async function getStaticProps({ params }) {
 
 export default function Project({ product }: InferGetStaticPropsType<typeof getStaticProps>) {
 	const [qty, setQty] = React.useState(1)
-	console.log(product)
 
 	const mapGalleryUrls = (images: { asset: { url: string } }[]) => {
-		console.log(images)
 		return images.map((img) => {
 			return img.asset.url
 		})
 	}
-	console.log(product.galleryMobile)
+
 	const mobileUrls = mapGalleryUrls(product.galleryMobile)
 	const tabletUrls = mapGalleryUrls(product.galleryTablet)
 	const desktopUrls = mapGalleryUrls(product.galleryDesktop)
@@ -62,8 +60,8 @@ export default function Project({ product }: InferGetStaticPropsType<typeof getS
 					product.mainImageTablet.asset.url,
 					product.mainImageDesktop.asset.url,
 				]}
-				isNew
-				title={product.title}
+				isNew={product.new}
+				title={product.name}
 				description={product.description}
 				slug={product.slug.current}
 				price={product.price}

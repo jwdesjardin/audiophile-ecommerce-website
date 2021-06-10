@@ -13,6 +13,7 @@ export const ProductRecommended = ({ recommended }) => {
 							product.sharedImageTablet.asset.url,
 							product.sharedImageDesktop.asset.url,
 						]}
+						key={product.slug.current}
 						slug={product.slug.current}
 						title={product.name}
 					/>
@@ -32,7 +33,7 @@ const Card = ({ images, slug, title }: { images: string[]; slug: string; title: 
 					<img src={images[0]} alt='xx59 headphones' />
 				</picture>
 			</div>
-			<h3 className='h5 mb-8'>{title}</h3>
+			<h3 className='h5 mb-8 text-center'>{title}</h3>
 			<Link href={`/product/${slug}`} passHref>
 				<a>
 					<button className='button-one'>See Product</button>

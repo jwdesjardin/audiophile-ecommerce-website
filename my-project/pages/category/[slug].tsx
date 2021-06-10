@@ -4,7 +4,6 @@ import Layout from '../../components/Layout'
 import { getAllCategorySlugs, getProductsByCategory } from '../../lib/query'
 import sanityClient from '../../lib/client'
 import { ProductPreview } from '../../components/Category/ProductPreview'
-import { CategoryLinks } from '../../components/Layout/CategoryLinks'
 
 // Returns paths - an array of abjects containing params
 export async function getStaticPaths() {
