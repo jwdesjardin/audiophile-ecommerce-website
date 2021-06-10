@@ -8,6 +8,7 @@ import { ProductDetails } from '../../components/Product/ProductDetails'
 import Layout from '../../components/Layout'
 import { ProductFeatures } from '../../components/Product/ProductFeatures'
 import { ProductGallery } from '../../components/Product/ProductGallery'
+import { ProductRecommended } from '../../components/Product/ProductRecommended'
 
 // Returns paths - an array of abjects containing params
 export async function getStaticPaths() {
@@ -37,6 +38,7 @@ export default function Project({ product }: InferGetStaticPropsType<typeof getS
 			<ProductDetails product={product}></ProductDetails>
 			<ProductFeatures product={product}></ProductFeatures>
 			<ProductGallery />
+			<ProductRecommended />
 		</Layout>
 	)
 }
