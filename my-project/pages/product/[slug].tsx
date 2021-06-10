@@ -2,7 +2,7 @@ import React from 'react'
 import { InferGetStaticPropsType } from 'next'
 
 import sanityClient from '../../lib/client'
-import { getAllProductSlugs, getOneProject, Product, ProductSlugs } from '../../lib/query'
+import { getAllProductSlugs, getOneProject, Product, SlugArray } from '../../lib/query'
 
 import { ProductDetails } from '../../components/Product/ProductDetails'
 import Layout from '../../components/Layout'
@@ -14,7 +14,7 @@ import { useRouter } from 'next/router'
 
 // Returns paths - an array of abjects containing params
 export async function getStaticPaths() {
-	const Products: ProductSlugs = await sanityClient.fetch(getAllProductSlugs)
+	const Products: SlugArray = await sanityClient.fetch(getAllProductSlugs)
 
 	const paths = Products.map((product) => ({
 		params: { slug: product.slug.current },

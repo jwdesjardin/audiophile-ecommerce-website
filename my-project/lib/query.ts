@@ -125,15 +125,27 @@ export const getProductsByCategory = (slug: string) => {
   }
   `
 }
+export interface ProductPreviewData {
+	id: number
+	slug: { _type: 'slug'; current: string }
+	name: string
+	categories: { title: string }
+	description: string
+	new: boolean
+	previewImageMobile: ImageAsset
+	previewImageTablet: ImageAsset
+	previewImageDesktop: ImageAsset
+}
 
 // QUERY
 export const getAllProductSlugs = `*[_type == "product"  ] {
   slug
 }`
 //RETURN TYPE
-export type ProductSlugs = { slug: { _type: 'slug'; current: string } }[]
+export type SlugArray = { slug: { _type: 'slug'; current: string } }[]
 
 export const getAllCategorySlugs = `*[_type == "category"  ] {
   slug, 
   _id
 }`
+// RETURNS SLUG ARRAY

@@ -1,13 +1,18 @@
 import React from 'react'
 import { InferGetStaticPropsType } from 'next'
 import Layout from '../../components/Layout'
-import { getAllCategorySlugs, getProductsByCategory } from '../../lib/query'
+import {
+	getAllCategorySlugs,
+	getProductsByCategory,
+	ProductPreviewData,
+	SlugArray,
+} from '../../lib/query'
 import sanityClient from '../../lib/client'
 import { ProductPreview } from '../../components/Category/ProductPreview'
 
 // Returns paths - an array of abjects containing params
 export async function getStaticPaths() {
-	const Categories = await sanityClient.fetch(getAllCategorySlugs)
+	const Categories: SlugArray = await sanityClient.fetch(getAllCategorySlugs)
 
 	const paths = Categories.map((category) => ({
 		params: { slug: category.slug.current },
@@ -18,7 +23,9 @@ export async function getStaticPaths() {
 
 // Uses params to further collect page data
 export async function getStaticProps({ params }) {
-	const Products = await sanityClient.fetch(getProductsByCategory(params.slug))
+	const Products: ProductPreviewData[] = await sanityClient.fetch(
+		getProductsByCategory(params.slug)
+	)
 
 	return {
 		props: {

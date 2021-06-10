@@ -1,12 +1,13 @@
 import Link from 'next/link'
 import React from 'react'
+import { ProductPreviewData } from '../../lib/query'
 
 export const ProductPreview = ({
 	flexReverse = true,
 	product,
 }: {
 	flexReverse?: boolean
-	product
+	product: ProductPreviewData
 }) => {
 	return (
 		<div
