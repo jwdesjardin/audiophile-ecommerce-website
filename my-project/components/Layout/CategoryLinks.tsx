@@ -3,7 +3,7 @@ import React from 'react'
 
 export const CategoryLinks = () => {
 	return (
-		<div className='content-container flex flex-col md:flex-row md:space-x-4 my-28'>
+		<div className='content-container flex flex-col md:flex-row md:space-x-4 mb-[120px] lg:mb-[200px] mt-10'>
 			<Card
 				imgUrl='/assets/shared/desktop/image-headphones.png'
 				title='Headphones'

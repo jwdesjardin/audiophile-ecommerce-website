@@ -2,7 +2,7 @@ import React from 'react'
 
 const BrandInfo = () => {
 	return (
-		<div className='flex flex-col items-center content-container my-[120px] lg:my-[200px] lg:flex lg:flex-row-reverse lg:items-center lg:justify-between '>
+		<div className='flex flex-col items-center content-container mb-[120px] lg:mb-[200px] lg:flex lg:flex-row-reverse lg:items-center lg:justify-between '>
 			<div className='rounded-lg overflow-hidden max-w-[327px] md:max-w-[689px]  mb-10 md:mb-16 '>
 				<picture>
 					<source media='(min-width: 1110px)' srcSet='/image-best-gear.jpg' />
