@@ -1,8 +1,11 @@
 import React from 'react'
 import { InferGetStaticPropsType } from 'next'
-import Layout from '../../components/Layout'
-import { getAllProductSlugs, getOneProject } from '../../lib/query'
+
 import sanityClient from '../../lib/client'
+import { getAllProductSlugs, getOneProject } from '../../lib/query'
+
+import { ProductDetails } from '../../components/Product/ProductDetails'
+import Layout from '../../components/Layout'
 
 // Returns paths - an array of abjects containing params
 export async function getStaticPaths() {
@@ -27,5 +30,9 @@ export async function getStaticProps({ params }) {
 
 export default function Project({ product }: InferGetStaticPropsType<typeof getStaticProps>) {
 	console.log(product)
-	return <Layout></Layout>
+	return (
+		<Layout brandInfo categoryLinks>
+			<ProductDetails product={product}></ProductDetails>
+		</Layout>
+	)
 }
