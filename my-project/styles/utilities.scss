@@ -13,7 +13,8 @@
 
 	.button-one,
 	.button-two,
-	.button-three {
+	.button-three,
+	.button-four {
 		@apply w-[160px] h-[48px] subtitle;
 	}
 
@@ -23,8 +24,12 @@
 	.button-two {
 		@apply border hover:bg-black-900 hover:text-white-100;
 	}
+
 	.button-three {
 		@apply text-black-900 text-opacity-50 add-orange-arrow hover:text-orange-600 transform -translate-x-2;
+	}
+	.button-four {
+		@apply bg-black-900 hover:bg-black-600 hover:text-white-100;
 	}
 
 	// ICON BUTTONS
