@@ -2,7 +2,7 @@ import React from 'react'
 import { InferGetStaticPropsType } from 'next'
 
 import sanityClient from '../../lib/client'
-import { getAllProductSlugs, getOneProject, Product, SlugArray } from '../../lib/query'
+import { getAllProductSlugs, getOneProject } from '../../lib/query'
 
 import { ProductDetails } from '../../components/Product/ProductDetails'
 import Layout from '../../components/Layout'
@@ -11,6 +11,7 @@ import { ProductGallery } from '../../components/Product/ProductGallery'
 import { ProductRecommended } from '../../components/Product/ProductRecommended'
 
 import { useRouter } from 'next/router'
+import { Product, SlugArray } from '../../lib/queryTypes'
 
 // Returns paths - an array of abjects containing params
 export async function getStaticPaths() {

@@ -1,14 +1,10 @@
 import React from 'react'
 import { InferGetStaticPropsType } from 'next'
 import Layout from '../../components/Layout'
-import {
-	getAllCategorySlugs,
-	getProductsByCategory,
-	ProductPreviewData,
-	SlugArray,
-} from '../../lib/query'
+import { getAllCategorySlugs, getProductsByCategory } from '../../lib/query'
 import sanityClient from '../../lib/client'
 import { ProductPreview } from '../../components/Category/ProductPreview'
+import { ProductPreviewData, SlugArray } from '../../lib/queryTypes'
 
 // Returns paths - an array of abjects containing params
 export async function getStaticPaths() {
