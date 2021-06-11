@@ -103,6 +103,14 @@ steps:
   - [x] prefooter
 
 4. build first page
+   [x] add content to cdn
+   [x] build and add query with types
+   [] build components
+   - [] hero
+   - [] comp1
+   - [] comp2
+   - [] comp3
+     [] use data in components
 5. build product page
 
 - [x] use getStaticPaths to create product page
@@ -113,7 +121,7 @@ steps:
 - [x] ProductRecommended
 - [x] use getStaticProps/Paths to render product pages
 - [x] add dynamic data for each product page
-- [] use typescript to manage types of fetched data
+- [x] use typescript to manage types of fetched data
 
 6. build category pages
    - [x] build productPreviewComponent
@@ -126,6 +134,14 @@ steps:
 
 7. add auth0
 8. build shopping cart
+
+- [] build cart
+  [] overlay
+  [] cart
+  [] cart rows
+  [] add to cart functionality
+  [] global cart state
+
 9. build checkout
 
 # Notes upon opening figma design files
