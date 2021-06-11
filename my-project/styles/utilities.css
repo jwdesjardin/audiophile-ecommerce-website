@@ -158,6 +158,18 @@
     background-size: 550px;
     background-position: -115px -105px;
   }
+  @media (min-width: 768px) {
+    .background-circles {
+      background-size: 900px;
+      background-position: -105px -275px;
+    }
+  }
+  @media (min-width: 768px) {
+    .background-circles {
+      background-size: 930px;
+      background-position: -155px -15px;
+    }
+  }
   .content-container {
     @apply mx-6 md:mx-10 lg:max-w-screen-lg lg:mx-auto;
   }
