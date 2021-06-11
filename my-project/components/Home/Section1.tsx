@@ -2,7 +2,7 @@ import React from 'react'
 
 export const Section1 = () => {
 	return (
-		<div className='bg-orange-600 rounded-xl content-container flex flex-col items-center text-center py-[55px] mb-6'>
+		<div className='bg-orange-600 rounded-xl content-container flex flex-col items-center text-center py-[55px] mb-6 background-circles'>
 			{/* Background svg */}
 
 			<div className='max-w-[180px] mb-8'>

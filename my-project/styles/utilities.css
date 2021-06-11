@@ -152,6 +152,12 @@
       background-image: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.1)), url("/assets/home/desktop/image-hero.jpg");
     }
   }
+  .background-circles {
+    background-image: url("/assets/home/desktop/pattern-circles.svg");
+    background-repeat: no-repeat;
+    background-size: 550px;
+    background-position: -115px -105px;
+  }
   .content-container {
     @apply mx-6 md:mx-10 lg:max-w-screen-lg lg:mx-auto;
   }
