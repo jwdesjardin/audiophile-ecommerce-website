@@ -5,6 +5,7 @@ import { getHomeContent } from '../lib/query'
 import { HomeData } from '../lib/queryTypes'
 import sanityClient from '../lib/client'
 import { InferGetStaticPropsType } from 'next'
+import { Hero } from '../components/Home/Hero'
 
 export async function getStaticProps() {
 	const data: HomeData = await sanityClient.fetch(getHomeContent)
@@ -17,5 +18,9 @@ export async function getStaticProps() {
 }
 
 export default function Home({ data }: InferGetStaticPropsType<typeof getStaticProps>) {
-	return <Layout brandInfo categoryLinks></Layout>
+	return (
+		<Layout brandInfo categoryLinks>
+			<Hero />
+		</Layout>
+	)
 }
