@@ -23,7 +23,7 @@ export async function getStaticProps() {
 
 export default function Home({ data }: InferGetStaticPropsType<typeof getStaticProps>) {
 	return (
-		<Layout brandInfo>
+		<Layout brandInfo navColorMode='transparent'>
 			<Hero />
 			<CategoryLinks></CategoryLinks>
 			<Section1></Section1>
