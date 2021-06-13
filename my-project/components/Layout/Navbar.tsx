@@ -1,11 +1,19 @@
 import React from 'react'
 import Link from 'next/link'
 
-const Navbar = ({ header }: { header?: string }) => {
+const Navbar = ({
+	header,
+	colorMode = 'dark',
+}: {
+	header?: string
+	colorMode?: 'dark' | 'transparent'
+}) => {
 	const linkHoverEffect = 'hover:text-orange-600 transition'
 
 	return (
-		<div className='bg-black-900 text-white-100  '>
+		<div
+			className={`${colorMode === 'dark' ? 'bg-black-900' : 'absolute w-full'} text-white-100  `}
+		>
 			<div className='flex items-center justify-between md:justify-start lg:justify-between py-8 content-container'>
 				<button className='lg:hidden hamburger-button'></button>
 				<div className='md:ml-10 lg:ml-0'>

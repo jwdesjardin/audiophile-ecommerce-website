@@ -9,6 +9,7 @@ const Layout = ({
 	children,
 	title = 'Audiophile',
 	NavHeader = '',
+	navColorMode = 'dark',
 	brandInfo,
 	categoryLinks,
 }: {
@@ -16,6 +17,7 @@ const Layout = ({
 	title?: string
 	NavHeader?: string
 	brandInfo?: boolean
+	navColorMode?: 'dark' | 'transparent'
 	categoryLinks?: boolean
 }): ReactElement => {
 	return (
@@ -24,7 +26,7 @@ const Layout = ({
 				<title>{title}</title>
 			</Head>
 
-			<Navbar header={NavHeader}></Navbar>
+			<Navbar header={NavHeader} colorMode={navColorMode}></Navbar>
 			<main>
 				{children}
 				{categoryLinks && <CategoryLinks></CategoryLinks>}
