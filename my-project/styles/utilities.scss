@@ -182,6 +182,20 @@
 		}
 	}
 
+	.section2-bg-image {
+		background-image: url('/assets/home/mobile/image-speaker-zx7.jpg');
+		background-size: cover;
+		background-repeat: no-repeat;
+		background-position: center;
+		height: 320px;
+		@media (min-width: 768px) {
+			background-image: url('/assets/home/tablet/image-speaker-zx7.jpg');
+		}
+		@media (min-width: 1110px) {
+			background-image: url('/assets/home/desktop/image-speaker-zx7.jpg');
+		}
+	}
+
 	.background-circles {
 		background-image: url('/assets/home/desktop/pattern-circles.svg');
 		background-repeat: no-repeat;
