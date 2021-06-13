@@ -8,6 +8,8 @@ import { InferGetStaticPropsType } from 'next'
 import { Hero } from '../components/Home/Hero'
 import { CategoryLinks } from '../components/Layout/CategoryLinks'
 import { Section1 } from '../components/Home/Section1'
+import { Section2 } from '../components/Home/Section2'
+import { Section3 } from '../components/Home/Section3'
 
 export async function getStaticProps() {
 	const data: HomeData = await sanityClient.fetch(getHomeContent)
@@ -25,6 +27,8 @@ export default function Home({ data }: InferGetStaticPropsType<typeof getStaticP
 			<Hero />
 			<CategoryLinks></CategoryLinks>
 			<Section1></Section1>
+			<Section2></Section2>
+			<Section3></Section3>
 		</Layout>
 	)
 }
