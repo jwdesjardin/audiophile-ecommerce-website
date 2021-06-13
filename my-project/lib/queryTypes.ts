@@ -1,5 +1,5 @@
 export type SlugArray = { slug: { _type: 'slug'; current: string } }[]
-type ImageAsset = { asset: { url: string } }
+export type ImageAsset = { asset: { url: string } }
 
 export interface ProductPreviewData {
 	id: number

@@ -12,7 +12,9 @@ const Navbar = ({
 
 	return (
 		<div
-			className={`${colorMode === 'dark' ? 'bg-black-900' : 'absolute w-full'} text-white-100  `}
+			className={`${
+				colorMode === 'dark' ? 'bg-black-900' : 'absolute w-full z-20'
+			} text-white-100  `}
 		>
 			<div className='flex items-center justify-between md:justify-start lg:justify-between py-8 content-container'>
 				<button className='lg:hidden hamburger-button'></button>
