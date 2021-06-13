@@ -5,7 +5,7 @@ export const Section1 = () => {
 		<div className='bg-orange-600 rounded-xl content-container flex flex-col lg:flex-row items-center text-center lg:text-left py-[55px] lg:py-[20px] mb-6 background-circles overflow-hidden'>
 			{/* Background svg */}
 
-			<div className='max-w-[180px] md:max-w-[197px] lg:max-w-[390px] lg:ml-[120px] mb-8 md:mb-16 transform translate-y-24'>
+			<div className='max-w-[180px] md:max-w-[197px] lg:max-w-[390px] lg:ml-[120px] mb-8 md:mb-16 transform lg:translate-y-24'>
 				<picture>
 					<source media='(min-width: 1110px)' srcSet='/assets/home/desktop/image-speaker-zx9.png' />
 					<source media='(min-width: 768px)' srcSet='/assets/home/tablet/image-speaker-zx9.png' />
