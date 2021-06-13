@@ -1,5 +1,6 @@
 import React from 'react'
 import Link from 'next/link'
+import { ShoppingCart } from './ShoppingCart'
 
 const Navbar = ({
 	header,
@@ -9,7 +10,7 @@ const Navbar = ({
 	colorMode?: 'dark' | 'transparent'
 }) => {
 	const linkHoverEffect = 'hover:text-orange-600 transition'
-
+	const [shoppingCartModal, setShoppingCartModal] = React.useState(false)
 	return (
 		<div
 			className={`${
@@ -35,10 +36,14 @@ const Navbar = ({
 						<a className={linkHoverEffect}>Earphones</a>
 					</Link>
 				</div>
-				<button className='shopping-cart-button md:ml-auto lg:ml-0 '></button>
+				<button
+					onClick={() => setShoppingCartModal(!shoppingCartModal)}
+					className='shopping-cart-button md:ml-auto lg:ml-0 '
+				></button>
 			</div>
 
 			{header && <NavbarHeader header={header} />}
+			{shoppingCartModal && <ShoppingCart />}
 		</div>
 	)
 }
