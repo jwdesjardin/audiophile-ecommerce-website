@@ -78,8 +78,8 @@
 
 	// RADIO INPUTS
 	.radio-group {
-		label {
-			@apply text-[12px] font-bold mb-2;
+		> label {
+			@apply text-[12px] font-bold mb-6 text-orange-600;
 		}
 	}
 

@@ -7,35 +7,73 @@ const checkout = () => {
 	return (
 		<Layout goBackButton>
 			<div>
-				<section className=''>
-					<h2>Checkout</h2>
+				<section className='content-container'>
+					<h2 className='h4 mb-8'>Checkout</h2>
 					<form action=''>
-						<div>
-							<h4>Billing Details</h4>
+						<div className='pb-2'>
+							<h4 className='subtitle text-orange-600 mb-4'>Billing Details</h4>
 							<div className='md:grid md:grid-cols-2'>
-								<TextInput controlledText={''} setText={() => {}} label='Name'></TextInput>
 								<TextInput
+									className='mb-6'
+									controlledText={''}
+									setText={() => {}}
+									label='Name'
+									placeholder='Alexei Ward'
+								></TextInput>
+								<TextInput
+									className='mb-6'
 									controlledText={''}
 									setText={() => {}}
 									label='Email Address'
 									type='email'
+									placeholder='alexei@gmail.com'
 								></TextInput>
-								<TextInput controlledText={''} setText={() => {}} label='Phone Number'></TextInput>
+								<TextInput
+									className='mb-6'
+									controlledText={''}
+									setText={() => {}}
+									label='Phone Number'
+									placeholder='+1 202-555-0136'
+								></TextInput>
 							</div>
 						</div>
-						<div>
-							<h4>Shipping Info</h4>
-							<TextInput controlledText={''} setText={() => {}} label='Address'></TextInput>
+						<div className='pb-2'>
+							<h4 className='subtitle text-orange-600 mb-4'>Shipping Info</h4>
+							<TextInput
+								className='mb-6'
+								controlledText={''}
+								setText={() => {}}
+								label='Address'
+								placeholder='1137 Williams Avenue'
+							></TextInput>
 
 							<div className='md:grid md:grid-cols-2'>
-								<TextInput controlledText={''} setText={() => {}} label='ZIP Code'></TextInput>
-								<TextInput controlledText={''} setText={() => {}} label='City'></TextInput>
-								<TextInput controlledText={''} setText={() => {}} label='Country'></TextInput>
+								<TextInput
+									className='mb-6'
+									controlledText={''}
+									setText={() => {}}
+									label='ZIP Code'
+									placeholder='10002'
+								></TextInput>
+								<TextInput
+									className='mb-6'
+									controlledText={''}
+									setText={() => {}}
+									label='City'
+									placeholder='New York'
+								></TextInput>
+								<TextInput
+									className='mb-6'
+									controlledText={''}
+									setText={() => {}}
+									label='Country'
+									placeholder='United States'
+								></TextInput>
 							</div>
 						</div>
 
-						<div>
-							<h4>Payment Details</h4>
+						<div className='pb-2'>
+							<h4 className='subtitle text-orange-600 mb-4'>Payment Details</h4>
 							<RadioGroup
 								title='Payment Method'
 								values={['e-money', 'cash']}
@@ -43,14 +81,20 @@ const checkout = () => {
 								setRadio={() => {}}
 							></RadioGroup>
 							<div>
-								<div className='text-input'>
-									<label htmlFor='emoney_num'>e-money Number</label>
-									<input id='emoney_num' type='text' />
-								</div>
-								<div className='text-input'>
-									<label htmlFor='emoney_pin'>e-money PIN</label>
-									<input id='emoney_pin' type='text' />
-								</div>
+								<TextInput
+									className='mb-6'
+									controlledText={''}
+									setText={() => {}}
+									label='e-moneyNumber'
+									placeholder='1234568911'
+								></TextInput>
+								<TextInput
+									className='mb-6'
+									controlledText={''}
+									setText={() => {}}
+									label='e-moneyPin'
+									placeholder='1234'
+								></TextInput>
 							</div>
 						</div>
 					</form>

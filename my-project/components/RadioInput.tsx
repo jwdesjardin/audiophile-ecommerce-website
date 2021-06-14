@@ -44,7 +44,7 @@ const RadioGroup = ({
 
 	return (
 		<div className='radio-group' role='radiogroup'>
-			<label htmlFor='' aria-labelledby={title}>
+			<label className='mb-2' htmlFor='' aria-labelledby={title}>
 				{title}
 			</label>
 			{values.map((value) => (
