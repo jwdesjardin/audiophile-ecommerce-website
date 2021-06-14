@@ -39,6 +39,13 @@ export interface Product {
 	slug: { type: 'slug'; current: string }
 }
 
+export interface ProductCartData {
+	cartImage: ImageAsset
+	slug: { type: 'slug'; current: string }
+	price: number
+	name: string
+}
+
 export interface HomeData {
 	heroImage: ImageAsset[]
 	section1Image: ImageAsset[]

@@ -1,9 +1,17 @@
 import React from 'react'
+import { ProductCartData } from '../../lib/queryTypes'
 import NumberInput from '../NumberInput'
 
-export const ShoppingCart = () => {
+export const ShoppingCart = ({
+	data,
+}: {
+	data: {
+		item: ProductCartData
+		qty: number
+	}[]
+}) => {
 	return (
-		<div className='bg-black-900 bg-opacity-30 absolute h-full w-full'>
+		<div className='bg-black-900 bg-opacity-30 fixed h-screen w-full'>
 			<div className='content-container relative'>
 				{/* SHOPPING CART POPUP IN OVERLAY */}
 				<div className='bg-white-200 rounded-lg text-black-900 w-full md:w-[377px] absolute right-0 top-10 px-6 py-8'>
