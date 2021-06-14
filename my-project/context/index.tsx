@@ -22,7 +22,7 @@ export function CustomWrapper({ children }) {
 				name: 'XX99 MK II',
 				price: 2999,
 				slug: { type: 'slug', current: 'xx99-headphones-mark-two' },
-				cartImage: { asset: { url: '/assets/cart/desktop/image-xx99-mark-two-headphones.jpg' } },
+				cartImage: { asset: { url: '/assets/cart/image-xx99-mark-two-headphones.jpg' } },
 			},
 			qty: 2,
 		},
