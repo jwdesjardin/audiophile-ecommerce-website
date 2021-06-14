@@ -43,7 +43,7 @@ const RadioGroup = ({
 	}
 
 	return (
-		<div role='radiogroup'>
+		<div className='radio-group' role='radiogroup'>
 			<label htmlFor='' aria-labelledby={title}>
 				{title}
 			</label>

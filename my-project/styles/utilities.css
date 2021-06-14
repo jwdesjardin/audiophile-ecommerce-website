@@ -57,6 +57,9 @@
   .input-error input {
     @apply ring-red-600 ring-2;
   }
+  .radio-group label {
+    @apply text-[12px] font-bold mb-2;
+  }
   .radio-input {
     @apply flex items-center px-6 py-3 rounded-lg w-[309px] ring-1 grey-ring focus:orange-ring focus:ring-2 hover:orange-ring focus:outline-none;
   }
