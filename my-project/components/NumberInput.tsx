@@ -1,12 +1,14 @@
 import React from 'react'
 
-const NumberInput = ({
+function NumberInput({
 	controlledQty,
-	setQty,
+	incFunc,
+	decFunc,
 }: {
 	controlledQty: number
-	setQty: React.Dispatch<React.SetStateAction<number>>
-}) => {
+	incFunc?: () => void
+	decFunc?: () => void
+}) {
 	return (
 		<div
 			// ARIA roles for accessbility
@@ -24,21 +26,17 @@ const NumberInput = ({
 			}}
 			onKeyUp={(e) => {
 				if (e.code === 'ArrowUp' || e.code === 'ArrowRight') {
-					setQty((prevState) => prevState + 1)
+					incFunc()
 				} else if ((e.code === 'ArrowDown' || e.code === 'ArrowLeft') && controlledQty > 0) {
-					setQty((prevState) => prevState - 1)
+					decFunc()
 				}
 			}}
 		>
-			<button
-				onClick={() => setQty((prevState) => prevState - 1)}
-				disabled={controlledQty === 0}
-				tabIndex={-1}
-			>
+			<button onClick={decFunc} disabled={controlledQty === 0} tabIndex={-1}>
 				-
 			</button>
 			<span>{controlledQty}</span>
-			<button onClick={() => setQty((prevState) => prevState + 1)} tabIndex={-1}>
+			<button onClick={incFunc} tabIndex={-1}>
 				+
 			</button>
 		</div>
