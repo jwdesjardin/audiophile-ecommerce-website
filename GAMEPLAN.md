@@ -105,12 +105,12 @@ steps:
 4. build first page
    [x] add content to cdn
    [x] build and add query with types
-   [] build components
-   - [] hero
-   - [] comp1
-   - [] comp2
-   - [] comp3
-     [] use data in components
+   [x] build components
+   - [x] hero
+   - [x] comp1
+   - [x] comp2
+   - [x] comp3
+         [x] use data in components
 5. build product page
 
 - [x] use getStaticPaths to create product page
@@ -136,11 +136,17 @@ steps:
 8. build shopping cart
 
 - [] build cart
-  [] overlay
-  [] cart
-  [] cart rows
-  [] add to cart functionality
-  [] global cart state
+  [x] overlay
+  [x] cart
+  [x] cart rows
+
+  [x] add to cart functionality
+  [x] global cart state
+  [] count cart items
+  [] remove all
+  [] remove one
+  [] count total
+  [] checkout button send data
 
 9. build checkout
 
