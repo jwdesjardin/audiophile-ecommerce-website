@@ -77,9 +77,3 @@ const CartRow = ({
 		</div>
 	)
 }
-
-const setCount = (name: string, count: number) => {
-	const { cart, setCart } = React.useContext(CTX)
-
-	setCart([...cart])
-}

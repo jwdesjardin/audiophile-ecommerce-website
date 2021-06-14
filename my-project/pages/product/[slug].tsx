@@ -62,20 +62,7 @@ export default function Project({ product }: InferGetStaticPropsType<typeof getS
 					<button onClick={() => router.back()}>GoBack</button>
 				</a>
 			</div>
-			<ProductDetails
-				qty={qty}
-				setQty={setQty}
-				mainImage={[
-					product.mainImageMobile.asset.url,
-					product.mainImageTablet.asset.url,
-					product.mainImageDesktop.asset.url,
-				]}
-				isNew={product.new}
-				title={product.name}
-				description={product.description}
-				slug={product.slug.current}
-				price={product.price}
-			></ProductDetails>
+			<ProductDetails qty={qty} setQty={setQty} product={product}></ProductDetails>
 			<ProductFeatures feature={product.feature} include={product.include}></ProductFeatures>
 			<ProductGallery mobile={mobileUrls} tablet={tabletUrls} desktop={desktopUrls} />
 			<ProductRecommended recommended={product.recommended} />
