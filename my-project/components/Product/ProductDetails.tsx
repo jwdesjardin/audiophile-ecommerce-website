@@ -38,7 +38,10 @@ export const ProductDetails = ({
 					<p className='mb-6'>{description}</p>
 					<span className='h6 mb-8 inline-block'>${price}</span>
 					<div className='flex flex-row space-x-4'>
-						<NumberInput controlledQty={qty} setQty={setQty}></NumberInput>
+						<div className='w-[120px]'>
+							<NumberInput controlledQty={qty} setQty={setQty}></NumberInput>
+						</div>
+
 						<button className='button-one'>Add To Cart</button>
 					</div>
 				</div>

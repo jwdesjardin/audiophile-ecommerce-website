@@ -70,7 +70,7 @@
     @apply bg-orange-600 ring-inset ring-4 ring-white-200;
   }
   .number-input {
-    @apply w-[120px] bg-white-400 flex items-center px-2  space-x-6 
+    @apply w-full h-full bg-white-400 flex items-center px-2 justify-between 
     focus:outline-none focus:ring focus:ring-orange-600;
   }
   .number-input button {
