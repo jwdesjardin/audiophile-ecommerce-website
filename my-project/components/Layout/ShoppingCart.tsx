@@ -57,20 +57,20 @@ const CartRow = ({
 				<NumberInput
 					controlledQty={row.qty}
 					incFunc={() => {
-						// const filtered = cart.filter((temp) => temp.item.slug !== row.item.slug)
-						// console.log([...filtered, { item: row.item, qty: row.qty++ }])
-						setCart((prevState) => [
-							...prevState.filter((temp) => temp.item.slug !== row.item.slug),
-							{ item: row.item, qty: row.qty + 1 },
-						])
+						setCart((prevState) => {
+							const copy = [...prevState]
+							const index = prevState.findIndex((temp) => temp.item.slug === row.item.slug)
+							copy[index] = { item: row.item, qty: row.qty + 1 }
+							return copy
+						})
 					}}
 					decFunc={() => {
-						// const filtered = cart.filter((temp) => temp.item.slug !== row.item.slug)
-						// console.log([...filtered, { item: row.item, qty: row.qty-- }])
-						setCart((prevState) => [
-							...prevState.filter((temp) => temp.item.slug !== row.item.slug),
-							{ item: row.item, qty: row.qty - 1 },
-						])
+						setCart((prevState) => {
+							const copy = [...prevState]
+							const index = prevState.findIndex((temp) => temp.item.slug === row.item.slug)
+							copy[index] = { item: row.item, qty: row.qty - 1 }
+							return copy
+						})
 					}}
 				></NumberInput>
 			</div>
