@@ -1,3 +1,4 @@
+import Link from 'next/link'
 import React from 'react'
 import { CTX } from '../../context'
 import { ProductCartData } from '../../lib/queryTypes'
@@ -29,7 +30,13 @@ export const ShoppingCart = () => {
 						<p className='uppercase'>Total</p>
 						<p className='h6'>${countCartTotal(cart)}</p>
 					</div>
-					<button className='button-one w-full'>Checkout</button>
+					<Link href='/checkout' passHref>
+						<a>
+							<button className='button-one w-full' disabled={countCartTotal(cart) === 0}>
+								Checkout
+							</button>
+						</a>
+					</Link>
 				</div>
 			</div>
 		</div>
