@@ -16,7 +16,17 @@ interface CartContext {
 export const CTX = React.createContext<CartContext>({} as CartContext)
 
 export function CustomWrapper({ children }) {
-	const [cart, setCart] = React.useState<{ item: ProductCartData; qty: number }[]>([])
+	const [cart, setCart] = React.useState<{ item: ProductCartData; qty: number }[]>([
+		{
+			item: {
+				name: 'XX99 MK II',
+				price: 2999,
+				slug: { type: 'slug', current: 'xx99-headphones-mark-two' },
+				cartImage: { asset: { url: '/assets/cart/desktop/image-xx99-mark-two-headphones.jpg' } },
+			},
+			qty: 2,
+		},
+	])
 
 	return <CTX.Provider value={{ cart, setCart }}>{children}</CTX.Provider>
 }
