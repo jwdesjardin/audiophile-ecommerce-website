@@ -73,7 +73,7 @@ const CartRow = ({
 				<h2 className='font-bold uppercase'>{row.item.name}</h2>
 				<p className='text-black-400'>${row.item.price}</p>
 			</div>
-			<div className='w-24'>
+			<div className='w-24 flex flex-col items-center'>
 				<NumberInput
 					controlledQty={row.qty}
 					incFunc={() => {
@@ -93,6 +93,19 @@ const CartRow = ({
 						})
 					}}
 				></NumberInput>
+				{row.qty === 0 && (
+					<button
+						onClick={() => {
+							setCart((prevState) => {
+								const filtered = prevState.filter((temp) => temp.item.slug !== row.item.slug)
+								return [...filtered]
+							})
+						}}
+						className='text-red-600 underline'
+					>
+						Remove
+					</button>
+				)}
 			</div>
 		</div>
 	)
