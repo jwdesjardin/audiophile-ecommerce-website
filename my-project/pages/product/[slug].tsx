@@ -53,15 +53,8 @@ export default function Project({ product }: InferGetStaticPropsType<typeof getS
 	const tabletUrls = mapGalleryUrls(product.galleryTablet)
 	const desktopUrls = mapGalleryUrls(product.galleryDesktop)
 
-	const router = useRouter()
-
 	return (
-		<Layout brandInfo categoryLinks>
-			<div className='text-black-400 content-container mt-4 md:mt-8 lg:mt-20 mb-6 lg:mb-14'>
-				<a>
-					<button onClick={() => router.back()}>GoBack</button>
-				</a>
-			</div>
+		<Layout brandInfo categoryLinks goBackButton>
 			<ProductDetails qty={qty} setQty={setQty} product={product}></ProductDetails>
 			<ProductFeatures feature={product.feature} include={product.include}></ProductFeatures>
 			<ProductGallery mobile={mobileUrls} tablet={tabletUrls} desktop={desktopUrls} />
