@@ -13,9 +13,11 @@ export const ShoppingCart = () => {
 					{/* HEADER */}
 					<div className='flex justify-between items-center mb-8'>
 						<div className=''>
-							<p className='h6'>Cart (3)</p>
+							<p className='h6'>Cart ({countCartItems(cart)})</p>
 						</div>
-						<button className='text-black-400 underline'>Remove all</button>
+						<button className='text-black-400 underline' onClick={() => setCart([])}>
+							Remove all
+						</button>
 					</div>
 					{/* CART ITEM */}
 					{cart.map((row) => (
@@ -25,13 +27,31 @@ export const ShoppingCart = () => {
 					{/* Total and checkout button */}
 					<div className='flex justify-between items-center mb-6'>
 						<p className='uppercase'>Total</p>
-						<p className='h6'>$5,396</p>
+						<p className='h6'>${countCartTotal(cart)}</p>
 					</div>
 					<button className='button-one w-full'>Checkout</button>
 				</div>
 			</div>
 		</div>
 	)
+}
+
+const countCartItems = (
+	cart: {
+		item: ProductCartData
+		qty: number
+	}[]
+): number => {
+	return cart.length
+}
+
+const countCartTotal = (
+	cart: {
+		item: ProductCartData
+		qty: number
+	}[]
+): number => {
+	return cart.reduce((a, c) => a + c.item.price * c.qty, 0)
 }
 
 const CartRow = ({
