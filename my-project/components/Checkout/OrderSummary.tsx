@@ -5,12 +5,30 @@ import { ProductCartData } from '../../lib/queryTypes'
 export const OrderSummary = () => {
 	const { cart } = React.useContext(CTX)
 
-	const DetailRow = ({ label, value }: { label: string; value: number }) => (
+	const DetailRow = ({ label, value }: { label: string; value: string }) => (
 		<div className='flex justify-between mb-2'>
 			<p className='font-extralight uppercase'>{label}</p>
-			<p className='font-bold text-lg'>$ {value.toLocaleString()}</p>
+			<p className='font-bold text-lg'>$ {value}</p>
 		</div>
 	)
+
+	const [subtotal, setSubtotal] = React.useState(0)
+	const [VAT, setVAT] = React.useState(0)
+
+	const getOrderSubtotal = (
+		cart: {
+			item: ProductCartData
+			qty: number
+		}[]
+	): number => {
+		return cart.reduce((a, c) => a + c.item.price * c.qty, 0)
+	}
+
+	React.useEffect(() => {
+		const temp_total = getOrderSubtotal(cart)
+		setSubtotal(temp_total)
+		setVAT(temp_total * 0.2)
+	}, [])
 
 	return (
 		<aside className='content-container p-6 bg-white-100 rounded-lg mb-24'>
@@ -22,12 +40,24 @@ export const OrderSummary = () => {
 				))}
 			</div>
 			<div>
-				<DetailRow label='Total' value={2423}></DetailRow>
-				<DetailRow label='Shipping' value={34}></DetailRow>
-				<DetailRow label='VAT (Included)' value={234}></DetailRow>
+				<DetailRow label='Total' value={subtotal.toLocaleString()}></DetailRow>
+				<DetailRow label='Shipping' value='50'></DetailRow>
+				<DetailRow
+					label='VAT (Included)'
+					value={VAT.toLocaleString(undefined, {
+						minimumFractionDigits: 2,
+						maximumFractionDigits: 2,
+					})}
+				></DetailRow>
 				<div className='flex justify-between mb-8 pt-2'>
 					<p className='font-extralight uppercase'>Grand Total</p>
-					<p className='font-bold text-lg text-orange-600'>$ 3,789</p>
+					<p className='font-bold text-lg text-orange-600'>
+						${' '}
+						{(subtotal + VAT + 50).toLocaleString(undefined, {
+							minimumFractionDigits: 2,
+							maximumFractionDigits: 2,
+						})}
+					</p>
 				</div>
 			</div>
 			<button className='button-one w-full'>Continue & Pay</button>
