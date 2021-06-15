@@ -1,16 +1,30 @@
 import { Field } from 'formik'
 import React from 'react'
 
-const RadioGroup = ({
+export const FormikRadioGroup = ({
 	title,
 	values,
+	error,
+	touched,
 	controlledState,
-	setRadio,
+	onBlur,
+	onChange,
 }: {
 	title: string
 	values: { value: string; label: string }[]
+	error: string
+	touched: boolean
 	controlledState: string
-	setRadio: React.Dispatch<React.SetStateAction<string>>
+	onBlur: {
+		(e: React.FocusEvent<any>): void
+		<T = any>(fieldOrEvent: T): T extends string ? (e: any) => void : void
+	}
+	onChange: {
+		(e: React.ChangeEvent<any>): void
+		<T = string | React.ChangeEvent<any>>(field: T): T extends React.ChangeEvent<any>
+			? void
+			: (e: string | React.ChangeEvent<any>) => void
+	}
 }) => {
 	const RadioInput = ({ value, label }) => {
 		return (
@@ -18,22 +32,27 @@ const RadioGroup = ({
 				className={`ring-1 ${
 					controlledState === value ? 'ring-orange-600' : 'ring-black-200'
 				} rounded-lg py-3 px-6 max-w-[309px] hover:ring-orange-600 focus:ring-orange-600 outline-none focus:ring-2 `}
-				onClick={() => setRadio(value)}
-				tabIndex={0}
-				onKeyUp={(e) => {
-					if (e.code === 'Space') {
-						setRadio(value)
-					}
-				}}
+				// onClick={() => setRadio(value)}
+				// tabIndex={0}
+				// onKeyUp={(e) => {
+				// 	if (e.code === 'Space') {
+				// 		setRadio(value)
+				// 		console.log('space')
+				// 	}
+				// }}
 			>
 				<input
 					type='radio'
 					className='border-black-200 text-orange-600 bg-white-200 focus:ring-orange-600 focus:ring-opacity-0'
 					value={value}
+					onChange={onChange}
 					checked={controlledState === value}
-					onChange={() => setRadio(value)}
-					tabIndex={-1}
+					// tabIndex={-1}
+					name='payment_method'
+					id={controlledState}
+					onBlur={onBlur}
 				/>
+				{/* <Field type='radio' name='payment_method' value={value}></Field> */}
 				<label className='ml-4 text-sm font-bold'>{label}</label>
 			</div>
 		)
@@ -41,9 +60,10 @@ const RadioGroup = ({
 
 	return (
 		<div className='radio-group' role='radiogroup'>
-			<label className='inline-block' htmlFor='' aria-labelledby={title} tabIndex={-1}>
+			<label className='inline-block' htmlFor='' aria-labelledby={title}>
 				{title}
 			</label>
+			{error && touched ? <div>{error}</div> : null}
 			{values.map(({ value, label }) => (
 				<div key={value} className='mb-4'>
 					<RadioInput value={value} label={label}></RadioInput>
@@ -52,8 +72,6 @@ const RadioGroup = ({
 		</div>
 	)
 }
-
-export default RadioGroup
 
 {
 	/* SOLUTION #2 */

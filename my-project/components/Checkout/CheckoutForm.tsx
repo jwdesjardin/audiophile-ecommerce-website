@@ -2,8 +2,11 @@ import React, { ReactNode } from 'react'
 import RadioGroup from '../RadioInput'
 import TextInput from '../TextInput'
 import { Formik } from 'formik'
+import { FormikRadioGroup } from '../FormikRadioGroup'
 
 export const CheckoutForm = () => {
+	const [radio, setRadio] = React.useState('')
+
 	return (
 		<section className='content-container p-6 bg-white-100 rounded-lg mb-8'>
 			<h2 className='h4 mb-8'>Checkout</h2>
@@ -56,7 +59,7 @@ export const CheckoutForm = () => {
 				onSubmit={(values, { setSubmitting }) => {
 					console.log('submit')
 					setTimeout(() => {
-						alert(JSON.stringify(values, null, 2))
+						alert(JSON.stringify({ ...values, payment_method: radio }, null, 2))
 						setSubmitting(false)
 					}, 400)
 				}}
@@ -96,6 +99,7 @@ export const CheckoutForm = () => {
 							></TextInput>
 						)
 					}
+					console.log(values)
 					return (
 						<form action='' onSubmit={handleSubmit}>
 							<div className='pb-2'>
@@ -206,9 +210,12 @@ export const CheckoutForm = () => {
 								<h4 className='subtitle text-orange-600 mb-4'>Payment Details</h4>
 								<RadioGroup
 									title='Payment Method'
-									values={['e-money', 'cash']}
-									controlledState={''}
-									setRadio={() => {}}
+									values={[
+										{ label: 'E-money', value: 'emoney' },
+										{ label: 'Cash', value: 'cash' },
+									]}
+									setRadio={setRadio}
+									controlledState={radio}
 								></RadioGroup>
 								<div>
 									<TextInput
