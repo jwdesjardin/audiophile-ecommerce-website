@@ -21,15 +21,35 @@ export const CheckoutForm = () => {
 					emoney_pin: '',
 				}}
 				validate={(values) => {
-					const errors: { name?: string; email?: string; phone?: string } = {}
+					const errors: Partial<typeof values> = {}
 					if (!values.name) {
 						errors.name = '* Required'
 					} else if (!values.email) {
 						errors.email = '* Required'
-					} else if (!values.phone) {
-						errors.phone = '* Required'
 					} else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(values.email)) {
 						errors.email = '* Invalid email address'
+					} else if (!values.phone) {
+						errors.phone = '* Required'
+					} else if (!/^\d+$/i.test(values.phone)) {
+						errors.phone = '* Phone # must only include numbers'
+					} else if (!values.address) {
+						errors.address = '* Required'
+					} else if (!values.zip) {
+						errors.zip = '* Required'
+					} else if (!/^\d+$/i.test(values.zip)) {
+						errors.zip = '* Zip must only include numbers'
+					} else if (!values.city) {
+						errors.city = '* Required'
+					} else if (!values.country) {
+						errors.country = '* Required'
+					} else if (!values.emoney_number) {
+						errors.emoney_number = '* Required'
+					} else if (!/^\d+$/i.test(values.emoney_number)) {
+						errors.emoney_number = '* # must only include numbers'
+					} else if (!values.emoney_pin) {
+						errors.emoney_pin = '* Required'
+					} else if (!/^\d+$/i.test(values.emoney_pin)) {
+						errors.emoney_pin = '* PIN must only include numbers'
 					}
 					return errors
 				}}
