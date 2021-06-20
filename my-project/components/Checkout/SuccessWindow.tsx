@@ -1,7 +1,9 @@
+import Link from 'next/link'
 import React from 'react'
 import { OrderCTX } from '../../context'
 
 export const SuccessWindow = () => {
+	const { setOrder } = React.useContext(OrderCTX)
 	return (
 		<div className='bg-white-100 p-8 md:p-12 mx-6 rounded-lg md:w-[540px]'>
 			<div className='mb-6 md:mb-8'>
@@ -13,7 +15,13 @@ export const SuccessWindow = () => {
 			</div>
 
 			<OrderReview />
-			<button className='button-one w-full'>Back To Home</button>
+			<Link href='/' passHref>
+				<a>
+					<button className='button-one w-full' onClick={() => setOrder(null)}>
+						Back To Home
+					</button>
+				</a>
+			</Link>
 		</div>
 	)
 }
@@ -35,7 +43,7 @@ const OrderReview = () => {
 		<div className='rounded-lg overflow-hidden mb-6 md:mb-12 w-full'>
 			<div className='flex flex-col md:flex-row w-full'>
 				<div className='bg-white-400 p-6 md:w-7/12'>
-					<ul className='w-full border-b border-black-400 mb-2 border-opacity-50'>
+					<ul className='w-full border-b border-black-400 mb-2 border-opacity-50 '>
 						{list.map((item) => (
 							<li className='flex items-center justify-between mb-2'>
 								<div className='w-[50px] flex-shrink-0'>
@@ -60,7 +68,7 @@ const OrderReview = () => {
 							: ''}
 					</button>
 				</div>
-				<div className='bg-black-900 text-white-200 p-6 md:w-5/12 flex flex-col justify-center'>
+				<div className='bg-black-900 text-white-200 p-6 md:w-5/12 flex flex-col justify-end pb-10'>
 					<p className='uppercase font-extralight mb-2 text-black-400'>Grand Total</p>
 					<p className='h6'>
 						$

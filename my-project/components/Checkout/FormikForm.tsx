@@ -4,7 +4,7 @@ import { CartCTX, OrderCTX } from '../../context'
 import createRouteLoader from 'next/dist/client/route-loader'
 
 export const FormikForm = () => {
-	const { cart, cartTotals, cartItems } = React.useContext(CartCTX)
+	const { cart, cartTotals, setCart } = React.useContext(CartCTX)
 	const { setOrder } = React.useContext(OrderCTX)
 
 	return (
@@ -61,6 +61,7 @@ export const FormikForm = () => {
 
 					setTimeout(() => {
 						setOrder({ cartTotals: cartTotals(), cartItems: cart, customerInfo: { ...values } })
+						setCart([])
 						setSubmitting(false)
 					}, 400)
 				}}

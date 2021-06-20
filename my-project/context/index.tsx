@@ -8,14 +8,12 @@ interface CartContext {
 	cart: CartItem[]
 	setCart: React.Dispatch<React.SetStateAction<CartItem[]>>
 	cartTotals: () => { subTotal: number; VAT: number; grandTotal: number }
-	cartItems: () => { item: ProductCartData; quantity: number; sku: string }[]
 }
 
 export const CartCTX = React.createContext<CartContext>({
 	cart: [],
 	setCart: (item) => {},
 	cartTotals: () => ({ subTotal: 0, VAT: 0, grandTotal: 0 }),
-	cartItems: () => [],
 })
 
 export function CartWrapper({ children }) {
@@ -28,16 +26,7 @@ export function CartWrapper({ children }) {
 		return { subTotal, VAT, grandTotal }
 	}, [cart])
 
-	const cartItems = React.useCallback(() => {
-		return cart.reduce(
-			(a, c) => [...a, { item: c.item, quantity: c.qty, sku: c.item.slug.current }],
-			[]
-		)
-	}, [cart])
-
-	return (
-		<CartCTX.Provider value={{ cart, setCart, cartTotals, cartItems }}>{children}</CartCTX.Provider>
-	)
+	return <CartCTX.Provider value={{ cart, setCart, cartTotals }}>{children}</CartCTX.Provider>
 }
 
 // ORDER CONTEXT
