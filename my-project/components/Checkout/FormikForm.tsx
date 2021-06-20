@@ -1,10 +1,10 @@
 import React, { ReactNode } from 'react'
 import { Formik, Field, Form } from 'formik'
 
-export const CheckoutFormNew = () => {
+export const FormikForm = () => {
 	return (
-		<section className='content-container p-6 bg-white-100 rounded-lg mb-8'>
-			<h2 className='h4 mb-8'>Checkout</h2>
+		<section className='content-container px-6 lg:px-12  pt-6 md:pt-8 lg:pt-14 bg-white-100 rounded-lg mb-8'>
+			<h2 className='h4 lg:h3 mb-8 lg:mb-10'>Checkout</h2>
 			<Formik
 				initialValues={{
 					name: '',
@@ -83,7 +83,12 @@ export const CheckoutFormNew = () => {
 							</FormSection>
 
 							<FormSection title='Shipping Info'>
-								<FormikTextInput label='Address' id='address' placeholder='1137 Williams Avenue' />
+								<FormikTextInput
+									label='Address'
+									id='address'
+									placeholder='1137 Williams Avenue'
+									fullWidth
+								/>
 								<FormikTextInput label='ZIP C0de' id='zip' placeholder='10002' />
 								<FormikTextInput label='City' id='city' placeholder='New York' />
 								<FormikTextInput label='Country' id='country' placeholder='United States' />
@@ -91,7 +96,6 @@ export const CheckoutFormNew = () => {
 
 							<FormSection title='Payment Details'>
 								<FormikRadioGroup values={values} />
-
 								{values.payment_method === 'emoney' && (
 									<>
 										<FormikTextInput
@@ -103,10 +107,6 @@ export const CheckoutFormNew = () => {
 									</>
 								)}
 							</FormSection>
-
-							<button type='submit' disabled={isSubmitting}>
-								Submit
-							</button>
 						</Form>
 					)
 				}}
@@ -119,36 +119,40 @@ const FormSection = ({ title, children }: { title: string; children: ReactNode }
 	return (
 		<div className='pb-2'>
 			<h3 className='subtitle text-orange-600 mb-4'>{title}</h3>
-			{children}
+			<div className='flex flex-col md:grid md:grid-cols-2 md:gap-x-4'>{children}</div>
 		</div>
 	)
 }
 
-const FormikTextInput = ({ label, id, ...rest }) => {
+const FormikTextInput = ({ label, id, fullWidth = false, ...rest }) => {
 	return (
-		<>
-			<label htmlFor={id} className='text-[12px] font-bold inline-block mb-2'>
-				{label}
-			</label>
+		<label
+			htmlFor={id}
+			className={`text-[12px] font-bold inline-block mb-2${fullWidth && ' col-span-2'}`}
+		>
+			{label}
+
 			<Field
 				id={id}
 				name={id}
 				{...rest}
-				className=' w-full px-6 py-3 rounded-lg text-sm font-bold placeholder-opacity-50 ring-1 grey-ring focus:orange-ring focus:ring-2 outline-none border-none bg-white-100 mb-6'
+				className=' mt-2 w-full px-6 py-3 rounded-lg text-sm font-bold placeholder-opacity-50 ring-1 grey-ring focus:orange-ring focus:ring-2 outline-none border-none bg-white-100 mb-6'
 			/>
-		</>
+		</label>
 	)
 }
 
 const FormikRadioGroup = ({ values }) => {
 	return (
 		<>
-			<div id='my-radio-group'>Payment Method</div>
-			<div role='group' aria-labelledby='my-radio-group' className='flex flex-col'>
+			<div id='my-radio-group' className='text-[12px] font-bold mb-2'>
+				Payment Method
+			</div>
+			<div role='group' aria-labelledby='my-radio-group' className='flex flex-col mb-2'>
 				<label
 					className={`ring-1 ${
 						values.payment_method === 'emoney' ? 'ring-orange-600' : 'ring-black-200'
-					} rounded-lg py-3 px-6 max-w-[309px] hover:ring-orange-600 focus:ring-orange-600 outline-none focus:ring-2 mb-2`}
+					} rounded-lg py-3 px-6 max-w-[309px] hover:ring-orange-600 focus:ring-orange-600 outline-none focus:ring-2 mb-4`}
 				>
 					<Field
 						type='radio'
@@ -156,7 +160,7 @@ const FormikRadioGroup = ({ values }) => {
 						value='emoney'
 						className='mr-4 text-orange-600 border-black-200 focus:ring-white-100'
 					/>
-					E-money
+					e-money
 				</label>
 				<label
 					className={`ring-1 ${
@@ -169,9 +173,8 @@ const FormikRadioGroup = ({ values }) => {
 						value='cash'
 						className='mr-4 text-orange-600 border-black-200 focus:ring-white-100'
 					/>
-					Cash
+					Cash on Delivery
 				</label>
-				<div>Payment Method: {values.payment_method}</div>
 			</div>
 		</>
 	)

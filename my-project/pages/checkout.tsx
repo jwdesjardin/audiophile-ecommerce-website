@@ -1,6 +1,6 @@
 import React from 'react'
-import { CheckoutForm } from '../components/Checkout/CheckoutForm'
-import { CheckoutFormNew } from '../components/Checkout/CheckoutFormNew'
+
+import { FormikForm } from '../components/Checkout/FormikForm'
 import { OrderSummary } from '../components/Checkout/OrderSummary'
 import Layout from '../components/Layout'
 
@@ -8,7 +8,7 @@ const checkout = () => {
 	return (
 		<Layout goBackButton>
 			<div>
-				<CheckoutFormNew></CheckoutFormNew>
+				<FormikForm></FormikForm>
 				<OrderSummary />
 			</div>
 		</Layout>
