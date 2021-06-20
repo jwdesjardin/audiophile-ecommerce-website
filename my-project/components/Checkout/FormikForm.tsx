@@ -1,7 +1,20 @@
 import React, { ReactNode } from 'react'
 import { Formik, Field, Form, ErrorMessage } from 'formik'
+import { CTX } from '../../context'
 
 export const FormikForm = () => {
+	const { cart } = React.useContext(CTX)
+	const cartTotal = cart.reduce((a, c) => a + c.item.price * c.qty, 0)
+	const cartVAT = cartTotal * 0.2
+	const cartItems = cart.reduce(
+		(a, c) => [
+			...a,
+			{ name: c.item.name, price: c.item.price, quantity: c.qty, sku: c.item.slug.current },
+		],
+		[]
+	)
+	const grandTotal = cartTotal + cartVAT + 50
+
 	return (
 		<section className='px-6 lg:px-12  pt-6 md:pt-8 lg:pt-14 bg-white-100 rounded-lg mb-8'>
 			<h2 className='h4 lg:h3 mb-8 lg:mb-10'>Checkout</h2>
@@ -54,7 +67,13 @@ export const FormikForm = () => {
 				onSubmit={(values, { setSubmitting }) => {
 					console.log('submit')
 					setTimeout(() => {
-						alert(JSON.stringify({ ...values }, null, 2))
+						alert(
+							JSON.stringify(
+								{ grandTotal, cartTotal, cartVAT, cartItems, customer_info: { ...values } },
+								null,
+								2
+							)
+						)
 						setSubmitting(false)
 					}, 400)
 				}}
