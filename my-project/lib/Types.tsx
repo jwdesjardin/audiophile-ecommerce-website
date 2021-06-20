@@ -35,10 +35,11 @@ export type CartItem = {
 }
 
 export type PlacedOrder = {
-	cartTotal: number
-	cartSub: number
-	cartVAT: number
-	cartGrandTotal: number
+	cartTotals: {
+		subTotal: number
+		VAT: number
+		grandTotal: number
+	}
 	cartItems: CartItem[]
 	customerInfo: CustomerInfo
 }

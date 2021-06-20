@@ -1,10 +1,11 @@
 import React, { ReactNode } from 'react'
 import { Formik, Field, Form, ErrorMessage } from 'formik'
-import { CartCTX } from '../../context'
+import { CartCTX, OrderCTX } from '../../context'
 import createRouteLoader from 'next/dist/client/route-loader'
 
 export const FormikForm = () => {
 	const { cart, cartTotals, cartItems } = React.useContext(CartCTX)
+	const { setOrder } = React.useContext(OrderCTX)
 
 	return (
 		<section className='px-6 lg:px-12  pt-6 md:pt-8 lg:pt-14 bg-white-100 rounded-lg mb-8'>
@@ -59,16 +60,7 @@ export const FormikForm = () => {
 					console.log('order created')
 
 					setTimeout(() => {
-						alert(
-							JSON.stringify(
-								{ cartTotals: cartTotals(), cartItems: cartItems(), customer_info: { ...values } },
-								null,
-								2
-							)
-						)
-
-						// createOrder({ grandTotal, cartTotal, cartVAT, cartItems, customer_info: { ...values } })
-						// clearCart()
+						setOrder({ cartTotals: cartTotals(), cartItems: cart, customerInfo: { ...values } })
 						setSubmitting(false)
 					}, 400)
 				}}
@@ -223,7 +215,7 @@ const FormikRadioGroup = ({ values }) => {
 				<label
 					className={`ring-1 ${
 						values.payment_method === 'emoney' ? 'ring-orange-600' : 'ring-black-200'
-					} rounded-lg py-3 px-6 max-w-[309px] hover:ring-orange-600 focus:ring-orange-600 outline-none focus:ring-2 mb-4`}
+					} rounded-lg py-3 px-6 max-w-[309px] hover:ring-orange-600 focus:ring-orange-600 outline-none focus:ring-2 mb-4 `}
 				>
 					<Field
 						type='radio'
@@ -236,7 +228,7 @@ const FormikRadioGroup = ({ values }) => {
 				<label
 					className={`ring-1 ${
 						values.payment_method === 'cash' ? 'ring-orange-600' : 'ring-black-200'
-					} rounded-lg py-3 px-6 max-w-[309px] hover:ring-orange-600 focus:ring-orange-600 outline-none focus:ring-2  mb-2`}
+					} rounded-lg py-3 px-6 max-w-[309px] hover:ring-orange-600 focus:ring-orange-600 outline-none focus:ring-2  mb-2 `}
 				>
 					<Field
 						type='radio'
