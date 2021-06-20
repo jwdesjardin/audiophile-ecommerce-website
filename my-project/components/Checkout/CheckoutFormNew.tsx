@@ -144,13 +144,31 @@ const FormikRadioGroup = ({ values }) => {
 	return (
 		<>
 			<div id='my-radio-group'>Payment Method</div>
-			<div role='group' aria-labelledby='my-radio-group'>
-				<label>
-					<Field type='radio' name='payment_method' value='emoney' />
+			<div role='group' aria-labelledby='my-radio-group' className='flex flex-col'>
+				<label
+					className={`ring-1 ${
+						values.payment_method === 'emoney' ? 'ring-orange-600' : 'ring-black-200'
+					} rounded-lg py-3 px-6 max-w-[309px] hover:ring-orange-600 focus:ring-orange-600 outline-none focus:ring-2 mb-2`}
+				>
+					<Field
+						type='radio'
+						name='payment_method'
+						value='emoney'
+						className='mr-4 text-orange-600 border-black-200 focus:ring-white-100'
+					/>
 					E-money
 				</label>
-				<label>
-					<Field type='radio' name='payment_method' value='cash' />
+				<label
+					className={`ring-1 ${
+						values.payment_method === 'cash' ? 'ring-orange-600' : 'ring-black-200'
+					} rounded-lg py-3 px-6 max-w-[309px] hover:ring-orange-600 focus:ring-orange-600 outline-none focus:ring-2  mb-2`}
+				>
+					<Field
+						type='radio'
+						name='payment_method'
+						value='cash'
+						className='mr-4 text-orange-600 border-black-200 focus:ring-white-100'
+					/>
 					Cash
 				</label>
 				<div>Payment Method: {values.payment_method}</div>
