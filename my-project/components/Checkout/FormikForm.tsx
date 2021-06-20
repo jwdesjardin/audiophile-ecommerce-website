@@ -70,7 +70,7 @@ export const FormikForm = () => {
 					/* and other goodies */
 				}) => {
 					return (
-						<Form onSubmit={handleSubmit}>
+						<Form onSubmit={handleSubmit} id='user-info'>
 							<FormSection title='Billing Details'>
 								<FormikTextInput
 									showError={errors.name && touched.name}

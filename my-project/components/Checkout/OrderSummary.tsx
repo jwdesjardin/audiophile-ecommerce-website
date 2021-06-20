@@ -60,7 +60,9 @@ export const OrderSummary = () => {
 					</p>
 				</div>
 			</div>
-			<button className='button-one w-full'>Continue & Pay</button>
+			<button className='button-one w-full' type='submit' form='user-info'>
+				Continue & Pay
+			</button>
 		</aside>
 	)
 }
