@@ -1,5 +1,5 @@
 import React, { ReactNode } from 'react'
-import { Formik, Field, Form } from 'formik'
+import { Formik, Field, Form, ErrorMessage } from 'formik'
 
 export const FormikForm = () => {
 	return (
@@ -72,26 +72,53 @@ export const FormikForm = () => {
 					return (
 						<Form onSubmit={handleSubmit}>
 							<FormSection title='Billing Details'>
-								<FormikTextInput label='Name' id='name' placeholder='Alexei Ward' />
 								<FormikTextInput
+									showError={errors.name && touched.name}
+									label='Name'
+									id='name'
+									placeholder='Alexei Ward'
+								/>
+								<FormikTextInput
+									showError={errors.email && touched.email}
 									label='Email Address'
 									id='email'
 									placeholder='alexei@gmail.com'
 									type='email'
 								/>
-								<FormikTextInput label='Phone Number' id='phone' placeholder='+1 202-555-1036' />
+								<FormikTextInput
+									showError={errors.phone && touched.phone}
+									label='Phone Number'
+									id='phone'
+									placeholder='+1 202-555-1036'
+								/>
 							</FormSection>
 
 							<FormSection title='Shipping Info'>
 								<FormikTextInput
+									showError={errors.address && touched.address}
 									label='Address'
 									id='address'
 									placeholder='1137 Williams Avenue'
 									fullWidth
 								/>
-								<FormikTextInput label='ZIP C0de' id='zip' placeholder='10002' />
-								<FormikTextInput label='City' id='city' placeholder='New York' />
-								<FormikTextInput label='Country' id='country' placeholder='United States' />
+								<FormikTextInput
+									showError={errors.zip && touched.zip}
+									label='ZIP C0de'
+									id='zip'
+									placeholder='10002'
+								/>
+								<FormikTextInput
+									showError={errors.city && touched.city}
+									label='City'
+									id='city'
+									placeholder='New York'
+								/>
+								<FormikTextInput
+									showError={errors.country && touched.country}
+									label='Country'
+									id='country'
+									placeholder='United States'
+								/>
 							</FormSection>
 
 							<FormSection title='Payment Details'>
@@ -99,11 +126,17 @@ export const FormikForm = () => {
 								{values.payment_method === 'emoney' && (
 									<>
 										<FormikTextInput
+											showError={errors.emoney_number && touched.emoney_number}
 											label='e-money Number'
 											id='emoney_number'
 											placeholder='12345678911'
 										/>
-										<FormikTextInput label='e-moeny PIN' id='emoney_pin' placeholder='1234' />
+										<FormikTextInput
+											showError={errors.emoney_pin && touched.emoney_pin}
+											label='e-moeny PIN'
+											id='emoney_pin'
+											placeholder='1234'
+										/>
 									</>
 								)}
 							</FormSection>
@@ -124,19 +157,29 @@ const FormSection = ({ title, children }: { title: string; children: ReactNode }
 	)
 }
 
-const FormikTextInput = ({ label, id, fullWidth = false, ...rest }) => {
+const FormikTextInput = ({ label, id, showError, fullWidth = false, ...rest }) => {
 	return (
 		<label
 			htmlFor={id}
-			className={`text-[12px] font-bold inline-block mb-2${fullWidth && ' col-span-2'}`}
+			className={`text-[12px] font-bold inline-block 
+			mb-2${fullWidth && ' col-span-2'}${showError ? ' text-red-600' : ''}`}
 		>
 			{label}
-
+			<ErrorMessage
+				component='span'
+				className='text-red-600 inline-block float-right'
+				name={id}
+			></ErrorMessage>
 			<Field
 				id={id}
 				name={id}
 				{...rest}
-				className=' mt-2 w-full px-6 py-3 rounded-lg text-sm font-bold placeholder-opacity-50 ring-1 grey-ring focus:orange-ring focus:ring-2 outline-none border-none bg-white-100 mb-6'
+				className={` mt-2 w-full px-6 py-3 rounded-lg 
+				text-sm font-bold placeholder-opacity-50 ring-1 
+				grey-ring focus:orange-ring focus:ring-2 outline-none 
+				border-none bg-white-100 mb-6
+				${showError && ' ring-red-600 ring-2'}
+				`}
 			/>
 		</label>
 	)
