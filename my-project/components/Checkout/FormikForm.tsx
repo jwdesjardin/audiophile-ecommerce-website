@@ -3,7 +3,7 @@ import { Formik, Field, Form } from 'formik'
 
 export const FormikForm = () => {
 	return (
-		<section className='content-container px-6 lg:px-12  pt-6 md:pt-8 lg:pt-14 bg-white-100 rounded-lg mb-8'>
+		<section className='px-6 lg:px-12  pt-6 md:pt-8 lg:pt-14 bg-white-100 rounded-lg mb-8'>
 			<h2 className='h4 lg:h3 mb-8 lg:mb-10'>Checkout</h2>
 			<Formik
 				initialValues={{

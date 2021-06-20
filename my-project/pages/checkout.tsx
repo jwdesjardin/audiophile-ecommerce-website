@@ -7,9 +7,11 @@ import Layout from '../components/Layout'
 const checkout = () => {
 	return (
 		<Layout goBackButton>
-			<div>
+			<div className='flex flex-col lg:flex-row lg:items-start lg:space-x-8 lg:mb-[140px] content-container'>
 				<FormikForm></FormikForm>
-				<OrderSummary />
+				<div className='lg:w-[350px] lg:flex-shrink-0'>
+					<OrderSummary />
+				</div>
 			</div>
 		</Layout>
 	)

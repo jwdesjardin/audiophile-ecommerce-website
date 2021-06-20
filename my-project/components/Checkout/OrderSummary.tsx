@@ -31,7 +31,7 @@ export const OrderSummary = () => {
 	}, [])
 
 	return (
-		<aside className='content-container p-6 bg-white-100 rounded-lg mb-24'>
+		<aside className=' p-6 bg-white-100 rounded-lg mb-24'>
 			<h3 className='text-lg uppercase font-bold mb-8'>Summary</h3>
 			<div className=''>
 				{/* ROWS */}
