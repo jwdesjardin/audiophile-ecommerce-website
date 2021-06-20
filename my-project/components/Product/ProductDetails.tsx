@@ -1,5 +1,5 @@
 import React from 'react'
-import { CTX } from '../../context'
+import { CartCTX } from '../../context'
 import { Product } from '../../lib/queryTypes'
 import NumberInput from '../NumberInput'
 
@@ -12,7 +12,7 @@ export const ProductDetails = ({
 	setQty: React.Dispatch<React.SetStateAction<number>>
 	product: Product
 }) => {
-	const { cart, setCart } = React.useContext(CTX)
+	const { cart, setCart } = React.useContext(CartCTX)
 
 	const addToCart: React.MouseEventHandler<HTMLButtonElement> = (event) => {
 		const target = event.target as HTMLButtonElement

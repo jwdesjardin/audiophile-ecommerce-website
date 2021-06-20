@@ -1,8 +1,6 @@
 import React from 'react'
 import Link from 'next/link'
 import { ShoppingCart } from './ShoppingCart'
-import { ProductCartData } from '../../lib/queryTypes'
-import { CTX } from '../../context'
 
 const Navbar = ({
 	header,
@@ -13,8 +11,6 @@ const Navbar = ({
 }) => {
 	const linkHoverEffect = 'hover:text-orange-600 transition'
 	const [shoppingCartModal, setShoppingCartModal] = React.useState(false)
-
-	const { cart, setCart } = React.useContext(CTX)
 
 	return (
 		<div

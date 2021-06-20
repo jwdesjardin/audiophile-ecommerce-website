@@ -1,11 +1,11 @@
 import Link from 'next/link'
 import React from 'react'
-import { CTX } from '../../context'
+import { CartCTX } from '../../context'
 import { ProductCartData } from '../../lib/queryTypes'
 import NumberInput from '../NumberInput'
 
 export const ShoppingCart = () => {
-	const { cart, setCart } = React.useContext(CTX)
+	const { cart, setCart } = React.useContext(CartCTX)
 	return (
 		<div className='bg-black-900 bg-opacity-30 fixed h-screen w-full'>
 			<div className='content-container relative'>
@@ -69,7 +69,7 @@ const CartRow = ({
 		qty: number
 	}
 }) => {
-	const { cart, setCart } = React.useContext(CTX)
+	const { cart, setCart } = React.useContext(CartCTX)
 	console.log(cart)
 	return (
 		<div className='flex items-center justify-between mb-6'>

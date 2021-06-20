@@ -1,9 +1,10 @@
 import React, { ReactNode } from 'react'
 import { Formik, Field, Form, ErrorMessage } from 'formik'
-import { CTX } from '../../context'
+import { CartCTX } from '../../context'
+import createRouteLoader from 'next/dist/client/route-loader'
 
 export const FormikForm = () => {
-	const { cart } = React.useContext(CTX)
+	const { cart } = React.useContext(CartCTX)
 	const cartTotal = cart.reduce((a, c) => a + c.item.price * c.qty, 0)
 	const cartVAT = cartTotal * 0.2
 	const cartItems = cart.reduce(
@@ -65,7 +66,7 @@ export const FormikForm = () => {
 					return errors
 				}}
 				onSubmit={(values, { setSubmitting }) => {
-					console.log('submit')
+					console.log('order created')
 					setTimeout(() => {
 						alert(
 							JSON.stringify(
@@ -74,6 +75,9 @@ export const FormikForm = () => {
 								2
 							)
 						)
+
+						// createOrder({ grandTotal, cartTotal, cartVAT, cartItems, customer_info: { ...values } })
+						// clearCart()
 						setSubmitting(false)
 					}, 400)
 				}}

@@ -1,9 +1,9 @@
 import React from 'react'
-import { CTX } from '../../context'
+import { CartCTX } from '../../context'
 import { ProductCartData } from '../../lib/queryTypes'
 
 export const OrderSummary = () => {
-	const { cart } = React.useContext(CTX)
+	const { cart } = React.useContext(CartCTX)
 
 	const DetailRow = ({ label, value }: { label: string; value: string }) => (
 		<div className='flex justify-between mb-2'>

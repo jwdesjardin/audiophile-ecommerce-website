@@ -1,3 +1,5 @@
+import { ProductCartData } from './queryTypes'
+
 export interface FormikData {
 	error: string
 	value: string
@@ -12,4 +14,31 @@ export interface FormikData {
 		(e: React.FocusEvent<any>): void
 		<T = any>(fieldOrEvent: T): T extends string ? (e: any) => void : void
 	}
+}
+
+interface CustomerInfo {
+	name: string
+	email: string
+	phone: string
+	address: string
+	zip: string
+	city: string
+	country: string
+	payment_method: string
+	emoney_number?: string
+	emoney_pin?: string
+}
+
+export type CartItem = {
+	item: ProductCartData
+	qty: number
+}
+
+export type PlacedOrder = {
+	cartTotal: number
+	cartSub: number
+	cartVAT: number
+	cartGrandTotal: number
+	cartItems: CartItem[]
+	customerInfo: CustomerInfo
 }
