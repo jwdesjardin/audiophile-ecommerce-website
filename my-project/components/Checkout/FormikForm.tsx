@@ -4,17 +4,7 @@ import { CartCTX } from '../../context'
 import createRouteLoader from 'next/dist/client/route-loader'
 
 export const FormikForm = () => {
-	const { cart } = React.useContext(CartCTX)
-	const cartTotal = cart.reduce((a, c) => a + c.item.price * c.qty, 0)
-	const cartVAT = cartTotal * 0.2
-	const cartItems = cart.reduce(
-		(a, c) => [
-			...a,
-			{ name: c.item.name, price: c.item.price, quantity: c.qty, sku: c.item.slug.current },
-		],
-		[]
-	)
-	const grandTotal = cartTotal + cartVAT + 50
+	const { cart, cartTotals, cartItems } = React.useContext(CartCTX)
 
 	return (
 		<section className='px-6 lg:px-12  pt-6 md:pt-8 lg:pt-14 bg-white-100 rounded-lg mb-8'>
@@ -67,10 +57,11 @@ export const FormikForm = () => {
 				}}
 				onSubmit={(values, { setSubmitting }) => {
 					console.log('order created')
+
 					setTimeout(() => {
 						alert(
 							JSON.stringify(
-								{ grandTotal, cartTotal, cartVAT, cartItems, customer_info: { ...values } },
+								{ cartTotals: cartTotals(), cartItems: cartItems(), customer_info: { ...values } },
 								null,
 								2
 							)

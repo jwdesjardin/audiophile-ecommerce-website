@@ -3,7 +3,17 @@ import { CartCTX } from '../../context'
 import { ProductCartData } from '../../lib/queryTypes'
 
 export const OrderSummary = () => {
-	const { cart } = React.useContext(CartCTX)
+	const { cart, cartTotals } = React.useContext(CartCTX)
+
+	const [{ subTotal, VAT, grandTotal }, setTotals] = React.useState<ReturnType<typeof cartTotals>>({
+		subTotal: 0,
+		VAT: 0,
+		grandTotal: 0,
+	})
+
+	React.useEffect(() => {
+		setTotals(cartTotals())
+	}, [cartTotals])
 
 	const DetailRow = ({ label, value }: { label: string; value: string }) => (
 		<div className='flex justify-between mb-2'>
@@ -11,24 +21,6 @@ export const OrderSummary = () => {
 			<p className='font-bold text-lg'>$ {value}</p>
 		</div>
 	)
-
-	const [subtotal, setSubtotal] = React.useState(0)
-	const [VAT, setVAT] = React.useState(0)
-
-	const getOrderSubtotal = (
-		cart: {
-			item: ProductCartData
-			qty: number
-		}[]
-	): number => {
-		return cart.reduce((a, c) => a + c.item.price * c.qty, 0)
-	}
-
-	React.useEffect(() => {
-		const temp_total = getOrderSubtotal(cart)
-		setSubtotal(temp_total)
-		setVAT(temp_total * 0.2)
-	}, [])
 
 	return (
 		<aside className=' p-6 bg-white-100 rounded-lg mb-24'>
@@ -40,7 +32,7 @@ export const OrderSummary = () => {
 				))}
 			</div>
 			<div>
-				<DetailRow label='Total' value={subtotal.toLocaleString()}></DetailRow>
+				<DetailRow label='Total' value={subTotal.toLocaleString()}></DetailRow>
 				<DetailRow label='Shipping' value='50'></DetailRow>
 				<DetailRow
 					label='VAT (Included)'
@@ -53,7 +45,7 @@ export const OrderSummary = () => {
 					<p className='font-extralight uppercase'>Grand Total</p>
 					<p className='font-bold text-lg text-orange-600'>
 						${' '}
-						{(subtotal + VAT + 50).toLocaleString(undefined, {
+						{grandTotal.toLocaleString(undefined, {
 							minimumFractionDigits: 2,
 							maximumFractionDigits: 2,
 						})}

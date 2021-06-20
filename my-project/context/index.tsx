@@ -7,15 +7,15 @@ import { CartItem, PlacedOrder } from '../lib/Types'
 interface CartContext {
 	cart: CartItem[]
 	setCart: React.Dispatch<React.SetStateAction<CartItem[]>>
-	cartTotals: () => void
-	cartItems: () => void
+	cartTotals: () => { subTotal: number; VAT: number; grandTotal: number }
+	cartItems: () => { item: ProductCartData; quantity: number; sku: string }[]
 }
 
 export const CartCTX = React.createContext<CartContext>({
 	cart: [],
 	setCart: (item) => {},
-	cartTotals: () => {},
-	cartItems: () => {},
+	cartTotals: () => ({ subTotal: 0, VAT: 0, grandTotal: 0 }),
+	cartItems: () => [],
 })
 
 export function CartWrapper({ children }) {

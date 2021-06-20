@@ -9,9 +9,9 @@ const checkout = () => {
 	return (
 		<Layout goBackButton>
 			{/* SUCCESS OVERLAY */}
-			<div className='fixed z-20 w-screen h-screen top-0 bg-black-900 bg-opacity-20 flex items-center justify-center'>
+			{/* <div className='fixed z-20 w-screen h-screen top-0 bg-black-900 bg-opacity-20 flex items-center justify-center'>
 				<SuccessWindow></SuccessWindow>
-			</div>
+			</div> */}
 
 			<div className='flex flex-col lg:flex-row lg:items-start lg:space-x-8 lg:mb-[140px] content-container'>
 				<FormikForm></FormikForm>
