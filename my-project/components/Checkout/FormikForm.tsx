@@ -14,7 +14,7 @@ export const FormikForm = () => {
 					zip: '',
 					city: '',
 					country: '',
-					payment_method: '',
+					payment_method: 'emoney',
 					emoney_number: '',
 					emoney_pin: '',
 				}}
@@ -138,6 +138,20 @@ export const FormikForm = () => {
 											placeholder='1234'
 										/>
 									</>
+								)}
+								{values.payment_method === 'cash' && (
+									<div className='flex flex-col items-center md:flex-row space-x-8 col-span-2 mb-12 mt-4'>
+										<div className='flex-shrink-0 mb-6 md:mb-0'>
+											<img src='/assets/shared/desktop/cashTransaction.svg' alt='' />
+										</div>
+										<div className='max-w-lg'>
+											<p>
+												The ‘Cash on Delivery’ option enables you to pay in cash when our delivery
+												courier arrives at your residence. Just make sure your address is correct so
+												that your order will not be cancelled.
+											</p>
+										</div>
+									</div>
 								)}
 							</FormSection>
 						</Form>
