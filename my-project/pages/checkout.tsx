@@ -9,7 +9,7 @@ const checkout = () => {
 	return (
 		<Layout goBackButton>
 			{/* SUCCESS OVERLAY */}
-			<div className='absolute w-screen h-screen top-0 bg-black-900 bg-opacity-20 flex items-center justify-center'>
+			<div className='fixed z-20 w-screen h-screen top-0 bg-black-900 bg-opacity-20 flex items-center justify-center'>
 				<SuccessWindow></SuccessWindow>
 			</div>
 
