@@ -25,7 +25,7 @@ export const ProductRecommended = ({ recommended }) => {
 
 const Card = ({ images, slug, title }: { images: string[]; slug: string; title: string }) => {
 	return (
-		<div className='flex flex-col items-center '>
+		<div className='flex flex-col items-center justify-between'>
 			<div className='rounded-xl overflow-hidden mb-8'>
 				<picture>
 					<source media='(min-width: 1110px)' srcSet={images[2]} />

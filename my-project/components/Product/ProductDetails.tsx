@@ -53,7 +53,7 @@ export const ProductDetails = ({
 					)}
 					<h2 className='h4 md:h3 lg:h2 mb-6'>{product.name}</h2>
 					<p className='mb-6'>{product.description}</p>
-					<span className='h6 mb-8 inline-block'>${product.price}</span>
+					<span className='h6 mb-8 inline-block'>${product.price.toLocaleString()}</span>
 					<div className='flex flex-row space-x-4'>
 						<div className='w-[120px]'>
 							<NumberInput

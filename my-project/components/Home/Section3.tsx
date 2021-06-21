@@ -23,7 +23,7 @@ export const Section3 = ({
 			</div>
 			<div className='bg-white-400 h-[200px] flex flex-col justify-center rounded-lg mb-6  md:w-1/2 flex-shrink-0 md:ml-4 lg:ml-8 md:h-auto'>
 				<div className='ml-6 md:ml-10 lg:ml-24'>
-					<h2 className='h4 mb-6'>{product.name}</h2>
+					<h2 className='h4 mb-6 max-w-sm'>{product.name}</h2>
 					<Link href={`/product/${product.slug.current}`} passHref>
 						<a>
 							<button className='button-two'>See product</button>

@@ -32,8 +32,8 @@ export default function Home({ data }: InferGetStaticPropsType<typeof getStaticP
 				product={data.section1Product}
 				text={data.section1Text}
 			></Section1>
-			<Section2 imgs={data.section2Image} product={data.section1Product}></Section2>
-			<Section3 imgs={data.section3Image} product={data.section1Product}></Section3>
+			<Section2 imgs={data.section2Image} product={data.section2Product}></Section2>
+			<Section3 imgs={data.section3Image} product={data.section3Product}></Section3>
 		</Layout>
 	)
 }

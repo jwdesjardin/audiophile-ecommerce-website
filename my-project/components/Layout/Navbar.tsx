@@ -29,13 +29,13 @@ const Navbar = ({
 					<Link href='/' passHref>
 						<a className={linkHoverEffect}>Home</a>
 					</Link>
-					<Link href='/headphones' passHref>
+					<Link href='/category/headphones' passHref>
 						<a className={linkHoverEffect}>Headphones</a>
 					</Link>
-					<Link href='/speakers' passHref>
+					<Link href='/category/speakers' passHref>
 						<a className={linkHoverEffect}>Speakers</a>
 					</Link>
-					<Link href='/earphones' passHref>
+					<Link href='/category/earphones' passHref>
 						<a className={linkHoverEffect}>Earphones</a>
 					</Link>
 				</div>
