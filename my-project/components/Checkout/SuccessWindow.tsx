@@ -46,7 +46,7 @@ const OrderReview = () => {
 					<ul className='w-full border-b border-black-400 mb-2 border-opacity-50 '>
 						{list.map((item) => (
 							<li className='flex items-center justify-between mb-2'>
-								<div className='w-[50px] flex-shrink-0'>
+								<div className='w-[50px] md:w-[75px]  flex-shrink-0'>
 									<img src={item.item.cartImage.asset.url} alt='' />
 								</div>
 								<div className='w-full ml-4'>
