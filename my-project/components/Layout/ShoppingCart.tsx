@@ -28,7 +28,13 @@ export const ShoppingCart = () => {
 						<div className=''>
 							<p className='h6'>Cart ({cart.length})</p>
 						</div>
-						<button className='text-black-400 underline' onClick={() => setCart([])}>
+						<button
+							className='text-black-400 underline'
+							onClick={() => {
+								setCart([])
+								localStorage.setItem('audiophile-cart', JSON.stringify([]))
+							}}
+						>
 							Remove all
 						</button>
 					</div>
@@ -98,29 +104,27 @@ const CartRow = ({
 				<NumberInput
 					controlledQty={row.qty}
 					incFunc={() => {
-						setCart((prevState) => {
-							const copy = [...prevState]
-							const index = prevState.findIndex((temp) => temp.item.slug === row.item.slug)
-							copy[index] = { item: row.item, qty: row.qty + 1 }
-							return copy
-						})
+						const newCart = [...cart]
+						const index = cart.findIndex((temp) => temp.item.slug === row.item.slug)
+						newCart[index] = { item: row.item, qty: row.qty + 1 }
+						setCart(newCart)
+						localStorage.setItem('audiophile-cart', JSON.stringify(newCart))
 					}}
 					decFunc={() => {
-						setCart((prevState) => {
-							const copy = [...prevState]
-							const index = prevState.findIndex((temp) => temp.item.slug === row.item.slug)
-							copy[index] = { item: row.item, qty: row.qty - 1 }
-							return copy
-						})
+						const newCart = [...cart]
+						const index = cart.findIndex((temp) => temp.item.slug === row.item.slug)
+						newCart[index] = { item: row.item, qty: row.qty - 1 }
+						setCart(newCart)
+						localStorage.setItem('audiophile-cart', JSON.stringify(newCart))
 					}}
 				></NumberInput>
 				{row.qty === 0 && (
 					<button
 						onClick={() => {
-							setCart((prevState) => {
-								const filtered = prevState.filter((temp) => temp.item.slug !== row.item.slug)
-								return [...filtered]
-							})
+							const filtered = cart.filter((temp) => temp.item.slug !== row.item.slug)
+							const newCart = [...filtered]
+							setCart(newCart)
+							localStorage.setItem('audiophile-cart', JSON.stringify(newCart))
 						}}
 						className='text-red-600 underline'
 					>

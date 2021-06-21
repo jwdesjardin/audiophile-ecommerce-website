@@ -20,7 +20,7 @@ export const ProductDetails = ({
 		const filtered = cart.filter((temp) => temp.item.slug.current !== item)
 		const repeated = cart.filter((temp) => temp.item.slug.current === item)
 		toggleCartVisible(true)
-		setCart((prevState) => [
+		const newCart = [
 			...filtered,
 			{
 				item: {
@@ -33,7 +33,9 @@ export const ProductDetails = ({
 				// adding to the total if it was already there
 				qty: (repeated[0]?.qty || 0) + qty,
 			},
-		])
+		]
+		setCart(newCart)
+		localStorage.setItem('audiophile-cart', JSON.stringify(newCart))
 		return
 	}
 

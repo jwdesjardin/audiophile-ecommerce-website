@@ -24,6 +24,17 @@ export function CartWrapper({ children }) {
 	const [cart, setCart] = React.useState<CartItem[]>([])
 	const [cartVisible, toggleCartVisible] = React.useState(false)
 
+	React.useEffect(() => {
+		const foundCart = localStorage.getItem('audiophile-cart')
+		let parsed: CartItem[] = []
+		if (foundCart) {
+			parsed = JSON.parse(foundCart)
+		}
+		setCart(parsed)
+		console.log(parsed)
+	}, [])
+	// find audio cart from local storgae or reset if not there
+
 	const cartTotals = React.useCallback(() => {
 		const subTotal = cart.reduce((a, c) => a + c.item.price * c.qty, 0)
 		const VAT = subTotal * 0.2
