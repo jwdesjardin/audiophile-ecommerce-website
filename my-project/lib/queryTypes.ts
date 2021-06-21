@@ -27,6 +27,7 @@ export interface Product {
 	mainImageTablet: ImageAsset
 	mainImageDesktop: ImageAsset
 	name: string
+	cartName: string
 	new: boolean
 	price: number
 	recommended: {
@@ -44,6 +45,7 @@ export interface ProductCartData {
 	slug: { type: 'slug'; current: string }
 	price: number
 	name: string
+	cartName: string
 }
 
 export interface HomeData {

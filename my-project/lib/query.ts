@@ -3,6 +3,7 @@ export const getOneProject = (slug: string) => {
   id, 
   name, 
   slug, 
+  cartName,
   mainImageMobile{
   	asset->{
   		url
