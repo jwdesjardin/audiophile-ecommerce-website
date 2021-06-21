@@ -73,7 +73,7 @@ const CartItem = ({
 				<img src={row.item.cartImage.asset.url} alt='' />
 			</div>
 			<div className='flex flex-col items-start w-full'>
-				<p className='font-bold uppercase'>{row.item.name}</p>
+				<p className='font-bold uppercase'>{row.item.cartName}</p>
 				<p className='text-black-400'>${row.item.price.toLocaleString()}</p>
 			</div>
 			<div>

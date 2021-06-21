@@ -12,13 +12,14 @@ export const ProductDetails = ({
 	setQty: React.Dispatch<React.SetStateAction<number>>
 	product: Product
 }) => {
-	const { cart, setCart } = React.useContext(CartCTX)
+	const { cart, setCart, toggleCartVisible } = React.useContext(CartCTX)
 
 	const addToCart: React.MouseEventHandler<HTMLButtonElement> = (event) => {
 		const target = event.target as HTMLButtonElement
 		const item = target.value
 		const filtered = cart.filter((temp) => temp.item.slug.current !== item)
 		const repeated = cart.filter((temp) => temp.item.slug.current === item)
+		toggleCartVisible(true)
 		setCart((prevState) => [
 			...filtered,
 			{
@@ -30,7 +31,7 @@ export const ProductDetails = ({
 					name: product.name,
 				},
 				// adding to the total if it was already there
-				qty: repeated[0]?.qty || 0 + qty,
+				qty: (repeated[0]?.qty || 0) + qty,
 			},
 		])
 		return
@@ -62,7 +63,12 @@ export const ProductDetails = ({
 							></NumberInput>
 						</div>
 
-						<button className='button-one' onClick={addToCart} value={product.slug.current}>
+						<button
+							className='button-one'
+							onClick={addToCart}
+							value={product.slug.current}
+							disabled={qty === 0}
+						>
 							Add To Cart
 						</button>
 					</div>

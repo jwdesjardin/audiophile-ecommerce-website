@@ -45,12 +45,12 @@ const OrderReview = () => {
 				<div className='bg-white-400 p-6 md:w-7/12'>
 					<ul className='w-full border-b border-black-400 mb-2 border-opacity-50 '>
 						{list.map((item) => (
-							<li className='flex items-center justify-between mb-2'>
+							<li key={item.item.slug.current} className='flex items-center justify-between mb-2'>
 								<div className='w-[50px] md:w-[75px]  flex-shrink-0'>
 									<img src={item.item.cartImage.asset.url} alt='' />
 								</div>
 								<div className='w-full ml-4'>
-									<p className='uppercase font-bold'>{item.item.name}</p>
+									<p className='uppercase font-bold'>{item.item.cartName}</p>
 									<p className='text-black-400 font-bold'>{item.item.price}</p>
 								</div>
 								<div className='text-black-400 font-bold'>x{item.qty}</div>

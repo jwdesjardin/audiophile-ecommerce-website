@@ -8,16 +8,21 @@ interface CartContext {
 	cart: CartItem[]
 	setCart: React.Dispatch<React.SetStateAction<CartItem[]>>
 	cartTotals: () => { subTotal: number; VAT: number; grandTotal: number }
+	cartVisible: boolean
+	toggleCartVisible: React.Dispatch<React.SetStateAction<boolean>>
 }
 
 export const CartCTX = React.createContext<CartContext>({
 	cart: [],
 	setCart: (item) => {},
 	cartTotals: () => ({ subTotal: 0, VAT: 0, grandTotal: 0 }),
+	cartVisible: false,
+	toggleCartVisible: (state: boolean) => {},
 })
 
 export function CartWrapper({ children }) {
 	const [cart, setCart] = React.useState<CartItem[]>([])
+	const [cartVisible, toggleCartVisible] = React.useState(false)
 
 	const cartTotals = React.useCallback(() => {
 		const subTotal = cart.reduce((a, c) => a + c.item.price * c.qty, 0)
@@ -26,7 +31,11 @@ export function CartWrapper({ children }) {
 		return { subTotal, VAT, grandTotal }
 	}, [cart])
 
-	return <CartCTX.Provider value={{ cart, setCart, cartTotals }}>{children}</CartCTX.Provider>
+	return (
+		<CartCTX.Provider value={{ cart, setCart, cartTotals, cartVisible, toggleCartVisible }}>
+			{children}
+		</CartCTX.Provider>
+	)
 }
 
 // ORDER CONTEXT

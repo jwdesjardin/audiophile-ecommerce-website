@@ -1,6 +1,7 @@
 import React from 'react'
 import Link from 'next/link'
 import { ShoppingCart } from './ShoppingCart'
+import { CartCTX } from '../../context'
 
 const Navbar = ({
 	header,
@@ -10,7 +11,8 @@ const Navbar = ({
 	colorMode?: 'dark' | 'transparent'
 }) => {
 	const linkHoverEffect = 'hover:text-orange-600 transition'
-	const [shoppingCartModal, setShoppingCartModal] = React.useState(false)
+
+	const { cartVisible, toggleCartVisible } = React.useContext(CartCTX)
 
 	return (
 		<div
@@ -38,13 +40,13 @@ const Navbar = ({
 					</Link>
 				</div>
 				<button
-					onClick={() => setShoppingCartModal(!shoppingCartModal)}
+					onClick={() => toggleCartVisible(true)}
 					className='shopping-cart-button md:ml-auto lg:ml-0 '
 				></button>
 			</div>
 
 			{header && <NavbarHeader header={header} />}
-			{shoppingCartModal && <ShoppingCart setShoppingCartModal={setShoppingCartModal} />}
+			{cartVisible && <ShoppingCart />}
 		</div>
 	)
 }

@@ -4,19 +4,18 @@ import { CartCTX } from '../../context'
 import { ProductCartData } from '../../lib/queryTypes'
 import NumberInput from '../NumberInput'
 
-export const ShoppingCart = ({
-	setShoppingCartModal,
-}: {
-	setShoppingCartModal: React.Dispatch<React.SetStateAction<boolean>>
-}) => {
-	const { cart, setCart, cartTotals } = React.useContext(CartCTX)
+export const ShoppingCart = () => {
+	const { cart, setCart, cartTotals, toggleCartVisible } = React.useContext(CartCTX)
+
+	const [emptyCartMsg, toggleEmptyCartMessage] = React.useState(false)
+
 	return (
 		<div
 			id='overlay'
 			onClick={(e) => {
 				console.log(e.target['id'])
 				if (e.target['id'] === 'overlay') {
-					setShoppingCartModal(false)
+					toggleCartVisible(false)
 				}
 			}}
 			className='bg-black-900 bg-opacity-30 fixed h-screen w-full top-0 z-10'
@@ -45,7 +44,27 @@ export const ShoppingCart = ({
 					</div>
 					<Link href='/checkout' passHref>
 						<a>
-							<button className='button-one w-full' disabled={cart.length === 0}>
+							{emptyCartMsg && (
+								<p className='text-red-600 text-sm text-center mb-2'>
+									Please add items to the cart
+								</p>
+							)}
+							<button
+								className='button-one w-full'
+								onClick={(e) => {
+									if (cartTotals().subTotal === 0) {
+										e.preventDefault()
+										if (emptyCartMsg === false) {
+											toggleEmptyCartMessage(true)
+											setTimeout(() => {
+												toggleEmptyCartMessage(false)
+											}, 4000)
+										}
+									} else {
+										toggleCartVisible(false)
+									}
+								}}
+							>
 								Checkout
 							</button>
 						</a>
