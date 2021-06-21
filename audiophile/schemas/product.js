@@ -14,6 +14,11 @@ export default {
 			type: 'string',
 		},
 		{
+			name: 'cartName',
+			title: 'Abbreviated Cart Name',
+			type: 'string',
+		},
+		{
 			name: 'slug',
 			title: 'Slug',
 			type: 'slug',
