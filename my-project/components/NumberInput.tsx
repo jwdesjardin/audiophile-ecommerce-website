@@ -23,8 +23,6 @@ function NumberInput({
 				if (e.code == 'ArrowUp' || e.code === 'ArrowDown') {
 					e.preventDefault()
 				}
-			}}
-			onKeyUp={(e) => {
 				if (e.code === 'ArrowUp' || e.code === 'ArrowRight') {
 					incFunc()
 				} else if ((e.code === 'ArrowDown' || e.code === 'ArrowLeft') && controlledQty > 0) {

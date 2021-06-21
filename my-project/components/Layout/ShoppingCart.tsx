@@ -9,7 +9,7 @@ export const ShoppingCart = ({
 }: {
 	setShoppingCartModal: React.Dispatch<React.SetStateAction<boolean>>
 }) => {
-	const { cart, setCart } = React.useContext(CartCTX)
+	const { cart, setCart, cartTotals } = React.useContext(CartCTX)
 	return (
 		<div
 			id='overlay'
@@ -27,7 +27,7 @@ export const ShoppingCart = ({
 					{/* HEADER */}
 					<div className='flex justify-between items-center mb-8'>
 						<div className=''>
-							<p className='h6'>Cart ({countCartItems(cart)})</p>
+							<p className='h6'>Cart ({cart.length})</p>
 						</div>
 						<button className='text-black-400 underline' onClick={() => setCart([])}>
 							Remove all
@@ -41,11 +41,11 @@ export const ShoppingCart = ({
 					{/* Total and checkout button */}
 					<div className='flex justify-between items-center mb-6'>
 						<p className='uppercase'>Total</p>
-						<p className='h6'>${countCartTotal(cart)}</p>
+						<p className='h6'>${cartTotals().subTotal.toLocaleString()}</p>
 					</div>
 					<Link href='/checkout' passHref>
 						<a>
-							<button className='button-one w-full' disabled={countCartTotal(cart) === 0}>
+							<button className='button-one w-full' disabled={cart.length === 0}>
 								Checkout
 							</button>
 						</a>
@@ -54,24 +54,6 @@ export const ShoppingCart = ({
 			</div>
 		</div>
 	)
-}
-
-const countCartItems = (
-	cart: {
-		item: ProductCartData
-		qty: number
-	}[]
-): number => {
-	return cart.length
-}
-
-const countCartTotal = (
-	cart: {
-		item: ProductCartData
-		qty: number
-	}[]
-): number => {
-	return cart.reduce((a, c) => a + c.item.price * c.qty, 0)
 }
 
 const CartRow = ({
@@ -86,14 +68,14 @@ const CartRow = ({
 	console.log(cart)
 	return (
 		<div className='flex items-center justify-between mb-6'>
-			<div className='rounded-lg overflow-hidden'>
-				<img src='/assets/cart/image-xx99-mark-two-headphones.jpg' className='h-16' alt='' />
+			<div className='rounded-lg overflow-hidden flex-shrink-0'>
+				<img src={row.item.cartImage.asset.url} className='h-16' alt='' />
 			</div>
-			<div className=''>
-				<h2 className='font-bold uppercase'>{row.item.name}</h2>
-				<p className='text-black-400'>${row.item.price}</p>
+			<div className='w-full ml-4'>
+				<h2 className='font-bold uppercase'>{row.item.cartName}</h2>
+				<p className='text-black-400'>${row.item.price.toLocaleString()}</p>
 			</div>
-			<div className='w-24 flex flex-col items-center'>
+			<div className='w-24 flex flex-col items-center flex-shrink-0'>
 				<NumberInput
 					controlledQty={row.qty}
 					incFunc={() => {

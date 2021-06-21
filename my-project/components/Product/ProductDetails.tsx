@@ -24,6 +24,7 @@ export const ProductDetails = ({
 			{
 				item: {
 					cartImage: product.cartImage,
+					cartName: product.cartName,
 					slug: product.slug,
 					price: product.price,
 					name: product.name,
