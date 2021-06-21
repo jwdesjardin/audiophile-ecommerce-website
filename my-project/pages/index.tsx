@@ -26,7 +26,7 @@ export default function Home({ data }: InferGetStaticPropsType<typeof getStaticP
 	return (
 		<Layout brandInfo navColorMode='transparent'>
 			<Hero />
-			<CategoryLinks></CategoryLinks>
+			<CategoryLinks className='my-[120px] lg:my-[200px]'></CategoryLinks>
 			<Section1
 				imgs={data.section1Image}
 				product={data.section1Product}

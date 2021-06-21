@@ -1,9 +1,13 @@
 import Link from 'next/link'
 import React from 'react'
 
-export const CategoryLinks = () => {
+export const CategoryLinks = ({ className = '' }: { className?: string }) => {
 	return (
-		<div className='content-container flex flex-col md:flex-row md:space-x-4 lg:space-x-8 my-[120px] lg:my-[200px] '>
+		<div
+			className={
+				'content-container flex flex-col md:flex-row md:space-x-4 lg:space-x-8' + ` ${className}`
+			}
+		>
 			<Card
 				imgUrl='/assets/shared/desktop/image-headphones.png'
 				title='Headphones'

@@ -2,6 +2,7 @@ import React from 'react'
 import Link from 'next/link'
 import { ShoppingCart } from './ShoppingCart'
 import { CartCTX } from '../../context'
+import { Menu } from './Menu'
 
 const Navbar = ({
 	header,
@@ -13,6 +14,7 @@ const Navbar = ({
 	const linkHoverEffect = 'hover:text-orange-600 transition'
 
 	const { cartVisible, toggleCartVisible } = React.useContext(CartCTX)
+	const [menuVisible, toggleMenuVisible] = React.useState(false)
 
 	return (
 		<div
@@ -21,7 +23,10 @@ const Navbar = ({
 			} text-white-100  `}
 		>
 			<div className='flex items-center justify-between md:justify-start lg:justify-between py-8 content-container'>
-				<button className='lg:hidden hamburger-button'></button>
+				<button
+					className='lg:hidden hamburger-button'
+					onClick={() => toggleMenuVisible(true)}
+				></button>
 				<div className='md:ml-10 lg:ml-0'>
 					<img src='/logo.svg' alt='' />
 				</div>
@@ -46,6 +51,7 @@ const Navbar = ({
 			</div>
 
 			{header && <NavbarHeader header={header} />}
+			{menuVisible && <Menu toggleMenuVisible={toggleMenuVisible}></Menu>}
 			{cartVisible && <ShoppingCart />}
 		</div>
 	)

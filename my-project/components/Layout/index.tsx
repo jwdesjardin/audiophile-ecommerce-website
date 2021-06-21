@@ -33,7 +33,7 @@ const Layout = ({
 			<main>
 				{goBackButton && <GoBackButton />}
 				{children}
-				{categoryLinks && <CategoryLinks></CategoryLinks>}
+				{categoryLinks && <CategoryLinks className='my-[120px] lg:my-[200px]'></CategoryLinks>}
 				{brandInfo && <BrandInfo></BrandInfo>}
 			</main>
 			<Footer></Footer>
