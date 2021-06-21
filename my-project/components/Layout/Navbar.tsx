@@ -44,7 +44,7 @@ const Navbar = ({
 			</div>
 
 			{header && <NavbarHeader header={header} />}
-			{shoppingCartModal && <ShoppingCart />}
+			{shoppingCartModal && <ShoppingCart setShoppingCartModal={setShoppingCartModal} />}
 		</div>
 	)
 }

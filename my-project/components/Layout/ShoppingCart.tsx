@@ -4,10 +4,23 @@ import { CartCTX } from '../../context'
 import { ProductCartData } from '../../lib/queryTypes'
 import NumberInput from '../NumberInput'
 
-export const ShoppingCart = () => {
+export const ShoppingCart = ({
+	setShoppingCartModal,
+}: {
+	setShoppingCartModal: React.Dispatch<React.SetStateAction<boolean>>
+}) => {
 	const { cart, setCart } = React.useContext(CartCTX)
 	return (
-		<div className='bg-black-900 bg-opacity-30 fixed h-screen w-full top-0 z-10'>
+		<div
+			id='overlay'
+			onClick={(e) => {
+				console.log(e.target['id'])
+				if (e.target['id'] === 'overlay') {
+					setShoppingCartModal(false)
+				}
+			}}
+			className='bg-black-900 bg-opacity-30 fixed h-screen w-full top-0 z-10'
+		>
 			<div className='content-container relative'>
 				{/* SHOPPING CART POPUP IN OVERLAY */}
 				<div className='bg-white-200 rounded-lg text-black-900 w-full md:w-[377px] absolute right-0 top-32 px-6 py-8'>
