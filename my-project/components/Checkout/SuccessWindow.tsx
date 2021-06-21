@@ -10,7 +10,9 @@ export const SuccessWindow = () => {
 				<div className='mb-8'>
 					<img src='/assets/shared/desktop/icon-check-circle.svg' alt='' />
 				</div>
-				<h2 className='h5 md:h3 mb-4 md:mb-6 max-w-xs'>Thank you for your order</h2>
+				<h2 className='h5 md:h3 mb-4 md:mb-6 max-w-xs'>
+					Thank you <br /> for your order
+				</h2>
 				<p className='text-black-400'>You will recieve an email confirmation shortly.</p>
 			</div>
 
