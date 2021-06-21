@@ -13,8 +13,8 @@ export const Section2 = ({
 	}
 }) => {
 	return (
-		<div className='content-container relative '>
-			<div className='h-[320px] flex items-center mb-6 md:mb-8 lg:mb-12'>
+		<div className='content-container relative flex justify-center '>
+			<div className='h-[320px] w-full md:w-[689px] lg:w-full flex items-center mb-6 md:mb-8 lg:mb-12'>
 				{/* Absolute postioned element that allows for html image loading with dynamic values */}
 				<div className='h-[320px] overflow-hidden rounded-lg absolute'>
 					<picture>
