@@ -1,6 +1,6 @@
 import Link from 'next/link'
 import React from 'react'
-import { ProductPreviewData } from '../../lib/query'
+import { ProductPreviewData } from '../../lib/queryTypes'
 
 export const ProductPreview = ({
 	flexReverse = true,
