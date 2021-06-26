@@ -15,10 +15,15 @@ import { Product, SlugArray } from '../../lib/queryTypes'
 
 // Returns paths - an array of abjects containing params
 export async function getStaticPaths() {
-	const Products: SlugArray = await sanityClient.fetch(getAllProductSlugs)
+	// SOLUTION via sanity
+	// const Products: SlugArray = await sanityClient.fetch(getAllProductSlugs)
+
+	// Local api solution
+	const res = await fetch('http://localhost:5000/product/slugs')
+	const Products: string[] = await res.json()
 
 	const paths = Products.map((product) => ({
-		params: { slug: product.slug.current },
+		params: { slug: product },
 	}))
 	return { paths, fallback: false }
 }
@@ -31,11 +36,13 @@ export async function getStaticProps({
 		slug: string
 	}
 }) {
-	const ProductData: Product[] = await sanityClient.fetch(getOneProject(params.slug))
+	// const ProductData: Product[] = await sanityClient.fetch(getOneProject(params.slug))
+	const res = await fetch(`http://localhost:5000/product/${params.slug}`)
+	const ProductData: Product = await res.json()
 
 	return {
 		props: {
-			product: ProductData[0],
+			product: ProductData,
 		},
 	}
 }

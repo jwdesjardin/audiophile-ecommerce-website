@@ -8,10 +8,12 @@ import { ProductPreviewData, SlugArray } from '../../lib/queryTypes'
 
 // Returns paths - an array of abjects containing params
 export async function getStaticPaths() {
-	const Categories: SlugArray = await sanityClient.fetch(getAllCategorySlugs)
+	// const Categories: SlugArray = await sanityClient.fetch(getAllCategorySlugs)
+	const res = await fetch('http://localhost/category/slugs')
+	const Categories: string[] = await res.json()
 
 	const paths = Categories.map((category) => ({
-		params: { slug: category.slug.current },
+		params: { slug: category },
 	}))
 
 	return { paths, fallback: false }
@@ -19,9 +21,11 @@ export async function getStaticPaths() {
 
 // Uses params to further collect page data
 export async function getStaticProps({ params }) {
-	const Products: ProductPreviewData[] = await sanityClient.fetch(
-		getProductsByCategory(params.slug)
-	)
+	// const Products: ProductPreviewData[] = await sanityClient.fetch(
+	// 	getProductsByCategory(params.slug)
+	// )
+	const res = await fetch(`http://localhost:3000/category/${params.slug}`)
+	const Products: ProductPreviewData[] = await res.json()
 
 	return {
 		props: {

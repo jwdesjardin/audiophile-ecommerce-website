@@ -1,7 +1,6 @@
 import React, { ReactNode } from 'react'
 import { Formik, Field, Form, ErrorMessage } from 'formik'
 import { CartCTX, OrderCTX } from '../../context'
-import createRouteLoader from 'next/dist/client/route-loader'
 
 export const FormikForm = () => {
 	const { cart, cartTotals, setCart } = React.useContext(CartCTX)
