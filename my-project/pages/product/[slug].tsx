@@ -11,7 +11,8 @@ import { ProductGallery } from '../../components/Product/ProductGallery'
 import { ProductRecommended } from '../../components/Product/ProductRecommended'
 
 import { useRouter } from 'next/router'
-import { Product, SlugArray } from '../../lib/queryTypes'
+import { ProductAPIType, ProductSanityType, SlugArray } from '../../lib/queryTypes'
+import { convertAPIProductForProps } from '../../lib/utils'
 
 // Returns paths - an array of abjects containing params
 export async function getStaticPaths() {
@@ -38,11 +39,12 @@ export async function getStaticProps({
 }) {
 	// const ProductData: Product[] = await sanityClient.fetch(getOneProject(params.slug))
 	const res = await fetch(`http://localhost:5000/product/${params.slug}`)
-	const ProductData: Product = await res.json()
+	const ProductData: ProductAPIType = await res.json()
+	const ProductReadyForProps: ProductSanityType = convertAPIProductForProps(ProductData)
 
 	return {
 		props: {
-			product: ProductData,
+			product: ProductReadyForProps,
 		},
 	}
 }
