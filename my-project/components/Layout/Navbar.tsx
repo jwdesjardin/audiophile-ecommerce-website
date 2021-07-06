@@ -44,10 +44,15 @@ const Navbar = ({
 						<a className={linkHoverEffect}>Earphones</a>
 					</Link>
 				</div>
-				<button
-					onClick={() => toggleCartVisible(true)}
-					className='shopping-cart-button md:ml-auto lg:ml-0 '
-				></button>
+				<div className='md:ml-auto lg:ml-0 flex items-center space-x-2'>
+					<button className='user-button'>
+						<i className='fas fa-user fa-lg'></i>
+					</button>
+					<button
+						onClick={() => toggleCartVisible(true)}
+						className='shopping-cart-button '
+					></button>
+				</div>
 			</div>
 
 			{header && <NavbarHeader header={header} />}
