@@ -38,6 +38,7 @@ export const ProductDetails = ({
 		localStorage.setItem('audiophile-cart', JSON.stringify(newCart))
 		return
 	}
+	console.log(product)
 
 	return (
 		<div className='content-container'>
