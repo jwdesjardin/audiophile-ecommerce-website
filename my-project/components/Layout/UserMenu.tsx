@@ -19,7 +19,13 @@ export const UserMenu = ({
 				<div className='flex justify-between items-center mb-8'>
 					<p className='h6'>Welcome, {user.name}</p>
 				</div>
-				<button className='button-two' onClick={() => setActiveUser(null)}>
+				<button
+					className='button-two'
+					onClick={() => {
+						setActiveUser(null)
+						localStorage.removeItem('activeUser')
+					}}
+				>
 					{' '}
 					Logout
 				</button>

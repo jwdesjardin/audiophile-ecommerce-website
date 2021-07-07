@@ -82,5 +82,12 @@ export const UserCTX = React.createContext<UserContext>({
 export function UserWrapper({ children }) {
 	const [activeUser, setActiveUser] = React.useState<ActiveUser | null>(null)
 
+	React.useEffect(() => {
+		const foundUser = localStorage.getItem('activeUser')
+		if (foundUser) {
+			setActiveUser(JSON.parse(foundUser))
+		}
+	}, [])
+
 	return <UserCTX.Provider value={{ activeUser, setActiveUser }}>{children}</UserCTX.Provider>
 }

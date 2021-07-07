@@ -55,12 +55,14 @@ const login = () => {
 										if (res.status === 200) {
 											// saves user data to context
 											const user = res.data
-											setActiveUser({
+											const newUser = {
 												_id: user._id,
 												name: user.name,
 												email: user.email,
 												isAdmin: user.isAdmin,
-											})
+											}
+											setActiveUser(newUser)
+											localStorage.setItem('activeUser', JSON.stringify(newUser))
 											router.push('/')
 										}
 										setSubmitting(false)
