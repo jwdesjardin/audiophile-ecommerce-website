@@ -234,6 +234,28 @@ July 6th
 
 ...
 
+July 7th
+
+[x] create order API
+
+- [x] imporve mt prisma starter files
+- [x] create prisma schema for orders
+- [x] migrate DB to new postgres db
+- [x] routes
+- [x] controllers
+  - [x] for creating order
+  - [x] for getting orders
+  - [x] for getting customers
+
+[x] create order client
+
+- [] add user or guest ui to formik form
+- [x] pass order data to server
+- [x] handle server response appropraitely
+
+[] add route/controllers to get user orders
+[] add ui to view user orders
+
 [] create orders on local env then prod env for server
 [] support orders in client
 [] share hosted project
