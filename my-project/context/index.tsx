@@ -1,6 +1,6 @@
 import React, { useCallback } from 'react'
 import { ProductCartData } from '../lib/queryTypes'
-import { CartItem, PlacedOrder } from '../lib/Types'
+import { ActiveUser, CartItem, PlacedOrder } from '../lib/Types'
 
 // CART CONTEXT
 
@@ -65,4 +65,22 @@ export function OrderWrapper({ children }) {
 	const [order, setOrder] = React.useState<PlacedOrder | null>(null)
 
 	return <OrderCTX.Provider value={{ order, setOrder }}>{children}</OrderCTX.Provider>
+}
+
+// USER CONTEXT
+
+interface UserContext {
+	activeUser: ActiveUser | null
+	setActiveUser: React.Dispatch<React.SetStateAction<ActiveUser>>
+}
+
+export const UserCTX = React.createContext<UserContext>({
+	activeUser: null,
+	setActiveUser: () => {},
+})
+
+export function UserWrapper({ children }) {
+	const [activeUser, setActiveUser] = React.useState<ActiveUser | null>(null)
+
+	return <UserCTX.Provider value={{ activeUser, setActiveUser }}>{children}</UserCTX.Provider>
 }
