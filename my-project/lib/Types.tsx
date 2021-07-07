@@ -43,3 +43,10 @@ export type PlacedOrder = {
 	cartItems: CartItem[]
 	customerInfo: CustomerInfo
 }
+
+export type ActiveUser = {
+	_id: string
+	name: string
+	email: string
+	isAdmin: boolean
+}

@@ -1,15 +1,17 @@
 import 'tailwindcss/tailwind.css'
 import '../styles/utilities.css'
-import { CartWrapper, OrderWrapper } from '../context'
+import { CartWrapper, OrderWrapper, UserWrapper } from '../context'
 import React from 'react'
 
 function MyApp({ Component, pageProps }) {
 	return (
-		<OrderWrapper>
-			<CartWrapper>
-				<Component {...pageProps} />
-			</CartWrapper>
-		</OrderWrapper>
+		<UserWrapper>
+			<OrderWrapper>
+				<CartWrapper>
+					<Component {...pageProps} />
+				</CartWrapper>
+			</OrderWrapper>
+		</UserWrapper>
 	)
 }
 
