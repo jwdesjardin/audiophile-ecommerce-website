@@ -1,6 +1,6 @@
 import React from 'react'
 import { CartCTX } from '../../context'
-import { Product } from '../../lib/queryTypes'
+import { ProductSanityType } from '../../lib/queryTypes'
 import NumberInput from '../NumberInput'
 
 export const ProductDetails = ({
@@ -10,7 +10,7 @@ export const ProductDetails = ({
 }: {
 	qty: number
 	setQty: React.Dispatch<React.SetStateAction<number>>
-	product: Product
+	product: ProductSanityType
 }) => {
 	const { cart, setCart, toggleCartVisible } = React.useContext(CartCTX)
 
@@ -38,6 +38,7 @@ export const ProductDetails = ({
 		localStorage.setItem('audiophile-cart', JSON.stringify(newCart))
 		return
 	}
+	console.log(product)
 
 	return (
 		<div className='content-container'>

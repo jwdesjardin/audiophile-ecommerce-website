@@ -6,18 +6,21 @@ export const ProductRecommended = ({ recommended }) => {
 		<section className='mt-[120px] content-container'>
 			<h2 className='h5 md:h3 mb-10 text-center'>You may also like</h2>
 			<div className='space-y-14 md:space-y-0 md:space-x-4 lg:space-x-8 md:flex md:flex-row'>
-				{recommended.map((product) => (
-					<Card
-						images={[
-							product.sharedImageMobile.asset.url,
-							product.sharedImageTablet.asset.url,
-							product.sharedImageDesktop.asset.url,
-						]}
-						key={product.slug.current}
-						slug={product.slug.current}
-						title={product.name}
-					/>
-				))}
+				{recommended.map((product) => {
+					console.log(product)
+					return (
+						<Card
+							images={[
+								product.sharedImageMobile.asset.url,
+								product.sharedImageTablet.asset.url,
+								product.sharedImageDesktop.asset.url,
+							]}
+							key={product.slug.current}
+							slug={product.slug.current}
+							title={product.name}
+						/>
+					)
+				})}
 			</div>
 		</section>
 	)

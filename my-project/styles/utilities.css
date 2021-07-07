@@ -38,6 +38,9 @@
     background-position: center;
     @apply w-8 h-8;
   }
+  .user-button {
+    @apply w-8 h-8;
+  }
   .orange-ring {
     @apply ring-orange-600;
   }

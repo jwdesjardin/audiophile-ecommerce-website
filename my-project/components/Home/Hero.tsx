@@ -17,7 +17,7 @@ export const Hero = () => {
 						Experience natural, lifelike audio and exceptional build quality made for the passionate
 						music enthusiast.
 					</p>
-					<Link href={'/product/xx99-mark-ii-headphones'} passHref>
+					<Link href={'/product/xx99-mark-two-headphones'} passHref>
 						<a>
 							<button className='button-one'>See product</button>
 						</a>

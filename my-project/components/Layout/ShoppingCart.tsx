@@ -90,7 +90,7 @@ const CartRow = ({
 	}
 }) => {
 	const { cart, setCart } = React.useContext(CartCTX)
-	console.log(cart)
+	console.log(row)
 	return (
 		<div className='flex items-center justify-between mb-6'>
 			<div className='rounded-lg overflow-hidden flex-shrink-0'>

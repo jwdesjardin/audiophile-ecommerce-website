@@ -1,24 +1,25 @@
 import React from 'react'
 import { InferGetStaticPropsType } from 'next'
-
-import sanityClient from '../../lib/client'
-import { getAllProductSlugs, getOneProject } from '../../lib/query'
-
 import { ProductDetails } from '../../components/Product/ProductDetails'
 import Layout from '../../components/Layout'
 import { ProductFeatures } from '../../components/Product/ProductFeatures'
 import { ProductGallery } from '../../components/Product/ProductGallery'
 import { ProductRecommended } from '../../components/Product/ProductRecommended'
 
-import { useRouter } from 'next/router'
-import { Product, SlugArray } from '../../lib/queryTypes'
+import { ProductAPIType, ProductSanityType } from '../../lib/queryTypes'
+import { convertAPIProductForProps } from '../../lib/utils'
 
 // Returns paths - an array of abjects containing params
 export async function getStaticPaths() {
-	const Products: SlugArray = await sanityClient.fetch(getAllProductSlugs)
+	// SOLUTION via sanity
+
+	// Local api solution
+	const res = await fetch('http://34.82.89.19:5000/product/slugs')
+	// const res = await fetch('http://localhost:5000/product/slugs')
+	const Products: string[] = await res.json()
 
 	const paths = Products.map((product) => ({
-		params: { slug: product.slug.current },
+		params: { slug: product },
 	}))
 	return { paths, fallback: false }
 }
@@ -31,11 +32,14 @@ export async function getStaticProps({
 		slug: string
 	}
 }) {
-	const ProductData: Product[] = await sanityClient.fetch(getOneProject(params.slug))
+	const res = await fetch(`http://34.82.89.19:5000/product/${params.slug}`)
+	// const res = await fetch(`http://localhost:5000/product/${params.slug}`)
+	const ProductData: ProductAPIType = await res.json()
+	const ProductReadyForProps: ProductSanityType = convertAPIProductForProps(ProductData)
 
 	return {
 		props: {
-			product: ProductData[0],
+			product: ProductReadyForProps,
 		},
 	}
 }

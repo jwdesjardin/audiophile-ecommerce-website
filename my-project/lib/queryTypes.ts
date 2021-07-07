@@ -1,7 +1,12 @@
 export type SlugArray = { slug: { _type: 'slug'; current: string } }[]
 export type ImageAsset = { asset: { url: string } }
 
-export interface ProductPreviewData {
+export type CategoryProductsAPIData = Omit<
+	ProductAPIType,
+	'includedItems' | 'recommendations' | 'category'
+>
+
+export interface CategoryProductsSanityData {
 	id: number
 	slug: { _type: 'slug'; current: string }
 	name: string
@@ -13,7 +18,9 @@ export interface ProductPreviewData {
 	previewImageDesktop: ImageAsset
 }
 
-export interface Product {
+export type ProductPreviewData = CategoryProductsSanityData
+
+export interface ProductSanityType {
 	cartImage: ImageAsset
 	categories: { title: string }
 	description: string
@@ -32,12 +39,66 @@ export interface Product {
 	price: number
 	recommended: {
 		name: string
-		slug: string
+		slug: { _type: 'slug'; current: string }
 		sharedImageMobile: ImageAsset
 		sharedImageTablet: ImageAsset
 		sharedImageDesktop: ImageAsset
 	}[]
 	slug: { type: 'slug'; current: string }
+}
+
+export interface ProductAPIType {
+	id: number
+	createdAt: string
+	updatedAt: string
+	cartImage: string
+	name: string
+	cartName: string
+	new: boolean
+	price: number
+	slug: string
+	categoryId: number
+	category: {
+		id: number
+		createdAt: string
+		updatedAt: string
+		name: string
+		slug: string
+		image: string
+	}
+	description: string
+	features: string
+	galleryImageMobile1: string
+	galleryImageMobile2: string
+	galleryImageMobile3: string
+	galleryImageTablet1: string
+	galleryImageTablet2: string
+	galleryImageTablet3: string
+	galleryImageDesktop1: string
+	galleryImageDesktop2: string
+	galleryImageDesktop3: string
+	mainImageMobile: string
+	mainImageTablet: string
+	mainImageDesktop: string
+	recommendations: {
+		id: number
+		createdAt: string
+		updatedAt: string
+		name: string
+		slug: string
+		imageMobile: string
+		imageTablet: string
+		imageDesktop: string
+		productId: number
+	}[]
+	includedItems: {
+		id: number
+		createdAt: string
+		updatedAt: string
+		name: string
+		quantity: number
+		productId: number
+	}[]
 }
 
 export interface ProductCartData {

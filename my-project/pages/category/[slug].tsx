@@ -1,17 +1,18 @@
 import React from 'react'
 import { InferGetStaticPropsType } from 'next'
 import Layout from '../../components/Layout'
-import { getAllCategorySlugs, getProductsByCategory } from '../../lib/query'
-import sanityClient from '../../lib/client'
 import { ProductPreview } from '../../components/Category/ProductPreview'
-import { ProductPreviewData, SlugArray } from '../../lib/queryTypes'
+import { CategoryProductsAPIData, CategoryProductsSanityData } from '../../lib/queryTypes'
+import { convertAPICategoryProductsForProps } from '../../lib/utils'
 
 // Returns paths - an array of abjects containing params
 export async function getStaticPaths() {
-	const Categories: SlugArray = await sanityClient.fetch(getAllCategorySlugs)
+	const res = await fetch('http://34.82.89.19:5000/category/slugs')
+	// const res = await fetch('http://localhost:5000/category/slugs')
+	const Categories: string[] = await res.json()
 
 	const paths = Categories.map((category) => ({
-		params: { slug: category.slug.current },
+		params: { slug: category },
 	}))
 
 	return { paths, fallback: false }
@@ -19,13 +20,16 @@ export async function getStaticPaths() {
 
 // Uses params to further collect page data
 export async function getStaticProps({ params }) {
-	const Products: ProductPreviewData[] = await sanityClient.fetch(
-		getProductsByCategory(params.slug)
-	)
+	const res = await fetch(`http://34.82.89.19:5000/category/${params.slug}`)
+	// const res = await fetch(`http://localhost:5000/category/${params.slug}`)
+	const Products: CategoryProductsAPIData[] = await res.json()
+
+	const ProductsReadyForProps: CategoryProductsSanityData[] =
+		convertAPICategoryProductsForProps(Products)
 
 	return {
 		props: {
-			products: Products,
+			products: ProductsReadyForProps,
 			title: params.slug.toUpperCase(),
 		},
 	}

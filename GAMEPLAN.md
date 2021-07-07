@@ -142,11 +142,11 @@ steps:
 
   [x] add to cart functionality
   [x] global cart state
-  [] count cart items
-  [] remove all
-  [] remove one
-  [] count total
-  [] checkout button send data
+  [x] count cart items
+  [x] remove all
+  [x] remove one
+  [x] count total
+  [] checkout button / check that there is data / use shopping cart on checkout page
 
 9. build checkout
 
@@ -201,3 +201,40 @@ using img tag
 ```
 
 result: cursor works as expected and tabbing works
+
+July 5th get into production checklist:
+
+[x] confirm that the local project is working with localhost running both server and client
+
+[x] move server to non local host and connect from production client
+[x] set up cloud SQL instance,
+[x] change connections to allow from anywhere
+[x] connect to cloud SQL from local server
+[x] migrate and seed database using prisma
+[x] dockerize local server
+[x] setup cloud sdk and authenticate then deploy docker image to to gcr
+[x] move local server to compute engine on GCP
+[x] set up firewall rule to allow connection to compute engine
+[x] connect to deployed compute engine server from poduction client
+
+July 6th
+
+[x] support auth in client
+[x] create form (register and login in)
+[x] collect form data
+[x] send to server
+[x] get back response and save data accordingly
+
+[x] support authentication on server
+[x] create auth endpoints
+[x] run auth middleware
+[x] send back responses
+
+[] look into JWT cookies sessions ?
+
+...
+
+[] create orders on local env then prod env for server
+[] support orders in client
+[] share hosted project
+[] write about learning points

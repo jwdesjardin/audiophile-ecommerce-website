@@ -3,6 +3,7 @@ import Link from 'next/link'
 import { ShoppingCart } from './ShoppingCart'
 import { CartCTX } from '../../context'
 import { Menu } from './Menu'
+import { UserMenu } from './UserMenu'
 
 const Navbar = ({
 	header,
@@ -15,6 +16,7 @@ const Navbar = ({
 
 	const { cartVisible, toggleCartVisible } = React.useContext(CartCTX)
 	const [menuVisible, toggleMenuVisible] = React.useState(false)
+	const [userVisible, toggleUserVisible] = React.useState(false)
 
 	return (
 		<div
@@ -44,15 +46,21 @@ const Navbar = ({
 						<a className={linkHoverEffect}>Earphones</a>
 					</Link>
 				</div>
-				<button
-					onClick={() => toggleCartVisible(true)}
-					className='shopping-cart-button md:ml-auto lg:ml-0 '
-				></button>
+				<div className='md:ml-auto lg:ml-0 flex items-center space-x-2'>
+					<button onClick={() => toggleUserVisible(true)} className='user-button'>
+						<i className='fas fa-user fa-lg'></i>
+					</button>
+					<button
+						onClick={() => toggleCartVisible(true)}
+						className='shopping-cart-button '
+					></button>
+				</div>
 			</div>
 
 			{header && <NavbarHeader header={header} />}
 			{menuVisible && <Menu toggleMenuVisible={toggleMenuVisible}></Menu>}
 			{cartVisible && <ShoppingCart />}
+			{userVisible && <UserMenu toggleUserVisible={toggleUserVisible} />}
 		</div>
 	)
 }

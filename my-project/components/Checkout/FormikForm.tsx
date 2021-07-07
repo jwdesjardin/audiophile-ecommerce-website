@@ -1,7 +1,6 @@
 import React, { ReactNode } from 'react'
 import { Formik, Field, Form, ErrorMessage } from 'formik'
 import { CartCTX, OrderCTX } from '../../context'
-import createRouteLoader from 'next/dist/client/route-loader'
 
 export const FormikForm = () => {
 	const { cart, cartTotals, setCart } = React.useContext(CartCTX)
@@ -169,7 +168,7 @@ export const FormikForm = () => {
 	)
 }
 
-const FormSection = ({ title, children }: { title: string; children: ReactNode }) => {
+export const FormSection = ({ title, children }: { title: string; children: ReactNode }) => {
 	return (
 		<div className='pb-2'>
 			<h3 className='subtitle text-orange-600 mb-4'>{title}</h3>
@@ -178,17 +177,17 @@ const FormSection = ({ title, children }: { title: string; children: ReactNode }
 	)
 }
 
-const FormikTextInput = ({ label, id, showError, fullWidth = false, ...rest }) => {
+export const FormikTextInput = ({ label, id, showError, fullWidth = false, ...rest }) => {
 	return (
 		<label
 			htmlFor={id}
-			className={`text-[12px] font-bold inline-block 
+			className={`relative text-[12px] font-bold inline-block 
 			mb-2${fullWidth && ' col-span-2'}${showError ? ' text-red-600' : ''}`}
 		>
 			{label}
 			<ErrorMessage
 				component='span'
-				className='text-red-600 inline-block float-right'
+				className='text-red-600 inline-block float-right absolute right-0 top-0'
 				name={id}
 			></ErrorMessage>
 			<Field
