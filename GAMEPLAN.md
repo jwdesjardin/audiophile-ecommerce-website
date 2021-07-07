@@ -219,16 +219,16 @@ July 5th get into production checklist:
 
 July 6th
 
-[] support auth in client
-[] create form (register and login in)
-[] collect form data
-[] send to server
-[] get back response and save data accordingly
+[x] support auth in client
+[x] create form (register and login in)
+[x] collect form data
+[x] send to server
+[x] get back response and save data accordingly
 
-[] support authentication on server
-[] create auth endpoints
-[] run auth middleware
-[] send back responses
+[x] support authentication on server
+[x] create auth endpoints
+[x] run auth middleware
+[x] send back responses
 
 [] look into JWT cookies sessions ?
 
