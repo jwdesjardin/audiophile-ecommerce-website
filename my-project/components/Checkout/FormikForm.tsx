@@ -2,6 +2,7 @@ import React, { ReactNode } from 'react'
 import { Formik, Field, Form, ErrorMessage } from 'formik'
 import { CartCTX, OrderCTX, UserCTX } from '../../context'
 import { DbOrder } from '../../lib/Types'
+import Link from 'next/link'
 
 export const FormikForm = () => {
 	const { cart, cartTotals, setCart } = React.useContext(CartCTX)
@@ -133,6 +134,22 @@ export const FormikForm = () => {
 				}) => {
 					return (
 						<Form onSubmit={handleSubmit} id='user-info'>
+							<div className='border rounded-lg p-3 mb-6'>
+								{activeUser ? (
+									<p className=''>
+										<span className='h6'>Logged in as:</span>
+										<span className='text-orange-600'> {activeUser.name}</span>
+									</p>
+								) : (
+									<>
+										<Link href='/login'>
+											<button className='button-two mb-2'>Login</button>
+										</Link>{' '}
+										<p className='h6 my-2'>Or</p>
+										<p className='h6'>Continue as guest:</p>
+									</>
+								)}
+							</div>
 							<FormSection title='Billing Details'>
 								<FormikTextInput
 									showError={errors.name && touched.name}
