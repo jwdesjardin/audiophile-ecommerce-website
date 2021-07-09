@@ -264,8 +264,30 @@ July 8th
 [x] create orders on local env then
 [x] support orders in client
 
-...
+July 9th
 
 [] move order servers to prod env
+
+- [] add dockerfile for orders server
+- [] check that image runs on local docker env
+- [] push docker image to gcr
+- [] create new compute engine with docker image
+- [] set firewall rules to allow connections
+- [] set up and test connection from orders branch in client
+- [] merge orders branch with prod
+
+[] fix Client Bugs
+
+- [] show password requirements when incorrect
+- [] fix the hero image max size
+- [] yx1-earphones slug issue on homepage
+- [] recommended items names are short
+- [] the qty in product details needs to reset between items
+- [] category pages need new prodcut subtitle
+- [] sort category items by newest
+- [] order page is not showing $ signs
+
+...July 10th
+
 [] share hosted project on front end mentor
 [] write about learning points
