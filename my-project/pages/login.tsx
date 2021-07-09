@@ -10,7 +10,7 @@ import { UserCTX } from '../context'
 
 const login = () => {
 	const router = useRouter()
-	const { setActiveUser } = React.useContext(UserCTX)
+	const { setActiveUser, toggleUserMenuVisible } = React.useContext(UserCTX)
 	const [pageError, setPageError] = React.useState<string | null>(null)
 	return (
 		<Layout goBackButton>
@@ -64,6 +64,7 @@ const login = () => {
 											setActiveUser(newUser)
 											localStorage.setItem('activeUser', JSON.stringify(newUser))
 											router.push('/')
+											toggleUserMenuVisible(true)
 										}
 										setSubmitting(false)
 									} catch (e) {
