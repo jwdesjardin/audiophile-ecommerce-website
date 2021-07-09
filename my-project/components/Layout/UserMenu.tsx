@@ -19,6 +19,12 @@ export const UserMenu = ({
 				<div className='flex justify-between items-center mb-8'>
 					<p className='h6'>Welcome, {user.name}</p>
 				</div>
+				<div className='mb-6'>
+					<Link href='/orders'>
+						<button className='button-three'>View My Orders</button>
+					</Link>
+				</div>
+
 				<button
 					className='button-two'
 					onClick={() => {
