@@ -253,10 +253,15 @@ July 7th
 - [x] pass order data to server
 - [x] handle server response appropraitely
 
+July 8th
+
 [] add route/controllers to get user orders
 [] add ui to view user orders
+[] add view orders button
+[] view orders page
 
 [] create orders on local env then prod env for server
 [] support orders in client
+
 [] share hosted project
 [] write about learning points
