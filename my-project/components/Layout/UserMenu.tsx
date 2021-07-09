@@ -21,7 +21,9 @@ export const UserMenu = ({
 				</div>
 				<div className='mb-6'>
 					<Link href='/orders'>
-						<button className='button-three'>View My Orders</button>
+						<button className='button-three' onClick={() => toggleUserVisible(false)}>
+							View My Orders
+						</button>
 					</Link>
 				</div>
 
@@ -47,7 +49,9 @@ export const UserMenu = ({
 					<p className='h6'>You are not logged in.</p>
 				</div>
 				<Link href='/login'>
-					<button className='button-two'>Login</button>
+					<button className='button-two' onClick={() => toggleUserVisible(false)}>
+						Login
+					</button>
 				</Link>
 			</div>
 		)

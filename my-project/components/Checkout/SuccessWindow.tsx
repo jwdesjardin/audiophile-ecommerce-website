@@ -28,7 +28,7 @@ export const SuccessWindow = () => {
 	)
 }
 
-const OrderReview = () => {
+export const OrderReview = () => {
 	const { order } = React.useContext(OrderCTX)
 	const [list, setList] = React.useState(order.cartItems.slice(0, 2))
 	const [maxView, toggleMaxView] = React.useState(false)
