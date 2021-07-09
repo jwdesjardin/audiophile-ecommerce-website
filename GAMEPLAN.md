@@ -255,13 +255,17 @@ July 7th
 
 July 8th
 
-[] add route/controllers to get user orders
-[] add ui to view user orders
-[] add view orders button
-[] view orders page
+[x] add route/controllers to get user orders
+[x] add ui to view user orders
 
-[] create orders on local env then prod env for server
-[] support orders in client
+- [x] add view orders button
+- [x] view orders page
 
-[] share hosted project
+[x] create orders on local env then
+[x] support orders in client
+
+...
+
+[] move order servers to prod env
+[] share hosted project on front end mentor
 [] write about learning points
