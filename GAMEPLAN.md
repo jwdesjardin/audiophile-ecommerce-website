@@ -268,12 +268,16 @@ July 9th
 
 [] move order servers to prod env
 
-- [] add dockerfile for orders server
-- [] check that image runs on local docker env
-- [] push docker image to gcr
-- [] create new compute engine with docker image
-- [] set firewall rules to allow connections
-- [] set up and test connection from orders branch in client
+- [x] setup database and connect to cloud sql instance
+- [x] add dockerfile for orders server
+- [x] check that image runs on local docker env
+- [x] push docker image to gcr
+  - [x] docker build -t audiophile-orders
+  - [x] docker tag audiophile gcr.io/[project-name]/audiophile-orders
+  - [x] docker push gcr.io/[project-name]/audiophile-orders
+- [x] create new compute engine with docker image
+- [x] set firewall rules to allow connections
+- [x] set up and test connection from orders branch in client
 - [] merge orders branch with prod
 
 [] fix Client Bugs
