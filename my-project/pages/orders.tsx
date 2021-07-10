@@ -15,7 +15,7 @@ const orders = () => {
 		if (activeUser) {
 			;(async () => {
 				// const res = await fetch(`http://localhost:4000/order/${activeUser._id}`)
-				const res = await fetch(`http://34.83.39.138:4000/order/${activeUser._id}`)
+				const res = await fetch(`https://audiophile-users.herokuapp.com/order/${activeUser._id}`)
 				const data: ApiOrder[] = await res.json()
 				setOrders(data)
 			})()

@@ -52,7 +52,11 @@ const register = () => {
 								;(async () => {
 									const config = { headers: { 'Content-type': 'application/json' } }
 									// const res = await axios.post('http://localhost:5000/users/', values, config)
-									const res = await axios.post('http://34.82.89.19:5000/users/', values, config)
+									const res = await axios.post(
+										'https://audiophile-users.herokuapp.com/users/',
+										values,
+										config
+									)
 									if (res.status === 201) {
 										// saves user data to context
 										const user = res.data

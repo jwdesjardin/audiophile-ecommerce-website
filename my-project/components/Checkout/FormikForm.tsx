@@ -104,7 +104,7 @@ export const FormikForm = () => {
 								}
 							}
 
-							await fetch('http://34.83.39.138:4000/order', {
+							await fetch('https://audiophile-users.herokuapp.com/order', {
 								body: JSON.stringify(db_order),
 								method: 'POST',
 								headers: {
