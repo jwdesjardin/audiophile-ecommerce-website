@@ -278,7 +278,9 @@ July 9th
 - [x] create new compute engine with docker image
 - [x] set firewall rules to allow connections
 - [x] set up and test connection from orders branch in client
-- [] merge orders branch with prod
+- [x] merge orders branch with prod
+
+...July 10th
 
 [] fix Client Bugs
 
@@ -291,7 +293,8 @@ July 9th
 - [] sort category items by newest
 - [] order page is not showing $ signs
 
-...July 10th
+- [x] secure the users/orders server using heroku (this is a dyno and will sleep)
+- [] use this secure server in prod
 
 [] share hosted project on front end mentor
 [] write about learning points
