@@ -104,13 +104,20 @@ export const FormikForm = () => {
 								}
 							}
 
-							await fetch('http://localhost:4000/order', {
+							await fetch('http://34.83.39.138:4000/order', {
 								body: JSON.stringify(db_order),
 								method: 'POST',
 								headers: {
 									'Content-Type': 'application/json',
 								},
 							}).then((res) => res.json())
+							// await fetch('http://localhost:4000/order', {
+							// 	body: JSON.stringify(db_order),
+							// 	method: 'POST',
+							// 	headers: {
+							// 		'Content-Type': 'application/json',
+							// 	},
+							// }).then((res) => res.json())
 
 							setOrder({ cartTotals: cart_totals, cartItems: cart, customerInfo: { ...values } })
 							setCart([])
