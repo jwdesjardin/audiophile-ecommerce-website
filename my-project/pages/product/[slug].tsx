@@ -14,8 +14,8 @@ export async function getStaticPaths() {
 	// SOLUTION via sanity
 
 	// Local api solution
-	// const res = await fetch('http://34.82.89.19:5000/product/slugs')
-	const res = await fetch('http://localhost:5000/product/slugs')
+	const res = await fetch('http://34.82.89.19:5000/product/slugs')
+	// const res = await fetch('http://localhost:5000/product/slugs')
 	const Products: string[] = await res.json()
 
 	const paths = Products.map((product) => ({
@@ -32,8 +32,8 @@ export async function getStaticProps({
 		slug: string
 	}
 }) {
-	// const res = await fetch(`http://34.82.89.19:5000/product/${params.slug}`)
-	const res = await fetch(`http://localhost:5000/product/${params.slug}`)
+	const res = await fetch(`http://34.82.89.19:5000/product/${params.slug}`)
+	// const res = await fetch(`http://localhost:5000/product/${params.slug}`)
 	const ProductData: ProductAPIType = await res.json()
 	const ProductReadyForProps: ProductSanityType = convertAPIProductForProps(ProductData)
 

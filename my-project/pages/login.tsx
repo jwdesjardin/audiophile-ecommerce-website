@@ -48,10 +48,15 @@ const login = () => {
 									try {
 										const config = { headers: { 'Content-type': 'application/json' } }
 										const res = await axios.post(
-											'http://localhost:5000/users/login',
+											'http://34.82.89.19:5000/users/login',
 											values,
 											config
 										)
+										// const res = await axios.post(
+										// 	'http://localhost:5000/users/login',
+										// 	values,
+										// 	config
+										// )
 										if (res.status === 200) {
 											// saves user data to context
 											const user = res.data
