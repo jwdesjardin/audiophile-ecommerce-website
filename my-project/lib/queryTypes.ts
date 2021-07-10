@@ -47,6 +47,49 @@ export interface ProductSanityType {
 	slug: { type: 'slug'; current: string }
 }
 
+export interface ApiOrder {
+	id: number
+	createdAt: string
+	updatedAt: string
+	subtotal: number
+	vaTax: number
+	grandTotal: number
+	cartItems: {
+		id: number
+		createdAt: string
+		updatedAt: string
+		productId: number
+		quantity: number
+		product: {
+			id: number
+			createdAt: string
+			updatedAt: string
+			cartImage: string
+			slug: string
+			price: number
+			name: string
+			cartName: string
+		}
+		orderId?: number
+	}[]
+	customerInfo: {
+		id: number
+		createdAt: string
+		updatedAt: string
+		userID: string
+		name: string
+		email: string
+		phone: string
+		address: string
+		zip: string
+		city: string
+		country: string
+	}
+	paymentMethod: string
+	emoneyNumber: string | null
+	emoneyPin: string | null
+}
+
 export interface ProductAPIType {
 	id: number
 	createdAt: string

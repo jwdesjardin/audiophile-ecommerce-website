@@ -10,7 +10,7 @@ import { UserCTX } from '../context'
 
 const login = () => {
 	const router = useRouter()
-	const { setActiveUser } = React.useContext(UserCTX)
+	const { setActiveUser, toggleUserMenuVisible } = React.useContext(UserCTX)
 	const [pageError, setPageError] = React.useState<string | null>(null)
 	return (
 		<Layout goBackButton>
@@ -48,20 +48,28 @@ const login = () => {
 									try {
 										const config = { headers: { 'Content-type': 'application/json' } }
 										const res = await axios.post(
-											'http://localhost:5000/users/login',
+											'http://34.82.89.19:5000/users/login',
 											values,
 											config
 										)
+										// const res = await axios.post(
+										// 	'http://localhost:5000/users/login',
+										// 	values,
+										// 	config
+										// )
 										if (res.status === 200) {
 											// saves user data to context
 											const user = res.data
-											setActiveUser({
+											const newUser = {
 												_id: user._id,
 												name: user.name,
 												email: user.email,
 												isAdmin: user.isAdmin,
-											})
+											}
+											setActiveUser(newUser)
+											localStorage.setItem('activeUser', JSON.stringify(newUser))
 											router.push('/')
+											toggleUserMenuVisible(true)
 										}
 										setSubmitting(false)
 									} catch (e) {

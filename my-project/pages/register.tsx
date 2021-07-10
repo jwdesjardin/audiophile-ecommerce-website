@@ -10,7 +10,7 @@ import { UserCTX } from '../context'
 
 const register = () => {
 	const router = useRouter()
-	const { setActiveUser } = React.useContext(UserCTX)
+	const { setActiveUser, toggleUserMenuVisible } = React.useContext(UserCTX)
 	const [pageError, setPageError] = React.useState<string | null>(null)
 	return (
 		<Layout goBackButton>
@@ -51,17 +51,21 @@ const register = () => {
 							setTimeout(() => {
 								;(async () => {
 									const config = { headers: { 'Content-type': 'application/json' } }
-									const res = await axios.post('http://localhost:5000/users/', values, config)
+									// const res = await axios.post('http://localhost:5000/users/', values, config)
+									const res = await axios.post('http://34.82.89.19:5000/users/', values, config)
 									if (res.status === 201) {
 										// saves user data to context
 										const user = res.data
-										setActiveUser({
+										const newUser = {
 											_id: user._id,
 											name: user.name,
 											email: user.email,
 											isAdmin: user.isAdmin,
-										})
+										}
+										setActiveUser(newUser)
+										localStorage.setItem('activeUser', JSON.stringify(newUser))
 										router.push('/')
+										toggleUserMenuVisible(true)
 									} else if (res.status === 400) {
 										alert('email is already in use. please login.')
 									}

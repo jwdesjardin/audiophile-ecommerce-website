@@ -1,10 +1,14 @@
 import React, { ReactNode } from 'react'
 import { Formik, Field, Form, ErrorMessage } from 'formik'
-import { CartCTX, OrderCTX } from '../../context'
+import { CartCTX, OrderCTX, UserCTX } from '../../context'
+import { DbOrder } from '../../lib/Types'
+import Link from 'next/link'
 
 export const FormikForm = () => {
 	const { cart, cartTotals, setCart } = React.useContext(CartCTX)
 	const { setOrder } = React.useContext(OrderCTX)
+
+	const { activeUser, setActiveUser } = React.useContext(UserCTX)
 
 	return (
 		<section className='px-6 lg:px-12  pt-6 md:pt-8 lg:pt-14 bg-white-100 rounded-lg mb-8'>
@@ -56,12 +60,72 @@ export const FormikForm = () => {
 					return errors
 				}}
 				onSubmit={(values, { setSubmitting }) => {
-					console.log('order created')
+					console.log('order being created')
 
-					setTimeout(() => {
-						setOrder({ cartTotals: cartTotals(), cartItems: cart, customerInfo: { ...values } })
-						setCart([])
-						setSubmitting(false)
+					setTimeout(async () => {
+						try {
+							const cart_totals = cartTotals()
+							let userID: string | null = null
+							if (activeUser !== null) {
+								userID = activeUser._id
+							}
+							let db_order: DbOrder = {
+								subtotal: cart_totals.subTotal,
+								vaTax: cart_totals.VAT,
+								grandTotal: cart_totals.grandTotal,
+								cartItems: cart.map((cartItem) => ({
+									quantity: cartItem.qty,
+									product: {
+										cartImage: cartItem.item.cartImage.asset.url,
+										slug: cartItem.item.slug.current,
+										price: cartItem.item.price,
+										name: cartItem.item.name,
+										cartName: cartItem.item.cartName,
+									},
+								})),
+								customerInfo: {
+									userID: userID || '',
+									name: values.name,
+									email: values.email,
+									phone: values.phone,
+									address: values.address,
+									zip: values.zip,
+									city: values.city,
+									country: values.country,
+								},
+								paymentMethod: values.payment_method,
+							}
+
+							if (values.payment_method === 'emoney') {
+								db_order = {
+									...db_order,
+									emoneyNumber: values.emoney_number,
+									emoneyPin: values.emoney_pin,
+								}
+							}
+
+							await fetch('http://34.83.39.138:4000/order', {
+								body: JSON.stringify(db_order),
+								method: 'POST',
+								headers: {
+									'Content-Type': 'application/json',
+								},
+							}).then((res) => res.json())
+							// await fetch('http://localhost:4000/order', {
+							// 	body: JSON.stringify(db_order),
+							// 	method: 'POST',
+							// 	headers: {
+							// 		'Content-Type': 'application/json',
+							// 	},
+							// }).then((res) => res.json())
+
+							setOrder({ cartTotals: cart_totals, cartItems: cart, customerInfo: { ...values } })
+							setCart([])
+							setSubmitting(false)
+						} catch (e) {
+							console.log(e)
+							setSubmitting(false)
+						}
 					}, 400)
 				}}
 			>
@@ -77,6 +141,22 @@ export const FormikForm = () => {
 				}) => {
 					return (
 						<Form onSubmit={handleSubmit} id='user-info'>
+							<div className='border rounded-lg p-3 mb-6'>
+								{activeUser ? (
+									<p className=''>
+										<span className='h6'>Logged in as:</span>
+										<span className='text-orange-600'> {activeUser.name}</span>
+									</p>
+								) : (
+									<>
+										<Link href='/login'>
+											<button className='button-two mb-2'>Login</button>
+										</Link>{' '}
+										<p className='h6 my-2'>Or</p>
+										<p className='h6'>Continue as guest:</p>
+									</>
+								)}
+							</div>
 							<FormSection title='Billing Details'>
 								<FormikTextInput
 									showError={errors.name && touched.name}

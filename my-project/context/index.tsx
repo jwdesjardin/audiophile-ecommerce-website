@@ -72,15 +72,31 @@ export function OrderWrapper({ children }) {
 interface UserContext {
 	activeUser: ActiveUser | null
 	setActiveUser: React.Dispatch<React.SetStateAction<ActiveUser>>
+	userMenuVisible: boolean
+	toggleUserMenuVisible: React.Dispatch<React.SetStateAction<boolean>>
 }
 
 export const UserCTX = React.createContext<UserContext>({
 	activeUser: null,
 	setActiveUser: () => {},
+	userMenuVisible: false,
+	toggleUserMenuVisible: () => {},
 })
 
 export function UserWrapper({ children }) {
 	const [activeUser, setActiveUser] = React.useState<ActiveUser | null>(null)
+	const [userMenuVisible, toggleUserMenuVisible] = React.useState(false)
 
-	return <UserCTX.Provider value={{ activeUser, setActiveUser }}>{children}</UserCTX.Provider>
+	React.useEffect(() => {
+		const foundUser = localStorage.getItem('activeUser')
+		if (foundUser) {
+			setActiveUser(JSON.parse(foundUser))
+		}
+	}, [])
+
+	return (
+		<UserCTX.Provider value={{ activeUser, setActiveUser, userMenuVisible, toggleUserMenuVisible }}>
+			{children}
+		</UserCTX.Provider>
+	)
 }

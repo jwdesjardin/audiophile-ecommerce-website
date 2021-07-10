@@ -234,7 +234,64 @@ July 6th
 
 ...
 
-[] create orders on local env then prod env for server
-[] support orders in client
-[] share hosted project
+July 7th
+
+[x] create order API
+
+- [x] imporve mt prisma starter files
+- [x] create prisma schema for orders
+- [x] migrate DB to new postgres db
+- [x] routes
+- [x] controllers
+  - [x] for creating order
+  - [x] for getting orders
+  - [x] for getting customers
+
+[x] create order client
+
+- [] add user or guest ui to formik form
+- [x] pass order data to server
+- [x] handle server response appropraitely
+
+July 8th
+
+[x] add route/controllers to get user orders
+[x] add ui to view user orders
+
+- [x] add view orders button
+- [x] view orders page
+
+[x] create orders on local env then
+[x] support orders in client
+
+July 9th
+
+[] move order servers to prod env
+
+- [x] setup database and connect to cloud sql instance
+- [x] add dockerfile for orders server
+- [x] check that image runs on local docker env
+- [x] push docker image to gcr
+  - [x] docker build -t audiophile-orders
+  - [x] docker tag audiophile gcr.io/[project-name]/audiophile-orders
+  - [x] docker push gcr.io/[project-name]/audiophile-orders
+- [x] create new compute engine with docker image
+- [x] set firewall rules to allow connections
+- [x] set up and test connection from orders branch in client
+- [] merge orders branch with prod
+
+[] fix Client Bugs
+
+- [] show password requirements when incorrect
+- [] fix the hero image max size
+- [] yx1-earphones slug issue on homepage
+- [] recommended items names are short
+- [] the qty in product details needs to reset between items
+- [] category pages need new prodcut subtitle
+- [] sort category items by newest
+- [] order page is not showing $ signs
+
+...July 10th
+
+[] share hosted project on front end mentor
 [] write about learning points
