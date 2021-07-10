@@ -278,7 +278,7 @@ July 9th
 - [x] create new compute engine with docker image
 - [x] set firewall rules to allow connections
 - [x] set up and test connection from orders branch in client
-- [] merge orders branch with prod
+- [x] merge orders branch with prod
 
 [] fix Client Bugs
 
