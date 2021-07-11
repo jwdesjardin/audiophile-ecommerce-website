@@ -7,7 +7,7 @@ import { convertAPICategoryProductsForProps } from '../../lib/utils'
 
 // Returns paths - an array of abjects containing params
 export async function getStaticPaths() {
-	const res = await fetch('http://34.82.89.19:5000/category/slugs')
+	const res = await fetch('http://34.145.115.28:5000/category/slugs')
 	// const res = await fetch('http://localhost:5000/category/slugs')
 	const Categories: string[] = await res.json()
 
@@ -20,16 +20,25 @@ export async function getStaticPaths() {
 
 // Uses params to further collect page data
 export async function getStaticProps({ params }) {
-	const res = await fetch(`http://34.82.89.19:5000/category/${params.slug}`)
+	const res = await fetch(`http://34.145.115.28:5000/category/${params.slug}`)
 	// const res = await fetch(`http://localhost:5000/category/${params.slug}`)
 	const Products: CategoryProductsAPIData[] = await res.json()
 
 	const ProductsReadyForProps: CategoryProductsSanityData[] =
 		convertAPICategoryProductsForProps(Products)
 
+	const sortedProducts = ProductsReadyForProps.sort((a, b) => {
+		if (a.new && !b.new) {
+			return -1
+		} else if (b.new && !a.new) {
+			return 1
+		}
+		return 0
+	})
+
 	return {
 		props: {
-			products: ProductsReadyForProps,
+			products: sortedProducts,
 			title: params.slug.toUpperCase(),
 		},
 	}
