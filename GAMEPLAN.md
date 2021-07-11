@@ -280,7 +280,7 @@ July 9th
 - [x] set up and test connection from orders branch in client
 - [x] merge orders branch with prod
 
-...July 10th
+July 10th
 
 [] fix Client Bugs
 
@@ -292,9 +292,13 @@ July 9th
 - [] category pages need new prodcut subtitle
 - [] sort category items by newest
 - [] order page is not showing $ signs
+- [] same email show correct error
+- [] if you have not palced an order show text order page
 
 - [x] secure the users/orders server using heroku (this is a dyno and will sleep)
-- [] use this secure server in prod
+- [x] use this secure server in prod
+
+...
 
 [] share hosted project on front end mentor
 [] write about learning points
