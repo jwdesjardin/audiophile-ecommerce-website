@@ -53,7 +53,7 @@ export const OrderReview = () => {
 								</div>
 								<div className='w-full ml-4'>
 									<p className='uppercase font-bold'>{item.item.cartName}</p>
-									<p className='text-black-400 font-bold'>{item.item.price}</p>
+									<p className='text-black-400 font-bold'>${item.item.price.toLocaleString()}</p>
 								</div>
 								<div className='text-black-400 font-bold'>x{item.qty}</div>
 							</li>

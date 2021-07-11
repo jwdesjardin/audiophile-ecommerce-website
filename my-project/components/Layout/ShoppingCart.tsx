@@ -97,7 +97,11 @@ const CartRow = ({
 				<img src={row.item.cartImage.asset.url} className='h-16' alt='' />
 			</div>
 			<div className='w-full ml-4'>
-				<h2 className='font-bold uppercase'>{row.item.cartName}</h2>
+				<Link passHref href={`/product/${row.item.slug.current}`}>
+					<a>
+						<h2 className='font-bold uppercase'>{row.item.cartName}</h2>
+					</a>
+				</Link>
 				<p className='text-black-400'>${row.item.price.toLocaleString()}</p>
 			</div>
 			<div className='w-24 flex flex-col items-center flex-shrink-0'>
