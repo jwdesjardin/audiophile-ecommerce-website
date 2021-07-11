@@ -47,6 +47,10 @@ export async function getStaticProps({
 export default function Project({ product }: InferGetStaticPropsType<typeof getStaticProps>) {
 	const [qty, setQty] = React.useState(1)
 
+	React.useEffect(() => {
+		setQty(1)
+	}, [product])
+
 	const mapGalleryUrls = (images: { asset: { url: string } }[]) => {
 		return images.map((img) => {
 			return img.asset.url
