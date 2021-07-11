@@ -284,21 +284,68 @@ July 10th
 
 [] fix Client Bugs
 
-- [] show password requirements when incorrect
-- [] fix the hero image max size
-- [] yx1-earphones slug issue on homepage
-- [] recommended items names are short
-- [] the qty in product details needs to reset between items
-- [] category pages need new prodcut subtitle
-- [] sort category items by newest
-- [] order page is not showing $ signs
-- [] same email show correct error
-- [] if you have not palced an order show text order page
+- [x] yx1-earphones slug issue on homepage
+- [x] recommended items names are short
+- [x] the qty in product details needs to reset between items
+- [x] category pages need new prodcut subtitle
+- [x] sort category items by newest
+- [x] order page is not showing $ signs
 
 - [x] secure the users/orders server using heroku (this is a dyno and will sleep)
 - [x] use this secure server in prod
 
-...
+...July 11th
+
+[] fix Client Bugs
+
+- [] show password requirements when incorrect
+- [] fix the hero image max size
+- [] same email show correct error
+- [] if you have not palced an order show text order page
 
 [] share hosted project on front end mentor
+
 [] write about learning points
+
+- [] building users server
+
+  - [] auth
+  - [] create oders
+  - [] deployment heroku
+
+- [] build products server
+
+  - [] CMS
+  - [] compute engine
+
+- [] form
+
+  - [] validation
+  - [] accesibility
+  - [] stying
+
+- [] Images
+
+  - [] srcSet / picture
+  - [] Imigix
+
+- [] State Managment
+
+- [] global state
+- [] users
+- [] orders
+- [] cart
+
+- [] Static Pages
+
+- [] generated with next.js
+
+- [] Lighthouse
+
+- [] SEO
+- [] Accesibility
+- [] performance
+
+- [] Testing
+
+- [] cypress e2e
