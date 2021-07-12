@@ -30,6 +30,13 @@ const orders = () => {
 		<Layout goBackButton>
 			<div className='content-container'>
 				<h2 className='h2 text-center mb-6'>Orders</h2>
+				{orders.length === 0 && (
+					<p className='text-center mb-6'>
+						You have not placed orders on this account.
+						<br></br>
+						Please complete checkout to see orders here.
+					</p>
+				)}
 				{orders.map((order) => (
 					<div key={order.id} className='my-8'>
 						<h2 className='subtitle'>Order Details</h2>
