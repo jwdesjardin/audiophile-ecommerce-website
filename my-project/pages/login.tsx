@@ -12,6 +12,7 @@ const login = () => {
 	const router = useRouter()
 	const { setActiveUser, toggleUserMenuVisible } = React.useContext(UserCTX)
 	const [pageError, setPageError] = React.useState<string | null>(null)
+	const [formLoading, setFormLoading] = React.useState(false)
 	return (
 		<Layout goBackButton>
 			<div className='content-container flex justify-center'>
@@ -45,6 +46,7 @@ const login = () => {
 						onSubmit={(values, { setSubmitting }) => {
 							setTimeout(() => {
 								;(async () => {
+									setFormLoading(true)
 									try {
 										const config = { headers: { 'Content-type': 'application/json' } }
 										const res = await axios.post(
@@ -71,14 +73,14 @@ const login = () => {
 											router.push('/')
 											toggleUserMenuVisible(true)
 										}
-										setSubmitting(false)
 									} catch (e) {
 										setPageError('Invalid credentials. Please try again.')
 										setTimeout(() => {
 											setPageError(null)
-											setSubmitting(false)
 										}, 4000)
 									}
+									setFormLoading(false)
+									setSubmitting(false)
 								})()
 							}, 400)
 						}}
@@ -110,10 +112,13 @@ const login = () => {
 												fullWidth
 											/>
 										</div>
-
-										<button className='button-one mb-6' disabled={isSubmitting} type='submit'>
-											Login
-										</button>
+										{formLoading ? (
+											<p className='py-6'>Loading...</p>
+										) : (
+											<button className='button-one mb-6' disabled={isSubmitting} type='submit'>
+												Login
+											</button>
+										)}
 
 										<p className='to-black-400 text-center'>
 											dont have an account?{' '}

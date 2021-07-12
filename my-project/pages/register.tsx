@@ -12,6 +12,7 @@ const register = () => {
 	const router = useRouter()
 	const { setActiveUser, toggleUserMenuVisible } = React.useContext(UserCTX)
 	const [pageError, setPageError] = React.useState<string | null>(null)
+	const [formLoading, setFormLoading] = React.useState(false)
 	return (
 		<Layout goBackButton>
 			<div className='content-container flex justify-center'>
@@ -39,8 +40,10 @@ const register = () => {
 								errors.email = 'Invalid email address'
 							} else if (!values.password) {
 								errors.password = 'Required'
-							} else if (!/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/i.test(values.password)) {
-								errors.password = 'Invalid Password'
+							} else if (!/(?=.*[A-Za-z])(?=.*\d)/i.test(values.password)) {
+								errors.password = 'Must have # and a-z'
+							} else if (!/^[A-Za-z\d]{8,}$/i.test(values.password)) {
+								errors.password = 'Must be 8 chars or more'
 							}
 
 							return errors
@@ -50,32 +53,39 @@ const register = () => {
 
 							setTimeout(() => {
 								;(async () => {
-									const config = { headers: { 'Content-type': 'application/json' } }
-									// const res = await axios.post('http://localhost:5000/users/', values, config)
-									const res = await axios.post(
-										'https://audiophile-users.herokuapp.com/users/',
-										values,
-										config
-									)
-									if (res.status === 201) {
-										// saves user data to context
-										const user = res.data
-										const newUser = {
-											_id: user._id,
-											name: user.name,
-											email: user.email,
-											isAdmin: user.isAdmin,
+									setFormLoading(true)
+									try {
+										const config = { headers: { 'Content-type': 'application/json' } }
+										// const res = await axios.post('http://localhost:5000/users/', values, config)
+										const res = await axios.post(
+											'https://audiophile-users.herokuapp.com/users/',
+											values,
+											config
+										)
+										if (res.status === 201) {
+											// saves user data to context
+											const user = res.data
+											const newUser = {
+												_id: user._id,
+												name: user.name,
+												email: user.email,
+												isAdmin: user.isAdmin,
+											}
+											setActiveUser(newUser)
+											localStorage.setItem('activeUser', JSON.stringify(newUser))
+											router.push('/')
+											toggleUserMenuVisible(true)
 										}
-										setActiveUser(newUser)
-										localStorage.setItem('activeUser', JSON.stringify(newUser))
-										router.push('/')
-										toggleUserMenuVisible(true)
-									} else if (res.status === 400) {
-										alert('email is already in use. please login.')
+									} catch (e) {
+										setPageError('Email is already in use. Please try logging in.')
+										setTimeout(() => {
+											setPageError(null)
+										}, 4000)
 									}
 									setSubmitting(false)
+									setFormLoading(false)
 								})()
-							}, 400)
+							}, 500)
 						}}
 					>
 						{({
@@ -112,10 +122,14 @@ const register = () => {
 												fullWidth
 											/>
 										</div>
+										{formLoading ? (
+											<p className='py-6'>Loading...</p>
+										) : (
+											<button className='button-one mb-6' disabled={isSubmitting} type='submit'>
+												Register
+											</button>
+										)}
 
-										<button className='button-one mb-6' disabled={isSubmitting} type='submit'>
-											Register
-										</button>
 										<p className='to-black-400 text-center'>
 											dont have an account?{' '}
 											<Link href='/login'>
