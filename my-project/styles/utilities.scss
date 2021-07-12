@@ -179,14 +179,23 @@
 		background-position: center;
 		background-repeat: no-repeat;
 		background-size: cover;
+		background-color: #252525;
 		height: 600px;
+		margin: 0 auto;
+		max-width: 500px;
 		@media (min-width: 768px) {
 			background-image: url('/assets/home/tablet/image-header.jpg');
 			height: 729px;
+			max-width: 800px;
 		}
 		@media (min-width: 1110px) {
 			background-image: url('/assets/home/desktop/image-hero.jpg');
+			max-width: 1440px;
 		}
+	}
+
+	.black-bg {
+		background-color: #191918;
 	}
 
 	.section2-bg-image {
